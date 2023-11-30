@@ -3,5 +3,8 @@
     "activityBar.background": "#3B2B04",
     "titleBar.activeBackground": "#523D06",
     "titleBar.activeForeground": "#FEFAF0"
-  }
+  },
+  "cSpell.words": [
+    "appl"
+  ]
 }
