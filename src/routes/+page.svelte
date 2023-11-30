@@ -1,6 +1,8 @@
 <script>
   import { onMount } from 'svelte';
 
+  const ssr = false;
+
   onMount(() => {
     const submit = document.getElementById('submit');
     const table = document.getElementById('table');
@@ -39,30 +41,28 @@
     }
 
     // on load, check if there is data in local storage and if so, pre-fill the form
-    window.onload = function () {
-      if (localStorage.getItem('data')) {
-        // console.log(localStorage.getItem('data'));
-        let data = JSON.parse(localStorage.getItem('data'));
-        document.querySelector('#NPU').value = data.NPU;
-        document.querySelector('#chair').value = data.chair;
-        document.querySelector('#location').value = data.loc;
-        document.querySelector('#planner').value = data.planner;
-        document.querySelector('#autofill').checked = data.fillToggle;
-      }
-      if (localStorage.getItem('items')) {
-        let items = localStorage.getItem('items');
-        document
-          .querySelector('#table')
-          .insertAdjacentHTML('beforeend', JSON.parse(items));
-        document.querySelectorAll('.btn-close').forEach((btn) => {
-          btn.style.display = 'inline';
-        });
-      }
-      if (localStorage.getItem('pNotes')) {
-        let pNotes = localStorage.getItem('pNotes') || '';
-        document.querySelector('#pNotes').value = pNotes;
-      }
-    };
+    if (localStorage.getItem('data')) {
+      // console.log(localStorage.getItem('data'));
+      let data = JSON.parse(localStorage.getItem('data'));
+      document.querySelector('#NPU').value = data.NPU;
+      document.querySelector('#chair').value = data.chair;
+      document.querySelector('#location').value = data.loc;
+      document.querySelector('#planner').value = data.planner;
+      document.querySelector('#autofill').checked = data.fillToggle;
+    }
+    if (localStorage.getItem('items')) {
+      let items = localStorage.getItem('items');
+      document
+        .querySelector('#table')
+        .insertAdjacentHTML('beforeend', JSON.parse(items));
+      document.querySelectorAll('.btn-close').forEach((btn) => {
+        btn.style.display = 'inline';
+      });
+    }
+    if (localStorage.getItem('pNotes')) {
+      let pNotes = localStorage.getItem('pNotes') || '';
+      document.querySelector('#pNotes').value = pNotes;
+    }
 
     // Clear agenda items
     document.getElementById('clear').addEventListener('click', function () {
@@ -316,6 +316,10 @@
       // console.log('new row added');
       // clear inputs
       document.querySelector('#addItem').reset();
+
+      // set disposal input to the first option
+      disposal.value = disposal.options[0].value;
+
       document
         .getElementById('applName')
         .setAttribute('placeholder', 'Application number or name');
@@ -617,7 +621,7 @@
   <h1 id="header">VOTING REPORT</h1>
 </header>
 
-<div class="container">
+<main class="container">
   <!-- modal -->
   <dialog class="text-center" id="dialog" style="border-radius: 10px;">
     <span id="message"></span>
@@ -796,7 +800,7 @@
       </h5>
     </div>
   </div>
-</div>
+</main>
 <footer class="container">
   <details id="instructions">
     <li style="list-style-type:none;">
@@ -880,22 +884,6 @@
   </p>
 </footer>
 
-<!-- <script src="app.js" async defer></script> -->
-<!-- <script type='module'>
-    if ('serviceWorker' in navigator) {
-      try {
-        navigator.serviceWorker.register(new URL('sw.js', import.meta.url),
-          {
-            scope: new URL('', import.meta.url).pathname,
-            type: 'module'
-          });
-      } catch (error) {
-        console.log('Service Worker Registration Failed: ', error);
-      }
-    }
-
-  </script> -->
-
 <style>
   @font-face {
     font-family: 'Tungsten-SemiBold';
@@ -915,7 +903,7 @@
     margin-bottom: 1rem;
   }
 
-  body {
+  main {
     font-size: 1.2rem;
     font-family: 'GT-Eesti-Regular', sans-serif;
   }
@@ -929,16 +917,16 @@
     border-radius: 5px;
   }
 
-  .dragging {
+  :global(.dragging) {
     opacity: 30%;
   }
 
-  .highlight {
+  :global(.highlight) {
     background-color: #ff424281;
     padding: 1rem;
   }
 
-  .item {
+  :global(.item) {
     background-color: lightgray;
   }
 
@@ -950,11 +938,11 @@
     margin: 3px;
   }
 
-  .pHead input {
+  :global(.pHead input) {
     align-content: right;
   }
 
-  .pHead label {
+  :global(.pHead label) {
     justify-self: left;
   }
 
@@ -970,7 +958,7 @@
     margin: 1rem;
   }
 
-  .typeTD {
+  :global(.typeTD) {
     padding-left: 35px !important;
     cursor: move; /* fallback if grab cursor is unsupported */
     cursor: grab;
@@ -978,7 +966,7 @@
     cursor: -webkit-grab;
   }
 
-  .typeTD:active {
+  :global(.typeTD:active) {
     cursor: grabbing !important;
     cursor: -moz-grabbing !important;
     cursor: -webkit-grabbing !important;
@@ -989,18 +977,18 @@
     width: 100%;
   }
 
-  tbody {
+  :global(tbody) {
     break-inside: avoid;
     position: relative;
   }
 
-  tbody:nth-child(odd) {
+  :global(tbody:nth-child(odd)) {
     background-color: lightgrey;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  td > button {
+  :global(td > button) {
     position: absolute;
     left: 2px;
   }
@@ -1009,7 +997,7 @@
     width: 40%;
   }
 
-  tr > td:nth-child(3) {
+  :global(tr > td:nth-child(3)) {
     text-align: end;
   }
 
@@ -1021,7 +1009,7 @@
     text-align: center;
   }
 
-  td {
+  :global(td) {
     border: 1px solid rgb(110, 110, 110);
     padding: 0px 10px !important;
   }
@@ -1030,12 +1018,6 @@
     font-size: 0.8rem;
     position: relative;
     bottom: 0;
-  }
-
-  ol {
-    padding: 0;
-    margin: 0;
-    font-size: 0.8rem;
   }
 
   #addItem {
@@ -1151,7 +1133,7 @@
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
-    body {
+    main {
       margin: 0.2 !important;
       filter: grayscale(100%);
       -webkit-filter: grayscale(100%);
@@ -1167,7 +1149,7 @@
       visibility: hidden !important;
     }
 
-    .typeTD {
+    :global(.typeTD) {
       padding-left: 10px !important;
     }
     /* #clear {
