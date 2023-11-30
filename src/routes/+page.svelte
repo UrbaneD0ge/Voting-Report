@@ -21,7 +21,7 @@
       // save the table contents as a JSON object
       let items = document
         .getElementById('table')
-        .outerHTML.replace(/( id="table">[\W\w]*(<\/thead>))(\n)/gim, '>');
+        .outerHTML.replace(/( id="table">[\W\w]*(<\/thead>))(\n)/gim, '>'); // svelte classes are breaking the regex
 
       // save inputs to object
       let data = {
