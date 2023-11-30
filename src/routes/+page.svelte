@@ -317,8 +317,8 @@
       // clear inputs
       document.querySelector('#addItem').reset();
 
-      // set disposal input to the first option
-      disposal.value = disposal.options[0].value;
+      // // set disposal input to the first option
+      // disposal.value = disposal.options[0].value;
 
       document
         .getElementById('applName')
@@ -719,7 +719,7 @@
         autocomplete="off"
       />
       <select name="disposal" id="disposal">
-        <option value="PENDING" hidden selected disabled>Recommend</option>
+        <option value="PENDING" hidden selected readonly>Recommend</option>
         <option value="Approval">Approval</option>
         <option value="Approval w/C">Approval w/C</option>
         <option value="Denial">Denial</option>
