@@ -18,10 +18,10 @@
       let planner = document.querySelector('#planner').value.trim() || '';
       let fillToggle = document.querySelector('#autofill').checked;
       let pNotes = document.querySelector('#pNotes').value.trim() || '';
-      // save the table contents as a JSON object
-      let items = document
-        .getElementById('table')
-        .outerHTML.replace(/( id="table">[\W\w]*(<\/thead>))(\n)/gim, '>'); // svelte classes are breaking the regex
+      // save the table contents as a JSON object, but remove the thead
+      let items = JSON.stringify(
+        document.getElementById('table').outerHTML,
+      ).replace(/<thead.*<\/thead>/, '');
 
       // save inputs to object
       let data = {
