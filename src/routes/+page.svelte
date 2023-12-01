@@ -19,9 +19,9 @@
       let fillToggle = document.querySelector('#autofill').checked;
       let pNotes = document.querySelector('#pNotes').value.trim() || '';
       // save the table contents as a JSON object, but remove the thead
-      let items = JSON.stringify(
-        document.getElementById('table').outerHTML,
-      ).replace(/<thead.*<\/thead>/, '');
+      let items = document
+        .getElementById('table')
+        .outerHTML.replace(/<thead.*<\/thead>/, '');
 
       // save inputs to object
       let data = {
