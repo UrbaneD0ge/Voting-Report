@@ -19,7 +19,6 @@ const SCOPES = [
   'signature', 'impersonation'
 ];
 
-
 async function authenticate() {
   const jwtLifeSec = 10 * 60; // requested lifetime for the JWT is 10 min
   const dsApi = new ApiClient();
@@ -46,7 +45,7 @@ async function authenticate() {
     };
 
   } catch (e) {
-    console.log(e);
+    throw e;
     let body = e.response && e.response.body;
     // Determine the source of the error
     if (body) {
@@ -237,11 +236,13 @@ const sendEnvelope = async (args) => {
   return { envelopeId: envelopeId };
 };
 
+
 async function main() {
   let accountInfo = await authenticate();
-  let args = getArgs(accountInfo.apiAccountId, accountInfo.accessToken, accountInfo.basePath);
-  let envelopeId = sendEnvelope(args);
-  console.log(envelopeId);
+  let data = getArgs(accountInfo.apiAccountId, accountInfo.accessToken, accountInfo.basePath);
+  // let envelopeId = sendEnvelope(args);
+  console.log(accountInfo.accessToken);
+  return { accessToken: data };
 }
 
-// main();
+main();

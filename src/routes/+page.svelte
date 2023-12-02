@@ -1,7 +1,9 @@
 <script>
   import { onMount } from 'svelte';
+  export let data;
+  export const ssr = false;
 
-  const ssr = false;
+  $: ({ args } = data);
 
   onMount(() => {
     const submit = document.getElementById('submit');
@@ -783,6 +785,12 @@
     <div class="d-flex justify-content-around">
       <!-- <button id='save' class='m-3 flex-grow-1'>Save</button> -->
       <button name="print" id="print" class="m-4 flex-grow-1">Print</button>
+      <button
+        name="docuSign"
+        id="docuSign"
+        class="m-4 flex-grow-1 btn btn-primary"
+        onclick="window.open('/print', '_blank')">DocuSign</button
+      >
     </div>
     <div id="links">
       <h5>
@@ -1134,7 +1142,7 @@
       print-color-adjust: exact !important;
     }
     main {
-      margin: 0.2 !important;
+      /* margin: 0 3in !important; */
       filter: grayscale(100%);
       -webkit-filter: grayscale(100%);
     }
@@ -1144,7 +1152,8 @@
     #links,
     #instructions,
     #newItem,
-    #print {
+    #print,
+    #docuSign {
       display: none !important;
       visibility: hidden !important;
     }
