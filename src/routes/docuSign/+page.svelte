@@ -566,7 +566,6 @@
 
   :global(td) {
     border: 1px solid rgb(110, 110, 110);
-    padding: 0px 10px !important;
   }
 
   p {

@@ -792,12 +792,8 @@
       <button name="print" id="print" class="m-4 flex-grow-1"
         >Print to .PDF</button
       >
-      <a href="/docuSign"
-        ><button
-          name="docuSign"
-          id="docuSign"
-          class="m-4 flex-grow-1 btn btn-primary">DocuSign</button
-        ></a
+      <a href="/docuSign" id="docuSign" class="m-4 flex-grow-1 btn btn-primary"
+        >DocuSign</a
       >
     </div>
     <div id="links">
@@ -963,6 +959,7 @@
 
   :global(.pHead input) {
     align-content: right;
+    width: fit-content;
   }
 
   :global(.pHead label) {
