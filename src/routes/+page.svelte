@@ -1,7 +1,27 @@
 <script>
   import { onMount } from 'svelte';
+  export let data;
+  export const ssr = false;
+  let NPU;
 
-  const ssr = false;
+  $: ({ args } = data);
+
+  function copyLink() {
+    let thisButton = this.previousElementSibling;
+    navigator.clipboard.writeText(thisButton.href);
+    console.log(thisButton.href);
+    this.innerText = 'Copied!';
+    this.style.backgroundColor = 'black';
+    this.style.color = 'white';
+    this.style.borderColor = 'white';
+
+    setTimeout(() => {
+      this.innerText = 'Copy Link';
+      this.style.backgroundColor = 'buttonface';
+      this.style.color = 'black';
+      this.style.borderColor = 'black';
+    }, 1000);
+  }
 
   onMount(() => {
     const submit = document.getElementById('submit');
@@ -16,6 +36,7 @@
       let chair = document.querySelector('#chair').value.trim() || '';
       let loc = document.querySelector('#location').value.trim() || '';
       let planner = document.querySelector('#planner').value.trim() || '';
+      let date = document.getElementById('date').value || '';
       let fillToggle = document.querySelector('#autofill').checked;
       let pNotes = document.querySelector('#pNotes').value.trim() || '';
       // save the table contents as a JSON object, but remove the thead
@@ -29,6 +50,7 @@
         chair: chair,
         loc: loc,
         planner: planner,
+        date: date,
         fillToggle: fillToggle,
       };
 
@@ -413,7 +435,7 @@
     // listen for print event
     window.addEventListener('beforeprint', () => {
       let NPU = document.getElementById('NPU').value;
-      let notes = document.getElementById('pNotes').value.trim();
+      let notes = document.getElementById('pNotes').value?.trim();
 
       // Get the date
       let date = new Date(`${field.value}T00:00:00`);
@@ -590,29 +612,10 @@
         { offset: Number.NEGATIVE_INFINITY },
       ).element;
     }
-
-    function copyLink() {
-      let updates = document.getElementById('copyLink');
-      navigator.clipboard.writeText(
-        'https://www.atlantaga.gov/government/departments/city-planning/neighborhood-planning-units/updates',
-      );
-      console.log('link copied');
-      updates.innerText = 'Copied!';
-      updates.style.backgroundColor = 'black';
-      updates.style.color = 'white';
-      updates.style.borderColor = 'white';
-
-      setTimeout(() => {
-        updates.innerText = 'Copy Link';
-        updates.style.backgroundColor = 'buttonface';
-        updates.style.color = 'black';
-        updates.style.borderColor = 'black';
-      }, 1000);
-    }
   });
 </script>
 
-<header class="container">
+<header class="bin">
   <img
     id="dcpLogo"
     src="./NPU Logo Black.png"
@@ -621,7 +624,7 @@
   <h1 id="header">VOTING REPORT</h1>
 </header>
 
-<main class="container">
+<main class="bin">
   <!-- modal -->
   <dialog class="text-center" id="dialog" style="border-radius: 10px;">
     <span id="message"></span>
@@ -634,7 +637,7 @@
     <div class="row">
       <div class="col">
         <label class="pHead" for="NPU">NPU:</label>
-        <select class="pHead" name="NPU" id="NPU">
+        <select class="pHead" name="NPU" id="NPU" bind:value={NPU}>
           <option value="A">A</option>
           <option value="B">B</option>
           <option value="C">C</option>
@@ -674,12 +677,16 @@
         <label class="pHead" for="date">Meeting Date:</label>
         <input class="pHead" type="date" name="date" id="date" required />
       </div>
-      <div class="col text-end noBreak">
-        <label class="pHead" for="location">Location:</label>
-        <input class="pHead" type="text" name="location" id="location" />
+      <div class="flex-row flex-wrap d-flex justify-content-end col noBreak">
+        <div>
+          <label class="pHead" for="location">Location:</label>
+          <input class="pHead" type="text" name="location" id="location" />
+        </div>
         <br />
-        <label class="pHead" for="planner">Planner:</label>
-        <input class="pHead" type="text" name="planner" id="planner" />
+        <div>
+          <label class="pHead" for="planner">Planner:</label>
+          <input class="pHead" type="text" name="planner" id="planner" />
+        </div>
         <br />
         <div id="fillToggle">
           <label class="pHead" for="autofill"
@@ -772,7 +779,7 @@
     </div>
   </div>
 
-  <div class="noBreak mt-3">
+  <div class="mt-3 noBreak">
     <legend>Planner's Notes:</legend>
     <textarea
       placeholder="Note any themes or discussions of concern to the NPU..."
@@ -782,7 +789,12 @@
     ></textarea>
     <div class="d-flex justify-content-around">
       <!-- <button id='save' class='m-3 flex-grow-1'>Save</button> -->
-      <button name="print" id="print" class="m-4 flex-grow-1">Print</button>
+      <button name="print" id="print" class="m-4 flex-grow-1"
+        >Print to .PDF</button
+      >
+      <!-- <a href="/docuSign" id="docuSign" class="m-4 flex-grow-1 btn btn-primary"
+        >DocuSign</a
+      > -->
     </div>
     <div id="links">
       <h5>
@@ -796,12 +808,19 @@
           href="https://www.atlantaga.gov/government/departments/city-planning/neighborhood-planning-units/updates"
           target="_blank">Updates Page</a
         >
-        <button id="copyLink" onclick="copyLink()">Copy Link</button>
+        <button id="copyLink" on:click={copyLink}>Copy Link</button>
+      </h5>
+      <h5>
+        <a
+          href="https://coaplangis.maps.arcgis.com/apps/dashboards/1f96df45f3444796a0d73efbf18df677#&NPU={NPU}"
+          target="_blank">Applications Table</a
+        >
+        <button id="copyApp" on:click={copyLink}>Copy Link</button>
       </h5>
     </div>
   </div>
 </main>
-<footer class="container">
+<footer class="bin">
   <details id="instructions">
     <li style="list-style-type:none;">
       Send the saved .PDF to the NPU Chair, Daniel Vasquez and Kip Dunlap.
@@ -940,6 +959,7 @@
 
   :global(.pHead input) {
     align-content: right;
+    width: fit-content;
   }
 
   :global(.pHead label) {
@@ -1011,13 +1031,19 @@
 
   :global(td) {
     border: 1px solid rgb(110, 110, 110);
-    padding: 0px 10px !important;
+    padding: 0px 10px 0 35px !important;
   }
 
   p {
     font-size: 0.8rem;
     position: relative;
     bottom: 0;
+  }
+
+  .bin {
+    margin: 0 auto;
+    max-width: 80vw;
+    padding: 0 10px;
   }
 
   #addItem {
@@ -1100,20 +1126,23 @@
     #addItem {
       grid-template-columns: 1fr 1fr 1fr;
     }
-    .text-end {
+    /* .text-end {
       text-align: inherit !important;
-    }
+    } */
     tbody > tr :nth-child(2) {
       width: 33%;
+    }
+    .bin {
+      width: 100% !important;
     }
   }
 
   @media only screen and (max-width: 425px) {
-    .container {
+    .bin {
       width: 100% !important;
     }
     #dcpLogo {
-      width: 80%;
+      width: 100%;
     }
     #submit {
       grid-area: 3 / 1 / 4 / 4;
@@ -1121,22 +1150,25 @@
   }
 
   @page {
-    margin: 0mm !important;
+    margin: 0.25in 0.5in !important;
   }
 
   @media print {
-    /* #newItem {
-    visibility: hidden;
-    display: none;
-  } */
+    #planner,
+    #location {
+      width: 45% !important;
+    }
     #signature {
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
     main {
-      margin: 0.2 !important;
       filter: grayscale(100%);
       -webkit-filter: grayscale(100%);
+    }
+
+    @page {
+      margin: 0.5in 0.1in !important;
     }
 
     #clear,
@@ -1144,13 +1176,14 @@
     #links,
     #instructions,
     #newItem,
-    #print {
+    #print,
+    #docuSign {
       display: none !important;
       visibility: hidden !important;
     }
 
     :global(.typeTD) {
-      padding-left: 10px !important;
+      padding-left: 35px !important;
     }
     /* #clear {
     display: none !important;
