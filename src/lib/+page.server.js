@@ -9,7 +9,7 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-import { dsOauthServer, dsJWTClientId, privateKeyLocation, impersonatedUserGuid } from './jwtConfig.json';
+import { dsOauthServer, dsJWTClientId, privateKeyLocation, impersonatedUserGuid } from '$lib/jwtConfig.json';
 import { ProvisioningInformation } from 'docusign-esign';
 const demoDocsPath = resolve(__dirname, '../demo_documents');
 // const doc2File = 'World_Wide_Corp_Battle_Plan_Trafalgar.docx';
