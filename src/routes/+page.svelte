@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   export let data;
   export const ssr = false;
+  let NPU;
 
   $: ({ args } = data);
 
@@ -18,6 +19,7 @@
       let chair = document.querySelector('#chair').value.trim() || '';
       let loc = document.querySelector('#location').value.trim() || '';
       let planner = document.querySelector('#planner').value.trim() || '';
+      let date = document.getElementById('date').value || '';
       let fillToggle = document.querySelector('#autofill').checked;
       let pNotes = document.querySelector('#pNotes').value.trim() || '';
       // save the table contents as a JSON object, but remove the thead
@@ -31,6 +33,7 @@
         chair: chair,
         loc: loc,
         planner: planner,
+        date: date,
         fillToggle: fillToggle,
       };
 
@@ -636,7 +639,7 @@
     <div class="row">
       <div class="col">
         <label class="pHead" for="NPU">NPU:</label>
-        <select class="pHead" name="NPU" id="NPU">
+        <select class="pHead" name="NPU" id="NPU" bind:value={NPU}>
           <option value="A">A</option>
           <option value="B">B</option>
           <option value="C">C</option>
@@ -784,12 +787,15 @@
     ></textarea>
     <div class="d-flex justify-content-around">
       <!-- <button id='save' class='m-3 flex-grow-1'>Save</button> -->
-      <button name="print" id="print" class="m-4 flex-grow-1">Print</button>
-      <button
-        name="docuSign"
-        id="docuSign"
-        class="m-4 flex-grow-1 btn btn-primary"
-        onclick="window.open('/print', '_blank')">DocuSign</button
+      <button name="print" id="print" class="m-4 flex-grow-1"
+        >Print to .PDF</button
+      >
+      <a href="/print"
+        ><button
+          name="docuSign"
+          id="docuSign"
+          class="m-4 flex-grow-1 btn btn-primary">DocuSign</button
+        ></a
       >
     </div>
     <div id="links">
@@ -805,6 +811,13 @@
           target="_blank">Updates Page</a
         >
         <button id="copyLink" onclick="copyLink()">Copy Link</button>
+      </h5>
+      <h5>
+        <a
+          href="https://coaplangis.maps.arcgis.com/apps/dashboards/1f96df45f3444796a0d73efbf18df677#&NPU={NPU}"
+          target="_blank">Applications Table</a
+        >
+        <button id="copyApp" onclick="copyLink()">Copy Link</button>
       </h5>
     </div>
   </div>

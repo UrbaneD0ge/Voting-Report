@@ -9,6 +9,7 @@
       document.querySelector('#chair').value = data.chair;
       document.querySelector('#location').value = data.loc;
       document.querySelector('#planner').value = data.planner;
+      document.querySelector('#date').value = data.date;
     }
     if (localStorage.getItem('items')) {
       let items = localStorage.getItem('items');
@@ -20,7 +21,7 @@
     }
     if (localStorage.getItem('pNotes')) {
       let pNotes = localStorage.getItem('pNotes') || '';
-      document.querySelector('#pNotes').value = pNotes;
+      document.querySelector('#pNotes').innerText = pNotes;
     }
   });
 </script>
