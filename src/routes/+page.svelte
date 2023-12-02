@@ -777,7 +777,7 @@
     </div>
   </div>
 
-  <div class="noBreak mt-3">
+  <div class="mt-3 noBreak">
     <legend>Planner's Notes:</legend>
     <textarea
       placeholder="Note any themes or discussions of concern to the NPU..."
@@ -790,7 +790,7 @@
       <button name="print" id="print" class="m-4 flex-grow-1"
         >Print to .PDF</button
       >
-      <a href="/print"
+      <a href="/docuSign"
         ><button
           name="docuSign"
           id="docuSign"
@@ -1032,7 +1032,7 @@
 
   :global(td) {
     border: 1px solid rgb(110, 110, 110);
-    padding: 0px 10px !important;
+    padding: 0px 10px 0 35px !important;
   }
 
   p {
@@ -1172,7 +1172,7 @@
     }
 
     :global(.typeTD) {
-      padding-left: 10px !important;
+      padding-left: 35px !important;
     }
     /* #clear {
     display: none !important;

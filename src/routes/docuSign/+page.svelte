@@ -284,7 +284,7 @@
         </div>
       </div>
     </div>
-    <div class="noBreak mt-3 s-y_bCXRrkrYfP">
+    <div class="mt-3 noBreak s-y_bCXRrkrYfP">
       <legend class="s-y_bCXRrkrYfP" data-svelte-h="svelte-1orji3r"
         >Planner's Notes:</legend
       >
@@ -664,10 +664,6 @@
   #print {
     display: none !important;
     visibility: hidden !important;
-  }
-
-  :global(.typeTD) {
-    padding-left: 10px !important;
   }
 
   input,
