@@ -6,6 +6,23 @@
 
   $: ({ args } = data);
 
+  function copyLink() {
+    let thisButton = this.previousElementSibling;
+    navigator.clipboard.writeText(thisButton.href);
+    console.log(thisButton.href);
+    this.innerText = 'Copied!';
+    this.style.backgroundColor = 'black';
+    this.style.color = 'white';
+    this.style.borderColor = 'white';
+
+    setTimeout(() => {
+      this.innerText = 'Copy Link';
+      this.style.backgroundColor = 'buttonface';
+      this.style.color = 'black';
+      this.style.borderColor = 'black';
+    }, 1000);
+  }
+
   onMount(() => {
     const submit = document.getElementById('submit');
     const table = document.getElementById('table');
@@ -418,7 +435,7 @@
     // listen for print event
     window.addEventListener('beforeprint', () => {
       let NPU = document.getElementById('NPU').value;
-      let notes = document.getElementById('pNotes').value.trim();
+      let notes = document.getElementById('pNotes').value?.trim();
 
       // Get the date
       let date = new Date(`${field.value}T00:00:00`);
@@ -595,29 +612,10 @@
         { offset: Number.NEGATIVE_INFINITY },
       ).element;
     }
-
-    function copyLink() {
-      let updates = document.getElementById('copyLink');
-      navigator.clipboard.writeText(
-        'https://www.atlantaga.gov/government/departments/city-planning/neighborhood-planning-units/updates',
-      );
-      console.log('link copied');
-      updates.innerText = 'Copied!';
-      updates.style.backgroundColor = 'black';
-      updates.style.color = 'white';
-      updates.style.borderColor = 'white';
-
-      setTimeout(() => {
-        updates.innerText = 'Copy Link';
-        updates.style.backgroundColor = 'buttonface';
-        updates.style.color = 'black';
-        updates.style.borderColor = 'black';
-      }, 1000);
-    }
   });
 </script>
 
-<header class="container">
+<header class="bin">
   <img
     id="dcpLogo"
     src="./NPU Logo Black.png"
@@ -626,7 +624,7 @@
   <h1 id="header">VOTING REPORT</h1>
 </header>
 
-<main class="container">
+<main class="bin">
   <!-- modal -->
   <dialog class="text-center" id="dialog" style="border-radius: 10px;">
     <span id="message"></span>
@@ -679,12 +677,16 @@
         <label class="pHead" for="date">Meeting Date:</label>
         <input class="pHead" type="date" name="date" id="date" required />
       </div>
-      <div class="col text-end noBreak">
-        <label class="pHead" for="location">Location:</label>
-        <input class="pHead" type="text" name="location" id="location" />
+      <div class="flex-row flex-wrap d-flex justify-content-end col noBreak">
+        <div>
+          <label class="pHead" for="location">Location:</label>
+          <input class="pHead" type="text" name="location" id="location" />
+        </div>
         <br />
-        <label class="pHead" for="planner">Planner:</label>
-        <input class="pHead" type="text" name="planner" id="planner" />
+        <div>
+          <label class="pHead" for="planner">Planner:</label>
+          <input class="pHead" type="text" name="planner" id="planner" />
+        </div>
         <br />
         <div id="fillToggle">
           <label class="pHead" for="autofill"
@@ -810,19 +812,19 @@
           href="https://www.atlantaga.gov/government/departments/city-planning/neighborhood-planning-units/updates"
           target="_blank">Updates Page</a
         >
-        <button id="copyLink" onclick="copyLink()">Copy Link</button>
+        <button id="copyLink" on:click={copyLink}>Copy Link</button>
       </h5>
       <h5>
         <a
           href="https://coaplangis.maps.arcgis.com/apps/dashboards/1f96df45f3444796a0d73efbf18df677#&NPU={NPU}"
           target="_blank">Applications Table</a
         >
-        <button id="copyApp" onclick="copyLink()">Copy Link</button>
+        <button id="copyApp" on:click={copyLink}>Copy Link</button>
       </h5>
     </div>
   </div>
 </main>
-<footer class="container">
+<footer class="bin">
   <details id="instructions">
     <li style="list-style-type:none;">
       Send the saved .PDF to the NPU Chair, Daniel Vasquez and Kip Dunlap.
@@ -1041,6 +1043,12 @@
     bottom: 0;
   }
 
+  .bin {
+    margin: 0 auto;
+    max-width: 80vw;
+    padding: 0 10px;
+  }
+
   #addItem {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
@@ -1121,20 +1129,23 @@
     #addItem {
       grid-template-columns: 1fr 1fr 1fr;
     }
-    .text-end {
+    /* .text-end {
       text-align: inherit !important;
-    }
+    } */
     tbody > tr :nth-child(2) {
       width: 33%;
+    }
+    .bin {
+      width: 100% !important;
     }
   }
 
   @media only screen and (max-width: 425px) {
-    .container {
+    .bin {
       width: 100% !important;
     }
     #dcpLogo {
-      width: 80%;
+      width: 100%;
     }
     #submit {
       grid-area: 3 / 1 / 4 / 4;
@@ -1142,22 +1153,25 @@
   }
 
   @page {
-    margin: 0mm !important;
+    margin: 0.25in 0.5in !important;
   }
 
   @media print {
-    /* #newItem {
-    visibility: hidden;
-    display: none;
-  } */
+    #planner,
+    #location {
+      width: 45% !important;
+    }
     #signature {
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
     main {
-      /* margin: 0 3in !important; */
       filter: grayscale(100%);
       -webkit-filter: grayscale(100%);
+    }
+
+    @page {
+      margin: 0.5in 0.1in !important;
     }
 
     #clear,
