@@ -750,7 +750,7 @@
       {#if form?.error}
         <p class="error">{form.error}</p>
       {/if}
-      <button id="submit" class="mt-1">Add to Table</button>
+      <button id="submit" type="submit" class="mt-1">Add to Table</button>
     </form>
   </div>
 
