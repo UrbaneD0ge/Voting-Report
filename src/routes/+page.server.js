@@ -1,7 +1,5 @@
-import { error, redirect } from '@sveltejs/kit';
-
 export const actions = {
-  default: async (request) => {
+  addItem: async ({ request }) => {
     console.log('default action');
 
     // get the submitted agenda item
@@ -16,5 +14,7 @@ export const actions = {
     }
 
     console.log(formItem);
+
+    return { success: true };
   }
 };

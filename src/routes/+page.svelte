@@ -1,5 +1,7 @@
 <script>
   import { onMount } from 'svelte';
+  import { enhance } from '$app/forms';
+  export let form;
   export let data;
   let NPU;
 
@@ -373,6 +375,7 @@
         if (e.target.tagName === 'SELECT') {
           e.target.parentElement?.classList.remove('highlight');
           // I don't know why this throws an error every time, but it works!
+          // console.log(e.target.parentElement);
           e.target.parentElement.innerText = e.target.value;
           storeForm();
         }
@@ -702,7 +705,7 @@
   <br />
   <div id="newItem">
     <legend>New Item:</legend>
-    <form method="POST" action="?/default" id="addItem">
+    <form method="POST" action="?/addItem" id="addItem" use:enhance>
       <select name="itmType" id="itmType" required>
         <option hidden selected disabled>Type</option>
         <option value="MOSE">MOSE</option>
@@ -741,9 +744,19 @@
         rows="2"
         placeholder="Comments / Conditions..."
       ></textarea>
-      <button id="submit" class="mt-1">Add to Table</button>
+      {#if form?.success}
+        <p class="success">{form.success}</p>
+      {/if}
+      {#if form?.error}
+        <p class="error">{form.error}</p>
+      {/if}
+      <button id="submit" type="submit" class="mt-1" formaction="?/addItem"
+        >Add to Table</button
+      >
     </form>
   </div>
+
+  <!-- APPLICATIONS TABLE -->
   <table id="table">
     <thead>
       <tr>
