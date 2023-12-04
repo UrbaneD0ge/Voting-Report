@@ -48,7 +48,9 @@
     itemsJ.disposal = disposal;
     itemsJ.comments = comments;
 
-    console.log(itemsJ);
+    // Add this item to the others in local storage
+    let [itemsA] = localStorage.getItem('itemsJ') || [];
+    itemsA += itemsJ;
 
     // create table row
     let row = document.createElement('tr');
@@ -779,6 +781,11 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
+  <form method="POST" action="/docuSign?/docuSign">
+    <input type="text" name="items" value={localStorage.getItem('itemsJ')} />
+    <button>Docusign</button>
+  </form>
 
   <div id="signature" style="display: none;">
     <div class="row">

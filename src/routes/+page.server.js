@@ -1,20 +1,22 @@
-export const actions = {
-  default: async ({ request }) => {
-    // console.log('default action');
+export const ssr = false;
 
-    // get the submitted agenda item
-    const data = await request.formData();
+// export const actions = {
+//   default: async ({ request }) => {
+//     // console.log('default action');
 
-    // assemble the data into a JSON object
-    const formItem = {
-      type: data.get('itmType'),
-      applName: data.get('applName'),
-      rec: data.get('disposal'),
-      comments: data.get('conditions') || ''
-    }
+//     // get the submitted agenda item
+//     const data = await request.formData();
 
-    console.log(formItem);
+//     // assemble the data into a JSON object
+//     const formItem = {
+//       type: data.get('itmType'),
+//       applName: data.get('applName'),
+//       rec: data.get('disposal'),
+//       comments: data.get('conditions') || ''
+//     }
 
-    return { success: 'Added', formItem: formItem };
-  }
-};
+//     console.log(formItem);
+
+//     return { success: 'Added', formItem: formItem };
+//   }
+// };
