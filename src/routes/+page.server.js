@@ -1,8 +1,6 @@
-console.log('page.server.js');
-
 export const actions = {
-  addItem: async ({ request }) => {
-    console.log('default action');
+  default: async ({ request }) => {
+    // console.log('default action');
 
     // get the submitted agenda item
     const data = await request.formData();
@@ -17,6 +15,6 @@ export const actions = {
 
     console.log(formItem);
 
-    return { success: '✔' };
+    return { success: 'Added', formItem: formItem };
   }
 };

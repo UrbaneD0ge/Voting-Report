@@ -2,10 +2,10 @@
   import { onMount } from 'svelte';
   import { enhance } from '$app/forms';
   export let form;
-  export let data;
-  let NPU;
+  let NPUselect;
+  // export let data;
 
-  $: ({ args } = data);
+  // $: ({ args } = data);
 
   function copyLink() {
     let thisButton = this.previousElementSibling;
@@ -24,50 +24,139 @@
     }, 1000);
   }
 
-  onMount(() => {
-    const submit = document.getElementById('submit');
+  function newItem() {
+    // // Add Item form
+    console.log('new item submitted');
+    // e.preventDefault();
     const table = document.getElementById('table');
     let dialog = document.getElementById('dialog');
     let message = document.getElementById('message');
+    let itmType = document.querySelector('#itmType').selectedOptions[0].value;
+    let applName = document.querySelector('#applName').value.trim();
+    let disposal = document.querySelector('#disposal').value || '';
+    let comments = document.querySelector('#conditions').value.trim() || '';
 
-    // function to store the values of the form in local storage
-    function storeForm() {
-      // header inputs
-      let NPU = document.getElementById('NPU').selectedOptions[0].value || '';
-      let chair = document.querySelector('#chair').value.trim() || '';
-      let loc = document.querySelector('#location').value.trim() || '';
-      let planner = document.querySelector('#planner').value.trim() || '';
-      let date = document.getElementById('date').value || '';
-      let fillToggle = document.querySelector('#autofill').checked;
-      let pNotes = document.querySelector('#pNotes').value.trim() || '';
-      // save the table contents as a JSON object, but remove the thead
-      let items = document
-        .getElementById('table')
-        .outerHTML.replace(/<thead.*<\/thead>/, '');
-
-      // save inputs to object
-      let data = {
-        NPU: NPU,
-        chair: chair,
-        loc: loc,
-        planner: planner,
-        date: date,
-        fillToggle: fillToggle,
-      };
-
-      // save data to local storage
-      localStorage.setItem('data', JSON.stringify(data));
-      localStorage.setItem('items', JSON.stringify(items));
-      localStorage.setItem('pNotes', pNotes);
-
-      console.log('form saved');
+    if (itmType === 'Type' || applName === '') {
+      message.innerText = 'Please enter an item type and applicant name';
+      dialog.showModal();
+      return;
     }
 
+    let itemsJ = {};
+    itemsJ.itmType = itmType;
+    itemsJ.applName = applName;
+    itemsJ.disposal = disposal;
+    itemsJ.comments = comments;
+
+    console.log(itemsJ);
+
+    // create table row
+    let row = document.createElement('tr');
+    // create table cells
+    let itmTypeCell = document.createElement('td');
+    let deleteButton = document.createElement('button');
+    let applNameCell = document.createElement('td');
+    let disposalCell = document.createElement('td');
+    let commentsCell = document.createElement('td');
+    // add text to cells
+    itmTypeCell.innerText = itmType;
+    itmTypeCell.setAttribute('class', 'typeTD');
+    itmTypeCell.prepend(deleteButton);
+    deleteButton.setAttribute('type', 'button');
+    deleteButton.setAttribute('class', 'btn-close');
+    deleteButton.setAttribute('aria-label', 'delete item');
+    applNameCell.textContent = applName;
+    applNameCell.setAttribute('contenteditable', 'true');
+    applNameCell.classList.add('applName');
+    disposalCell.textContent = disposal;
+    disposalCell.classList.add('disp');
+    commentsCell.textContent = comments;
+    commentsCell.classList.add('comments');
+
+    // wrap each new item in a <tbody> that is draggable
+    let tbody = document.createElement('tbody');
+    tbody.setAttribute('draggable', 'true');
+    tbody.setAttribute('class', 'draggable');
+    tbody.append(row);
+
+    // append new tbody to table
+    table.append(tbody);
+
+    // append cells to row
+    row.appendChild(itmTypeCell);
+    row.appendChild(applNameCell);
+    row.appendChild(disposalCell);
+
+    if (comments !== '') {
+      // create new row for comments
+      let commentsRow = document.createElement('tr');
+      // create new cell for comments
+      // let commentsCell = document.createElement('td')
+      commentsCell.setAttribute('colspan', '3');
+      commentsCell.setAttribute('contenteditable', 'true');
+      commentsCell.classList.add('comments');
+      // add text to cell
+      commentsCell.textContent = comments;
+      // append cell to row
+      commentsRow.appendChild(commentsCell);
+      // append row to tbody
+      tbody.appendChild(commentsRow);
+    }
+
+    // console.log('new row added');
+    // clear inputs
+    document.querySelector('#addItem').reset();
+
+    // // set disposal input to the first option
+    // disposal.value = disposal.options[0].value;
+
+    document
+      .getElementById('applName')
+      .setAttribute('placeholder', 'Application number or name');
+    // removeDemo();
+    storeForm();
+  }
+
+  // function to store the values of the form in local storage
+  function storeForm() {
+    // header inputs
+    let NPU = document.getElementById('NPU').value || '';
+    let chair = document.querySelector('#chair').value.trim() || '';
+    let loc = document.querySelector('#location').value.trim() || '';
+    let planner = document.querySelector('#planner').value.trim() || '';
+    let date = document.getElementById('date').value || '';
+    let fillToggle = document.querySelector('#autofill').checked;
+    let pNotes = document.querySelector('#pNotes').value.trim() || '';
+    // save the table contents as a JSON object, but remove the thead
+    let items = document
+      .getElementById('table')
+      .outerHTML.replace(/<thead.*<\/thead>/, '');
+
+    // save inputs to object
+    let data = {
+      NPU: NPU,
+      chair: chair,
+      loc: loc,
+      planner: planner,
+      date: date,
+      fillToggle: fillToggle,
+    };
+
+    // save data to local storage
+    localStorage.setItem('data', JSON.stringify(data));
+    localStorage.setItem('items', JSON.stringify(items));
+    localStorage.setItem('pNotes', pNotes);
+
+    console.log('form saved');
+  }
+
+  onMount(() => {
     // on load, check if there is data in local storage and if so, pre-fill the form
     if (localStorage.getItem('data')) {
       // console.log(localStorage.getItem('data'));
       let data = JSON.parse(localStorage.getItem('data'));
-      document.querySelector('#NPU').value = data.NPU;
+      let NPU = document.getElementById('NPU');
+      NPU = data.NPU;
       document.querySelector('#chair').value = data.chair;
       document.querySelector('#location').value = data.loc;
       document.querySelector('#planner').value = data.planner;
@@ -266,89 +355,6 @@
           break;
       }
     }
-
-    // on submit, add form data to table
-    submit.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      // // Add Item form
-      let itmType = document.querySelector('#itmType').selectedOptions[0].value;
-      let applName = document.querySelector('#applName').value.trim();
-      let disposal = document.querySelector('#disposal').value || '';
-      let comments = document.querySelector('#conditions').value.trim() || '';
-
-      if (itmType === 'Type' || applName === '') {
-        message.innerText = 'Please enter an item type and applicant name';
-        dialog.showModal();
-        return;
-      }
-
-      // create table row
-      let row = document.createElement('tr');
-      // create table cells
-      let itmTypeCell = document.createElement('td');
-      let deleteButton = document.createElement('button');
-      let applNameCell = document.createElement('td');
-      let disposalCell = document.createElement('td');
-      let commentsCell = document.createElement('td');
-      // add text to cells
-      itmTypeCell.innerText = itmType;
-      itmTypeCell.setAttribute('class', 'typeTD');
-      itmTypeCell.prepend(deleteButton);
-      deleteButton.setAttribute('type', 'button');
-      deleteButton.setAttribute('class', 'btn-close');
-      deleteButton.setAttribute('aria-label', 'delete item');
-      applNameCell.textContent = applName;
-      applNameCell.setAttribute('contenteditable', 'true');
-      applNameCell.classList.add('applName');
-      disposalCell.textContent = disposal;
-      disposalCell.classList.add('disp');
-      commentsCell.textContent = comments;
-      commentsCell.classList.add('comments');
-
-      // wrap each new item in a <tbody> that is draggable
-      let tbody = document.createElement('tbody');
-      tbody.setAttribute('draggable', 'true');
-      tbody.setAttribute('class', 'draggable');
-      tbody.append(row);
-
-      // append new tbody to table
-      table.append(tbody);
-
-      // append cells to row
-      row.appendChild(itmTypeCell);
-      row.appendChild(applNameCell);
-      row.appendChild(disposalCell);
-
-      if (comments !== '') {
-        // create new row for comments
-        let commentsRow = document.createElement('tr');
-        // create new cell for comments
-        // let commentsCell = document.createElement('td')
-        commentsCell.setAttribute('colspan', '3');
-        commentsCell.setAttribute('contenteditable', 'true');
-        commentsCell.classList.add('comments');
-        // add text to cell
-        commentsCell.textContent = comments;
-        // append cell to row
-        commentsRow.appendChild(commentsCell);
-        // append row to tbody
-        tbody.appendChild(commentsRow);
-      }
-
-      // console.log('new row added');
-      // clear inputs
-      document.querySelector('#addItem').reset();
-
-      // // set disposal input to the first option
-      // disposal.value = disposal.options[0].value;
-
-      document
-        .getElementById('applName')
-        .setAttribute('placeholder', 'Application number or name');
-      // removeDemo();
-      storeForm();
-    });
 
     // on button click, remove that tbody
     document.querySelector('#table').addEventListener('click', (e) => {
@@ -635,11 +641,12 @@
       >OK</button
     >
   </dialog>
+  <!-- PAGE HEADER FORM -->
   <form id="pageInfo">
     <div class="row">
       <div class="col">
         <label class="pHead" for="NPU">NPU:</label>
-        <select class="pHead" name="NPU" id="NPU" bind:value={NPU}>
+        <select class="pHead" name="NPU" id="NPU" bind:value={NPUselect}>
           <option value="A">A</option>
           <option value="B">B</option>
           <option value="C">C</option>
@@ -703,9 +710,11 @@
     </div>
   </form>
   <br />
+
+  <!-- NEW ITEM FORM -->
   <div id="newItem">
     <legend>New Item:</legend>
-    <form action="?/addItem" method="POST" id="addItem" use:enhance>
+    <form method="POST" id="addItem" use:enhance={newItem}>
       <select name="itmType" id="itmType" required>
         <option hidden selected disabled>Type</option>
         <option value="MOSE">MOSE</option>
@@ -745,12 +754,15 @@
         placeholder="Comments / Conditions..."
       ></textarea>
       {#if form?.success}
+        {setTimeout(() => {
+          form.success = '';
+        }, 1500) && ''}
         <p class="success">{form.success}</p>
       {/if}
       {#if form?.error}
         <p class="error">{form.error}</p>
       {/if}
-      <button id="submit" type="submit" class="mt-1">Add to Table</button>
+      <button type="submit" id="submit" class="mt-1">Submit</button>
     </form>
   </div>
 
@@ -820,7 +832,7 @@
       </h5>
       <h5>
         <a
-          href="https://coaplangis.maps.arcgis.com/apps/dashboards/1f96df45f3444796a0d73efbf18df677#&NPU={NPU}"
+          href="https://coaplangis.maps.arcgis.com/apps/dashboards/1f96df45f3444796a0d73efbf18df677#&NPU={NPUselect}"
           target="_blank">Applications Table</a
         >
         <button id="copyApp" on:click={copyLink}>Copy Link</button>
