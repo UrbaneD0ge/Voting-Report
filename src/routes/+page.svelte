@@ -1,7 +1,6 @@
 <script>
   import { onMount } from 'svelte';
   export let data;
-  export const ssr = false;
   let NPU;
 
   $: ({ args } = data);
@@ -83,7 +82,7 @@
     }
     if (localStorage.getItem('pNotes')) {
       let pNotes = localStorage.getItem('pNotes') || '';
-      document.querySelector('#pNotes').value = pNotes;
+      document.querySelector('#pNotes').value = pNotes || '';
     }
 
     // Clear agenda items
@@ -435,7 +434,7 @@
     // listen for print event
     window.addEventListener('beforeprint', () => {
       let NPU = document.getElementById('NPU').value;
-      let notes = document.getElementById('pNotes').value?.trim();
+      let notes = document.getElementById('pNotes')?.value.trim();
 
       // Get the date
       let date = new Date(`${field.value}T00:00:00`);
@@ -526,7 +525,7 @@
         btn.style.display = 'inline';
       });
       document.getElementById('signature').style.display = 'none';
-      let notes = document.getElementById('pNotes').textContent;
+      let notes = document.getElementById('pNotes')?.textContent;
       document.querySelector('#pNotes').outerHTML =
         `<textarea id="pNotes" class="form-control" placeholder="Enter any notes here...">${notes}</textarea>`;
     });
@@ -703,7 +702,7 @@
   <br />
   <div id="newItem">
     <legend>New Item:</legend>
-    <form onsubmit="return false" id="addItem">
+    <form method="POST" action="?/default" id="addItem">
       <select name="itmType" id="itmType" required>
         <option hidden selected disabled>Type</option>
         <option value="MOSE">MOSE</option>
@@ -742,9 +741,7 @@
         rows="2"
         placeholder="Comments / Conditions..."
       ></textarea>
-      <button id="submit" value="submit" type="submit" class="mt-1"
-        >Add to Table</button
-      >
+      <button id="submit" class="mt-1">Add to Table</button>
     </form>
   </div>
   <table id="table">
@@ -899,7 +896,7 @@
       href="https://www.atlantaga.gov/government/departments/city-planning"
       target="_blank">Department of City Planning</a
     >, City of Atlanta | Send questions and bug reports to
-    <a href="mailto:kdunlap@atlantaga.gov">KDunlap@AtlantaGA.gov</a> | Version 1.6.9
+    <a href="mailto:kdunlap@atlantaga.gov">KDunlap@AtlantaGA.gov</a> | Version 2.0.0
   </p>
 </footer>
 
