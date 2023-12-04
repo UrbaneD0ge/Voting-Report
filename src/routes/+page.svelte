@@ -705,7 +705,7 @@
   <br />
   <div id="newItem">
     <legend>New Item:</legend>
-    <form method="POST" action="?/addItem" id="addItem" use:enhance>
+    <form action="?/addItem" method="POST" id="addItem" use:enhance>
       <select name="itmType" id="itmType" required>
         <option hidden selected disabled>Type</option>
         <option value="MOSE">MOSE</option>
@@ -750,9 +750,7 @@
       {#if form?.error}
         <p class="error">{form.error}</p>
       {/if}
-      <button id="submit" type="submit" class="mt-1" formaction="?/addItem"
-        >Add to Table</button
-      >
+      <button id="submit" class="mt-1">Add to Table</button>
     </form>
   </div>
 

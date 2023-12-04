@@ -1,3 +1,5 @@
+console.log('page.server.js');
+
 export const actions = {
   addItem: async ({ request }) => {
     console.log('default action');
@@ -15,6 +17,6 @@ export const actions = {
 
     console.log(formItem);
 
-    return { success: true };
+    return { success: '✔' };
   }
 };
