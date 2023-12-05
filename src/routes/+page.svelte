@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { enhance } from '$app/forms';
-  export let form;
+  // export let form;
   let NPUselect;
   // export let data;
 
@@ -445,7 +445,7 @@
     // listen for print event
     window.addEventListener('beforeprint', () => {
       let NPU = document.getElementById('NPU').value;
-      let notes = document.getElementById('pNotes')?.value.trim();
+      let notes = document.getElementById('pNotes')?.value.trim() || '';
 
       // Get the date
       let date = new Date(`${field.value}T00:00:00`);
@@ -716,7 +716,7 @@
   <!-- NEW ITEM FORM -->
   <div id="newItem">
     <legend>New Item:</legend>
-    <form method="POST" id="addItem" use:enhance={newItem}>
+    <form id="addItem">
       <select name="itmType" id="itmType" required>
         <option hidden selected disabled>Type</option>
         <option value="MOSE">MOSE</option>
@@ -755,16 +755,13 @@
         rows="2"
         placeholder="Comments / Conditions..."
       ></textarea>
-      {#if form?.success}
-        {setTimeout(() => {
-          form.success = '';
-        }, 1500) && ''}
-        <p class="success">{form.success}</p>
-      {/if}
-      {#if form?.error}
-        <p class="error">{form.error}</p>
-      {/if}
-      <button type="submit" id="submit" class="mt-1">Submit</button>
+
+      <button
+        type="submit"
+        id="submit"
+        on:click|preventDefault={newItem}
+        class="mt-1">Add to Table</button
+      >
     </form>
   </div>
 
@@ -781,11 +778,6 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-  <form method="POST" action="/docuSign?/docuSign">
-    <input type="text" name="items" value={localStorage.getItem('itemsJ')} />
-    <button>Docusign</button>
-  </form>
 
   <div id="signature" style="display: none;">
     <div class="row">
@@ -819,9 +811,14 @@
       <button name="print" id="print" class="m-4 flex-grow-1"
         >Print to .PDF</button
       >
-      <!-- <a href="/docuSign" id="docuSign" class="m-4 flex-grow-1 btn btn-primary"
-        >DocuSign</a
-      > -->
+      <form method="POST" action="/docuSign?/docuSign">
+        <button class="btn btn-primary m-4" id="docuSign">Docusign</button>
+        <input
+          type="hidden"
+          name="items"
+          value={localStorage.getItem('items')}
+        />
+      </form>
     </div>
     <div id="links">
       <h5>
