@@ -84,6 +84,7 @@
     if (localStorage.getItem('items')) {
       let items = JSON.parse(localStorage.getItem('items'));
 
+      // TODO: Create a tbody component and append it to the table
       // reconstruct the table from the JSON object
       for (let i = 0; i < Object.keys(items).length; i++) {
         // create table row
@@ -123,7 +124,8 @@
         row.appendChild(applNameCell);
         row.appendChild(disposalCell);
 
-        if (items[i].comments !== '') {
+        // If there are comments, add them to the table
+        if (items[i].comments !== '' && items[i].comments !== null) {
           // create new row for comments
           let commentsRow = document.createElement('tr');
           // create new cell for comments
