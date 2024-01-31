@@ -861,10 +861,7 @@
     </div>
     <div id="links">
       <h5>
-        <a
-          href="https://drive.google.com/file/d/1yFpIpTjEiqv4PuyYg1Jjc60yIQtx3J1h/view?usp=drive_link"
-          target="_blank">Planner's Script</a
-        >
+        <a href="/plannersScript" target="_blank">Planner's Script</a>
       </h5>
       <h5>
         <a
