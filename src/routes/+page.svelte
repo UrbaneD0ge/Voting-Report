@@ -1,26 +1,27 @@
 <script>
   import { onMount } from 'svelte';
   export let data;
-  export const ssr = false;
   let NPU;
 
   $: ({ args } = data);
 
-  function copyLink() {
-    let thisButton = this.previousElementSibling;
-    navigator.clipboard.writeText(thisButton.href);
-    console.log(thisButton.href);
-    this.innerText = 'Copied!';
-    this.style.backgroundColor = 'black';
-    this.style.color = 'white';
-    this.style.borderColor = 'white';
+  class copyLink {
+    constructor() {
+      let thisButton = this.previousElementSibling;
+      navigator.clipboard.writeText(thisButton.href);
+      console.log(thisButton.href);
+      this.innerText = 'Copied!';
+      this.style.backgroundColor = 'black';
+      this.style.color = 'white';
+      this.style.borderColor = 'white';
 
-    setTimeout(() => {
-      this.innerText = 'Copy Link';
-      this.style.backgroundColor = 'buttonface';
-      this.style.color = 'black';
-      this.style.borderColor = 'black';
-    }, 1000);
+      setTimeout(() => {
+        this.innerText = 'Copy Link';
+        this.style.backgroundColor = 'buttonface';
+        this.style.color = 'black';
+        this.style.borderColor = 'black';
+      }, 1000);
+    }
   }
 
   onMount(() => {
