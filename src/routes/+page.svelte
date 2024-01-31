@@ -155,10 +155,10 @@
   onMount(() => {
     // on load, check if there is data in local storage and if so, pre-fill the form
     if (localStorage.getItem('data')) {
-      // console.log(localStorage.getItem('data'));
+      console.log(localStorage.getItem('data'));
       let data = JSON.parse(localStorage.getItem('data'));
-      let NPU = document.getElementById('NPU');
-      NPU = data.NPU;
+      NPUselect = data.NPU;
+      document.querySelector('#NPU').value = data.NPU;
       document.querySelector('#chair').value = data.chair;
       document.querySelector('#location').value = data.loc;
       document.querySelector('#planner').value = data.planner;
@@ -432,10 +432,18 @@
       storeForm();
     });
 
+    document.querySelector('#NPU').addEventListener('change', (e) => {
+      storeForm();
+    });
+
     // listen for focusout, if on .comments, storeForm()
     document.querySelector('#table').addEventListener('focusout', (e) => {
       if (e.target.classList.contains('comments')) {
         storeForm();
+      }
+      // if comments are empty, remove the box
+      if (e.target.textContent === '') {
+        e.target.parentElement.remove();
       }
     });
 
