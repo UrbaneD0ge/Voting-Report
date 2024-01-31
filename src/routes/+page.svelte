@@ -299,15 +299,15 @@
             applName.value = '';
           }
           break;
-        case 'SD':
-          applName.setAttribute('placeholder', 'SD-');
+        case 'MSD':
+          applName.setAttribute('placeholder', 'MSD-');
           if (autoFill.checked) {
-            applName.value = 'SD-2';
+            applName.value = 'MSD-2';
             applName.setAttribute('type', 'tel');
             applName.oninput = (e) => {
               e.target.value = patternMatch({
                 input: e.target.value,
-                template: 'SD-xx-xxx',
+                template: 'MSD-xx-xxx',
               });
             };
           } else {
@@ -726,7 +726,7 @@
         <option value="BZA">BZA</option>
         <option value="Text Am.">Text Am.</option>
         <option value="CDP">CDP Am.</option>
-        <option value="SD">SD</option>
+        <option value="MSD">MSD</option>
         <option value="LOR">LOR</option>
         <option value="N/A">Other...</option>
       </select>

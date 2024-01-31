@@ -1,11 +1,3 @@
-<!-- <script>
-  export let data;
-
-  $: ({ data } = data);
-
-  console.log(JSON.stringify(data));
-</script> -->
-
 <div style="display: contents">
   <header class="container">
     <img
