@@ -47,6 +47,7 @@
       // default:
       //   app.attributes.MonthChoice = 'the past month';
     }
+    // TODO: switch case reformat AppType
   });
 </script>
 
