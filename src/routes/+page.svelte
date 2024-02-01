@@ -882,7 +882,7 @@
       </h5>
       <h5>
         <a
-          href="https://coaplangis.maps.arcgis.com/apps/dashboards/1f96df45f3444796a0d73efbf18df677#&NPU={NPUselect}"
+          href="https://coaplangis.maps.arcgis.com/apps/dashboards/a7ab4e0bb5034b219c63a160a7538708#&NPU={NPUselect}"
           target="_blank">Applications Table</a
         >
         <button id="copyApp" on:click={copyLink}>Copy Link</button>
@@ -976,13 +976,13 @@
 <style>
   @font-face {
     font-family: 'Tungsten-SemiBold';
-    src: url(fonts/Tungsten-Semibold.otf) format('opentype');
+    src: url(./fonts/Tungsten-Semibold.otf) format('opentype');
     letter-spacing: 2pt;
   }
 
   @font-face {
     font-family: 'GT-Eesti-Regular';
-    src: url(fonts/GT-Eesti-Display-Regular.otf) format('opentype');
+    src: url(./fonts/GT-Eesti-Display-Regular.otf) format('opentype');
   }
 
   h1 {
