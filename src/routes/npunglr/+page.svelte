@@ -1,3 +1,13 @@
+<svelte:head>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
+  ></script>
+  <script src="src\lib\npungl3r.js" async defer></script>
+</svelte:head>
+
 <header>
   <h1 class="display-4"><strong><span id="DCP">NPU</span>NGLR2</strong></h1>
   <h6>Prepared by the Department of City Planning, City of Atlanta</h6>
@@ -210,20 +220,6 @@
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"
   ></script> -->
-
-  <!-- <script
-    defer
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-    crossorigin="anonymous"
-  ></script> -->
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
-  ></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
-  ></script>
-  <script src="src/lib/npungl3r.js" async defer></script>
 </body>
 
 <style>
