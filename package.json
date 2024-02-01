@@ -1,6 +1,6 @@
 {
 	"name": "voting-report-svelte",
-	"version": "2.0.0",
+	"version": "0.0.1",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -15,8 +15,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"docusign-esign": "^6.5.0",
-		"mongodb": "^6.3.0",
+		"docusign-esign": "^6.5.1",
 		"prompt-sync": "^4.2.0"
 	}
 }
