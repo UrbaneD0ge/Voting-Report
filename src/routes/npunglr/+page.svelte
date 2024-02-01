@@ -5,7 +5,7 @@
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
   ></script>
-  <script src="src\lib\npungl3r.js" async defer></script>
+  <script src="$lib/npungl3r.js" async defer></script>
 </svelte:head>
 
 <header>
@@ -210,7 +210,8 @@
         frameborder="0"
         scrolling="no"
         title="City of Atlanta NPU Meetings Calendar"
-      ></iframe>
+      >
+      </iframe>
     </div>
   </div>
 
