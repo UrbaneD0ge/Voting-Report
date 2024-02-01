@@ -696,17 +696,19 @@
         <label class="pHead" for="date">Meeting Date:</label>
         <input class="pHead" type="date" name="date" id="date" required />
       </div>
-      <div class="flex-row flex-wrap d-flex justify-content-end col noBreak">
-        <div>
+      <div
+        class="flex-column flex-wrap d-flex justify-content-end align-content-end col noBreak"
+      >
+        <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="location">Location:</label>
           <input class="pHead" type="text" name="location" id="location" />
         </div>
-        <br />
-        <div>
+
+        <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="planner">Planner:</label>
           <input class="pHead" type="text" name="planner" id="planner" />
         </div>
-        <br />
+
         <div id="fillToggle">
           <label class="pHead" for="autofill"
             >Autofill application numbers:</label
@@ -820,7 +822,7 @@
         >Print to .PDF</button
       >
       <form method="POST" action="/docuSign?/docuSign">
-        <button class="btn btn-primary m-4" id="docuSign">Docusign</button>
+        <!-- <button class="btn btn-primary m-4" id="docuSign">Docusign</button> -->
         <input
           type="hidden"
           name="items"
