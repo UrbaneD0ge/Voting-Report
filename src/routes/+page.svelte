@@ -1,27 +1,25 @@
 <script>
   import { onMount } from 'svelte';
   export let data;
+  let NPUselect;
   let NPU;
 
   $: ({ args } = data);
 
-  class copyLink {
-    constructor() {
-      let thisButton = this.previousElementSibling;
-      navigator.clipboard.writeText(thisButton.href);
-      console.log(thisButton.href);
-      this.innerText = 'Copied!';
-      this.style.backgroundColor = 'black';
-      this.style.color = 'white';
-      this.style.borderColor = 'white';
-
-      setTimeout(() => {
-        this.innerText = 'Copy Link';
-        this.style.backgroundColor = 'buttonface';
-        this.style.color = 'black';
-        this.style.borderColor = 'black';
-      }, 1000);
-    }
+  function copyLink() {
+    let thisButton = this.previousElementSibling;
+    navigator.clipboard.writeText(thisButton.href);
+    console.log(thisButton.href);
+    this.innerText = 'Copied!';
+    this.style.backgroundColor = 'black';
+    this.style.color = 'white';
+    this.style.borderColor = 'white';
+    setTimeout(() => {
+      this.innerText = 'Copy Link';
+      this.style.backgroundColor = 'buttonface';
+      this.style.color = 'black';
+      this.style.borderColor = 'black';
+    }, 1000);
   }
 
   onMount(() => {
@@ -73,8 +71,9 @@
 
     // on load, check if there is data in local storage and if so, pre-fill the form
     if (localStorage.getItem('data')) {
-      // console.log(localStorage.getItem('data'));
+      console.log(localStorage.getItem('data'));
       let data = JSON.parse(localStorage.getItem('data'));
+      NPUselect = data.NPU;
       document.querySelector('#NPU').value = data.NPU;
       document.querySelector('#chair').value = data.chair;
       document.querySelector('#location').value = data.loc;
@@ -485,10 +484,18 @@
       storeForm();
     });
 
+    document.querySelector('#NPU').addEventListener('change', (e) => {
+      storeForm();
+    });
+
     // listen for focusout, if on .comments, storeForm()
     document.querySelector('#table').addEventListener('focusout', (e) => {
       if (e.target.classList.contains('comments')) {
         storeForm();
+      }
+      // if comments are empty, remove the box
+      if (e.target.textContent === '') {
+        e.target.parentElement.remove();
       }
     });
 
@@ -700,7 +707,7 @@
     <div class="row">
       <div class="col">
         <label class="pHead" for="NPU">NPU:</label>
-        <select class="pHead" name="NPU" id="NPU" bind:value={NPU}>
+        <select class="pHead" name="NPU" id="NPU" bind:value={NPUselect}>
           <option value="A">A</option>
           <option value="B">B</option>
           <option value="C">C</option>
@@ -861,7 +868,8 @@
     </div>
     <div id="links">
       <h5>
-        <a href="/plannersScript{NPU}" target="_blank">Planner's Script</a>
+        <a href="/plannersScript{NPUselect}" target="_blank">Planner's Script</a
+        >
       </h5>
       <h5>
         <a
@@ -872,7 +880,7 @@
       </h5>
       <h5>
         <a
-          href="https://coaplangis.maps.arcgis.com/apps/dashboards/1f96df45f3444796a0d73efbf18df677#&NPU={NPU}"
+          href="https://coaplangis.maps.arcgis.com/apps/dashboards/1f96df45f3444796a0d73efbf18df677#&NPU={NPUselect}"
           target="_blank">Applications Table</a
         >
         <button id="copyApp" on:click={copyLink}>Copy Link</button>

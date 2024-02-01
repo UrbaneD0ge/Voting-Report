@@ -5,7 +5,7 @@
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
   ></script>
-  <script src="$lib/npungl3r.js" async defer></script>
+  <script src="./npungl3r.js" async defer></script>
 </svelte:head>
 
 <header>
