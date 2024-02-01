@@ -1,5 +1,5 @@
 <script>
-// get NPU from query params
+  // get NPU from query params
   import { page } from '$app/stores';
 
   let npu = $page.url.pathname.slice(-1);
@@ -116,12 +116,16 @@
   <hr />
   <h3>Application Updates - NPU-{npu}</h3>
   <ul>
+    {#if data.length == 0}
+      <br />
+      <h2><i>No application updates to report.</i></h2>
+    {/if}
     {#each data as app}
       {#if (app.attributes.Reccomendation == 'support' && app.attributes.LC1 != 'Approved') || (app.attributes.Reccomendation != 'support' && app.attributes.LC1 == 'Approved')}
         <li>
           <h2>
-            In {app.attributes.MonthChoice}, NPU-{app.attributes.NPU} voted to {app
-              .attributes.Reccomendation}
+            In {app.attributes.MonthChoice}, NPU-{app.attributes.NPU} voted to
+            {app.attributes.Reccomendation}
             <strong
               >{app.attributes.NameNumber}
               | {app.attributes.Address}</strong
