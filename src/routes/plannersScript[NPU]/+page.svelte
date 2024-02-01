@@ -1,9 +1,14 @@
 <script>
+// get NPU from query params
+  import { page } from '$app/stores';
+
+  let npu = $page.url.pathname.slice(-1);
+
+  // console.log(npu);
+
   export let data;
 
   data = data.props.data.features;
-
-  $: console.log(data);
 
   // replace the month number with the month name
   data.forEach((app) => {
@@ -109,7 +114,7 @@
   </h2>
 
   <hr />
-  <h3>Application Updates - NPU-</h3>
+  <h3>Application Updates - NPU-{npu}</h3>
   <ul>
     {#each data as app}
       {#if (app.attributes.Reccomendation == 'support' && app.attributes.LC1 != 'Approved') || (app.attributes.Reccomendation != 'support' && app.attributes.LC1 == 'Approved')}

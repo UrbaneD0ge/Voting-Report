@@ -861,7 +861,7 @@
     </div>
     <div id="links">
       <h5>
-        <a href="/plannersScript" target="_blank">Planner's Script</a>
+        <a href="/plannersScript{NPU}" target="_blank">Planner's Script</a>
       </h5>
       <h5>
         <a
