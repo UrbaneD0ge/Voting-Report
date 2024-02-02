@@ -123,8 +123,10 @@
           name="print"
           id="print"
           class="m-4 flex-grow-1"
-          style="display: none;">Print</button
-        >
+          style="display: none;"
+          >Print
+        </button>
+
         <button
           name="docuSign"
           id="docuSign"

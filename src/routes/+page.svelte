@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { enhance } from '$app/forms';
-  
+
   export let data;
   let NPUselect;
   let NPU;
@@ -879,7 +879,7 @@
         >Print to .PDF</button
       >
       <form method="POST" action="/docuSign?/docuSign">
-        <!-- <button class="btn btn-primary m-4" id="docuSign">Docusign</button> -->
+        <button class="btn btn-primary m-4" id="docuSign">Docusign</button>
         <input
           type="hidden"
           name="items"
