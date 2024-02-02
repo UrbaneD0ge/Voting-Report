@@ -73,48 +73,56 @@
   <h1>Planners Script</h1>
 
   <h2>
-    The <strong>NPUs 50th anniversary “Legacy of Love”</strong> phase kicked off
-    January 22, 2024 with an amazing reception and proclamation presentation at City
-    Hall during City Council’s full council meeting. We look forward to continuing
-    our celebration throughout the year and hope that you will connect with us and
-    get involved. Please visit npuatlanta.org to register and learn more about our
-    year-long celebration and activities.
-  </h2>
-  <br />
-  <h2>
-    Exciting news from NPU University! Check out our upcoming courses and
-    register at npuatlanta.org.
-    <ul>
+    We have a lot of really important information to share this month, so thank
+    you for being patient!
+    <ol>
       <li>
-        <strong>History of Neighborhood Planning Units</strong> will be offered on
-        Thursday, February 8th. The course will examine the evolution of NPUs since
-        1974.
+        Last month, we kicked off the 50th Anniversary of the NPU system with a
+        proclamation from City Council! In phase one: we are commemorating the
+        legacy of Maynard Jackson and the historic trailblazers of the NPU
+        system. We will continue our celebration all year long and we hope that
+        you will celebrate with us!
       </li>
       <li>
-        <strong>Zoning Fundamentals I</strong> will be offered on Tuesday, February
-        13th. This course is designed to make zoning terms and concepts easier for
-        ordinary residents to understand.
+        Speaking of celebrating our 50th Anniversary, on February 8th, NPU
+        University is hosting a brand-new class, walking through Atlanta’s
+        history leading up to the NPU system, and its evolution since then. We
+        also have Zoning Fundamentals coming up on February 13th for those who
+        want to learn the basics or need a refresher.
       </li>
-    </ul>
-  </h2>
-  <h2>Don't miss out on these valuable learning opportunities!</h2>
-  <br />
-  <h2>
-    The monthly <strong>Atlanta City Studio Book Club</strong> will officially relaunch
-    on Tuesday, February 27th. Join us at 6:30 in Committee Room 2 at City Hall,
-    55 Trinity Ave.
-  </h2>
-  <h2>
-    <strong
-      >Design Awards 2024 – Open Nominations for Community Design Awards</strong
-    >
-    Nominations are now open for the 2024 Community Design Awards! Nominations can
-    be submitted from the public as well as from the NPU body. The deadline for submission
-    is 4:00 pm, Thursday, February 29, 2024.
+      <li>
+        The Department of City Planning is leading an 18-month planning process
+        to update Plan_A: Atlanta’s Comprehensive Development Plan. This effort
+        will include pop-ups, community workshops, and other events across the
+        city. You are invited to the in-person kick-off event on February 29th,
+        from 5 p.m. to 7 p.m. at Greenbriar Mall. At the event, the Department
+        will launch an online survey and mapping tool to gather public input.
+        More information about participating, including community workshops and
+        ways to meet with our planners will be posted at www.AtlantaForAll.com.
+      </li>
+      <li>
+        Nominations are now open for the Community Design Awards! You can submit
+        a nomination individually or as an NPU body. The deadline for submission
+        is 4:00 pm on Thursday, February 29th.
+      </li>
+      <li>
+        You can submit capital improvement project ideas for your neighborhood
+        in the submission portal now through March 8th.
+      </li>
+    </ol>
+    Please click on the link I’ve dropped in the chat for more information on these
+    updates.
   </h2>
 
   <hr />
   <h3>Application Updates - NPU-{npu}</h3>
+  <br />
+  <h2>
+    I have one last thing to report. In May of 2023, we began a pilot program to
+    provide updates on your voting items as they progress through the approval
+    process. We’re excited to roll this out to all NPUs citywide and here is the
+    first application update for NPU-H!
+  </h2>
   <ul>
     {#if data.length == 0}
       <br />
