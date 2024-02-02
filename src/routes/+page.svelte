@@ -301,6 +301,22 @@
           }
           disposal.value = 'R&C';
           break;
+        case 'CIG':
+          applName.setAttribute('placeholder', 'Community Impact Grant Vote');
+          conditions.value = 'Yeas:    Nays:    Abstentions: ';
+          if (autoFill.checked) {
+            applName.value = 'Community Impact Grant vote';
+            applName.oninput = (e) => {
+              e.target.value = patternMatch({
+                input: e.target.value,
+                template:
+                  'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+              });
+            };
+          } else {
+            applName.value = '';
+          }
+          break;
         case 'N/A':
           applName.removeAttribute('placeholder');
           applName.value = '';
@@ -314,7 +330,7 @@
           };
           break;
         default:
-          applName.removeAttribute('placeholder');
+          applName.setAttribute('placeholder', 'Application number or name');
           applName.value = '';
           applName.setAttribute('type', 'text');
           applName.oninput = (e) => {
@@ -407,6 +423,11 @@
       document
         .getElementById('applName')
         .setAttribute('placeholder', 'Application number or name');
+
+      // reset item type to hidden option
+      document.querySelector('#itmType').value = 'Type';
+
+      preFill();
       // removeDemo();
       storeForm();
     });
@@ -787,6 +808,7 @@
         <option value="CDP">CDP Am.</option>
         <option value="SD">SD</option>
         <option value="LOR">LOR</option>
+        <option value="CIG">CIG</option>
         <option value="N/A">Other...</option>
       </select>
       <input
@@ -798,7 +820,7 @@
         autocomplete="off"
       />
       <select name="disposal" id="disposal">
-        <option value="PENDING" hidden selected readonly>Recommend</option>
+        <option value="PENDING" hidden selected readonly>Recommend..</option>
         <option value="Approval">Approval</option>
         <option value="Approval w/C">Approval w/C</option>
         <option value="Denial">Denial</option>
@@ -869,10 +891,14 @@
       > -->
     </div>
     <div id="links">
-      <h5>
-        <a href="/plannersScript{NPUselect}" target="_blank">Planner's Script</a
-        >
-      </h5>
+      <div style="text-align: center;">
+        <h5>
+          <a href="/plannersScript{NPUselect}" target="_blank"
+            >Planner's Script</a
+          >
+        </h5>
+        <p>(NPU-specific, opens in new window)</p>
+      </div>
       <h5>
         <a
           href="https://www.atlantaga.gov/government/departments/city-planning/neighborhood-planning-units/updates"
