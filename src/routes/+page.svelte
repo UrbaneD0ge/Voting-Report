@@ -3,7 +3,10 @@
   import Tbody from './../components/Tbody.svelte';
   export let data;
   let NPUselect;
-  let NPU;
+
+  // get items from local storage and turn them into an array
+  let items = JSON.parse(localStorage.getItem('items'));
+  console.log(items);
 
   $: ({ args } = data);
 
@@ -23,54 +26,54 @@
     }, 1000);
   }
 
+  // function to store the values of the form in local storage
+  function storeForm() {
+    // header inputs
+    let NPU = document.getElementById('NPU').selectedOptions[0].value || '';
+    let chair = document.querySelector('#chair').value.trim() || '';
+    let loc = document.querySelector('#location').value.trim() || '';
+    let planner = document.querySelector('#planner').value.trim() || '';
+    let date = document.getElementById('date').value || '';
+    let fillToggle = document.querySelector('#autofill').checked;
+    let pNotes = document.querySelector('#pNotes').value.trim() || '';
+
+    // save the table contents as a JSON object
+    let items = {};
+    let i = 0;
+
+    document.querySelectorAll('tbody').forEach((tbody) => {
+      items[i] = {
+        type: tbody?.querySelector('.typeTD')?.innerText,
+        applName: tbody?.querySelector('.applName')?.innerText,
+        disposal: tbody?.querySelector('.disp')?.innerText,
+        comments: tbody?.querySelector('.comments')?.innerText || null,
+      };
+      i++;
+    });
+
+    // save inputs to object
+    let data = {
+      NPU: NPU,
+      chair: chair,
+      loc: loc,
+      planner: planner,
+      date: date,
+      fillToggle: fillToggle,
+    };
+
+    // save data to local storage
+    localStorage.setItem('data', JSON.stringify(data));
+    localStorage.setItem('items', JSON.stringify(items));
+    localStorage.setItem('pNotes', pNotes);
+
+    console.log('form saved');
+  }
+
   onMount(() => {
     const submit = document.getElementById('submit');
     const table = document.getElementById('table');
     let dialog = document.getElementById('dialog');
     let message = document.getElementById('message');
-
-    // function to store the values of the form in local storage
-    function storeForm() {
-      // header inputs
-      let NPU = document.getElementById('NPU').selectedOptions[0].value || '';
-      let chair = document.querySelector('#chair').value.trim() || '';
-      let loc = document.querySelector('#location').value.trim() || '';
-      let planner = document.querySelector('#planner').value.trim() || '';
-      let date = document.getElementById('date').value || '';
-      let fillToggle = document.querySelector('#autofill').checked;
-      let pNotes = document.querySelector('#pNotes').value.trim() || '';
-
-      // save the table contents as a JSON object
-      let items = {};
-      let i = 0;
-
-      document.querySelectorAll('tbody').forEach((tbody) => {
-        items[i] = {
-          type: tbody.querySelector('.typeTD').innerText,
-          applName: tbody.querySelector('.applName').innerText,
-          disposal: tbody.querySelector('.disp').innerText,
-          comments: tbody?.querySelector('.comments')?.innerText || null,
-        };
-        i++;
-      });
-
-      // save inputs to object
-      let data = {
-        NPU: NPU,
-        chair: chair,
-        loc: loc,
-        planner: planner,
-        date: date,
-        fillToggle: fillToggle,
-      };
-
-      // save data to local storage
-      localStorage.setItem('data', JSON.stringify(data));
-      localStorage.setItem('items', JSON.stringify(items));
-      localStorage.setItem('pNotes', pNotes);
-
-      console.log('form saved');
-    }
 
     // on load, check if there is data in local storage and if so, pre-fill the form
     if (localStorage.getItem('data')) {
@@ -84,67 +87,72 @@
       document.querySelector('#autofill').checked = data.fillToggle;
     }
 
-    if (localStorage.getItem('items')) {
-      let items = JSON.parse(localStorage.getItem('items'));
+    // if (localStorage.getItem('items')) {
+    // let items = localStorage.getItem('items');
 
-      // TODO: Create a tbody component and append it to the table
-      // reconstruct the table from the JSON object
-      // for (let i = 0; i < Object.keys(items).length; i++) {
-      //   // create table row
-      //   let row = document.createElement('tr');
-      //   // create table cells
-      //   let itmTypeCell = document.createElement('td');
-      //   let deleteButton = document.createElement('button');
-      //   let applNameCell = document.createElement('td');
-      //   let disposalCell = document.createElement('td');
-      //   let commentsCell = document.createElement('td');
-      //   // add text to cells
-      //   itmTypeCell.innerText = items[i].type;
-      //   itmTypeCell.setAttribute('class', 'typeTD');
-      //   itmTypeCell.prepend(deleteButton);
-      //   deleteButton.setAttribute('type', 'button');
-      //   deleteButton.setAttribute('class', 'btn-close');
-      //   deleteButton.setAttribute('aria-label', 'delete item');
-      //   applNameCell.textContent = items[i].applName;
-      //   applNameCell.setAttribute('contenteditable', 'true');
-      //   applNameCell.classList.add('applName');
-      //   disposalCell.textContent = items[i].disposal;
-      //   disposalCell.classList.add('disp');
-      //   commentsCell.textContent = items[i].comments;
-      //   commentsCell.classList.add('comments');
+    // //unpack the JSON object so it can be iterated over
+    // items = JSON.parse(items);
 
-      //   // wrap each new item in a <tbody> that is draggable
-      //   let tbody = document.createElement('tbody');
-      //   tbody.setAttribute('draggable', 'true');
-      //   tbody.setAttribute('class', 'draggable');
-      //   tbody.append(row);
+    // console.log(items);
 
-      //   // append new tbody to table
-      //   table.append(tbody);
+    // TODO: Create a tbody component and append it to the table
+    // reconstruct the table from the JSON object
+    // for (let i = 0; i < Object.keys(items).length; i++) {
+    //   // create table row
+    //   let row = document.createElement('tr');
+    //   // create table cells
+    //   let itmTypeCell = document.createElement('td');
+    //   let deleteButton = document.createElement('button');
+    //   let applNameCell = document.createElement('td');
+    //   let disposalCell = document.createElement('td');
+    //   let commentsCell = document.createElement('td');
+    //   // add text to cells
+    //   itmTypeCell.innerText = items[i].type;
+    //   itmTypeCell.setAttribute('class', 'typeTD');
+    //   itmTypeCell.prepend(deleteButton);
+    //   deleteButton.setAttribute('type', 'button');
+    //   deleteButton.setAttribute('class', 'btn-close');
+    //   deleteButton.setAttribute('aria-label', 'delete item');
+    //   applNameCell.textContent = items[i].applName;
+    //   applNameCell.setAttribute('contenteditable', 'true');
+    //   applNameCell.classList.add('applName');
+    //   disposalCell.textContent = items[i].disposal;
+    //   disposalCell.classList.add('disp');
+    //   commentsCell.textContent = items[i].comments;
+    //   commentsCell.classList.add('comments');
 
-      //   // append cells to row
-      //   row.appendChild(itmTypeCell);
-      //   row.appendChild(applNameCell);
-      //   row.appendChild(disposalCell);
+    //   // wrap each new item in a <tbody> that is draggable
+    //   let tbody = document.createElement('tbody');
+    //   tbody.setAttribute('draggable', 'true');
+    //   tbody.setAttribute('class', 'draggable');
+    //   tbody.append(row);
 
-      //   // If there are comments, add them to the table
-      //   if (items[i].comments !== '' && items[i].comments !== null) {
-      //     // create new row for comments
-      //     let commentsRow = document.createElement('tr');
-      //     // create new cell for comments
-      //     // let commentsCell = document.createElement('td')
-      //     commentsCell.setAttribute('colspan', '3');
-      //     commentsCell.setAttribute('contenteditable', 'true');
-      //     commentsCell.classList.add('comments');
-      //     // add text to cell
-      //     commentsCell.textContent = items[i].comments;
-      //     // append cell to row
-      //     commentsRow.appendChild(commentsCell);
-      //     // append row to tbody
-      //     tbody.appendChild(commentsRow);
-      //   }
-      // }
-    }
+    //   // append new tbody to table
+    //   table.append(tbody);
+
+    //   // append cells to row
+    //   row.appendChild(itmTypeCell);
+    //   row.appendChild(applNameCell);
+    //   row.appendChild(disposalCell);
+
+    //   // If there are comments, add them to the table
+    //   if (items[i].comments !== '' && items[i].comments !== null) {
+    //     // create new row for comments
+    //     let commentsRow = document.createElement('tr');
+    //     // create new cell for comments
+    //     // let commentsCell = document.createElement('td')
+    //     commentsCell.setAttribute('colspan', '3');
+    //     commentsCell.setAttribute('contenteditable', 'true');
+    //     commentsCell.classList.add('comments');
+    //     // add text to cell
+    //     commentsCell.textContent = items[i].comments;
+    //     // append cell to row
+    //     commentsRow.appendChild(commentsCell);
+    //     // append row to tbody
+    //     tbody.appendChild(commentsRow);
+    //   }
+    // }
+    // }
 
     if (localStorage.getItem('pNotes')) {
       let pNotes = localStorage.getItem('pNotes') || '';
@@ -869,26 +877,27 @@
         <th>NPU Recommendation</th>
       </tr>
     </thead>
+    {#if !items}
+      <tbody>
+        <tr>
+          <td colspan="3" class="text-center">No items added yet</td>
+        </tr>
+      </tbody>
+    {:else}
+      {#each items as item}
+        <tbody>
+          <tr>
+            <td class="typeTD">{item.type}</td>
+            <td class="applName">{item.applName}</td>
+            <td class="disp">{item.disposal}</td>
+          </tr>
+        </tbody>
+      {/each}
+    {/if}
   </table>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-  {#each localStorage.getItem('items') as item}
-    <Tbody>
-      <tr>
-        <td>{item.type}</td>
-        <td>{item.applName}</td>
-        <td>{item.disp}</td></tr
-      >
-      {#if item.comments}
-        <tr>
-          <td colspan="3">{item.comments}</td>
-        </tr>
-      {/if}
-    </Tbody>
-  {/each}
-
   <div id="signature" style="display: none;">
     <div class="row">
       <div class="col sign">

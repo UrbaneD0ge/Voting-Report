@@ -1,4 +1,4 @@
-let ssr = false;
+export const ssr = false;
 import pkg from 'docusign-esign';
 const { ApiClient } = pkg;
 import { sendEnvelope, makeEnvelope, document1 } from '$lib/signingViaEmail.js';

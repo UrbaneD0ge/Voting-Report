@@ -2,14 +2,11 @@
   import { onMount } from 'svelte';
   import Tbody from '../../components/Tbody.svelte';
 
-  // let items = localStorage.getItem('items') || [];
-
-  let items = globalThis.localStorage?.getItem('items') || [];
-
-  console.log(items);
+  export let items;
 
   onMount(() => {
-    // let items = globalThis.localStorage?.getItem('items') || [];
+    items = JSON.parse(globalThis.localStorage?.getItem('items'));
+    console.log(items);
 
     if (localStorage.getItem('data')) {
       // console.log(localStorage.getItem('data'));
@@ -21,16 +18,6 @@
       document.querySelector('#date').value = data.date;
     }
 
-    // if (localStorage.getItem('items')) {
-    //   let items = localStorage.getItem('items');
-
-    //   // TODO: Create a tbody component and append it to the table
-    //   // reconstruct the table from the JSON object
-    //   // for (let i = 0; i < Object.keys(items).length; i++) {
-    //   //   // insert Tbody component here
-
-    //   // }
-    // }
     if (localStorage.getItem('pNotes')) {
       let pNotes = localStorage.getItem('pNotes') || '';
       document.querySelector('#pNotes').innerText = pNotes;
@@ -39,285 +26,118 @@
 </script>
 
 <div style="display: contents">
-  <header class="container s-y_bCXRrkrYfP">
+  <header class="container">
     <img
       id="dcpLogo"
       src="./NPU Logo Black.png"
       alt="Logo: City of Atlanta Dept of City Planning Neighborhood Planning Units"
-      class="s-y_bCXRrkrYfP"
     />
-    <h1 id="header" class="s-y_bCXRrkrYfP" data-svelte-h="svelte-1bebo02">
-      VOTING REPORT: NPU-A | 12-1-2023
-    </h1>
+    <h1 id="header">VOTING REPORT: NPU-A | 12-1-2023</h1>
   </header>
-  <main class="container s-y_bCXRrkrYfP">
-    <dialog
-      class="text-center s-y_bCXRrkrYfP"
-      id="dialog"
-      style="border-radius: 10px;"
-    >
-      <span id="message" class="s-y_bCXRrkrYfP"></span>
-      <br class="s-y_bCXRrkrYfP" />
-      <button
-        area-label="OK"
-        class="btn btn-outline s-y_bCXRrkrYfP"
-        onclick="dialog.close()"
-        data-svelte-h="svelte-1yxa93y">OK</button
+  <main class="container">
+    <dialog class="text-center" id="dialog" style="border-radius: 10px;">
+      <span id="message"></span>
+      <br />
+      <button area-label="OK" class="btn btn-outline" onclick="dialog.close()"
+        >OK</button
       >
     </dialog>
-    <form id="pageInfo" class="s-y_bCXRrkrYfP">
-      <div class="row s-y_bCXRrkrYfP">
-        <div class="col s-y_bCXRrkrYfP">
-          <label
-            class="pHead s-y_bCXRrkrYfP"
-            for="NPU"
-            data-svelte-h="svelte-1wft529">NPU:</label
-          >
-          <select class="pHead s-y_bCXRrkrYfP" name="NPU" id="NPU"
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-taavfg"
-              value="A">A</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-mc7nbi"
-              value="B">B</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-1twnrrs"
+    <form id="pageInfo">
+      <div class="row">
+        <div class="col">
+          <label class="pHead" for="NPU">NPU:</label>
+          <select class="pHead" name="NPU" id="NPU"
+            ><option value="A">A</option><option value="B">B</option><option
               value="C">C</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-cyhez2"
-              value="D">D</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-kdudk4"
-              value="E">E</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-ae47ri"
+            ><option value="D">D</option><option value="E">E</option><option
               value="F">F</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-1hykc7s"
-              value="G">G</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-10dzf2"
-              value="H">H</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-yvw83w"
+            ><option value="G">G</option><option value="H">H</option><option
               value="I">I</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-1xh4u6m"
-              value="J">J</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-160gwns"
-              value="K">K</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-1o3elu6"
+            ><option value="J">J</option><option value="K">K</option><option
               value="L">L</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-1virkf8"
-              value="M">M</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-1lj1emm"
-              value="N">N</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-u2dh3s"
+            ><option value="M">M</option><option value="N">N</option><option
               value="O">O</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-1nuiry"
-              value="P">P</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-16ztanw"
-              value="Q">Q</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-1y4ldji"
+            ><option value="P">P</option><option value="Q">Q</option><option
               value="R">R</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-1tqekns"
-              value="S">S</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-1oqv572"
-              value="T">T</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-1m6hxzi"
+            ><option value="S">S</option><option value="T">T</option><option
               value="V">V</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-upu0go"
-              value="W">W</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-1csrpn2"
-              value="X">X</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-bn5wcs"
+            ><option value="W">W</option><option value="X">X</option><option
               value="Y">Y</option
-            ><option
-              class="s-y_bCXRrkrYfP"
-              data-svelte-h="svelte-1a8eifi"
-              value="Z">Z</option
-            ></select
+            ><option value="Z">Z</option></select
           >
           <button
             aria-label="clear saved agenda items"
             id="clear"
-            class="mb-1 s-y_bCXRrkrYfP"
-            type="reset"
-            data-svelte-h="svelte-9cq8gd">Clear Table</button
-          > <br class="s-y_bCXRrkrYfP" />
-          <label
-            class="pHead s-y_bCXRrkrYfP"
-            for="chair"
-            data-svelte-h="svelte-1nxrg05">Chair:</label
-          >
-          <input
-            class="pHead s-y_bCXRrkrYfP"
-            type="text"
-            name="chair"
-            id="chair"
-          /> <br class="s-y_bCXRrkrYfP" />
-          <label
-            class="pHead s-y_bCXRrkrYfP"
-            for="date"
-            data-svelte-h="svelte-10gg54k">Meeting Date:</label
-          >
-          <input
-            class="pHead s-y_bCXRrkrYfP"
-            type="date"
-            name="date"
-            id="date"
-            required=""
-          />
+            class="mb-1"
+            type="reset">Clear Table</button
+          > <br />
+          <label class="pHead" for="chair">Chair:</label>
+          <input class="pHead" type="text" name="chair" id="chair" /> <br />
+          <label class="pHead" for="date">Meeting Date:</label>
+          <input class="pHead" type="date" name="date" id="date" required="" />
         </div>
-        <div class="col text-end noBreak s-y_bCXRrkrYfP">
-          <label
-            class="pHead s-y_bCXRrkrYfP"
-            for="location"
-            data-svelte-h="svelte-1qggbuj">Location:</label
-          >
-          <input
-            class="pHead s-y_bCXRrkrYfP"
-            type="text"
-            name="location"
-            id="location"
-          /> <br class="s-y_bCXRrkrYfP" />
-          <label
-            class="pHead s-y_bCXRrkrYfP"
-            for="planner"
-            data-svelte-h="svelte-1xa7gx3">Planner:</label
-          >
-          <input
-            class="pHead s-y_bCXRrkrYfP"
-            type="text"
-            name="planner"
-            id="planner"
-          /> <br class="s-y_bCXRrkrYfP" />
-          <div id="fillToggle" class="s-y_bCXRrkrYfP">
-            <label
-              class="pHead s-y_bCXRrkrYfP"
-              for="autofill"
-              data-svelte-h="svelte-14okqrh"
+        <div class="col text-end noBreak">
+          <label class="pHead" for="location">Location:</label>
+          <input class="pHead" type="text" name="location" id="location" />
+          <br />
+          <label class="pHead" for="planner">Planner:</label>
+          <input class="pHead" type="text" name="planner" id="planner" /> <br />
+          <div id="fillToggle">
+            <label class="pHead" for="autofill"
               >Autofill application numbers:</label
             >
-            <label class="switch s-y_bCXRrkrYfP"
-              ><input id="autofill" type="checkbox" class="s-y_bCXRrkrYfP" />
-              <span class="slider round s-y_bCXRrkrYfP"></span></label
+            <label class="switch"
+              ><input id="autofill" type="checkbox" />
+              <span class="slider round"></span></label
             >
           </div>
         </div>
       </div>
     </form>
 
-    <table id="table" class="s-y_bCXRrkrYfP">
-      <thead class="s-y_bCXRrkrYfP"
-        ><tr class="s-y_bCXRrkrYfP"
-          ><th class="s-y_bCXRrkrYfP" data-svelte-h="svelte-1mr7a7y">Type</th>
-          <th class="s-y_bCXRrkrYfP" data-svelte-h="svelte-yg2c4v"
-            >Application # / Name</th
-          >
-          <th class="s-y_bCXRrkrYfP" data-svelte-h="svelte-1fag6li"
-            >NPU Recommendation</th
-          ></tr
+    <table id="table">
+      <thead
+        ><tr
+          ><th>Type</th>
+          <th>Application # / Name</th>
+          <th>NPU Recommendation</th></tr
         ></thead
       >
-      {#each items as item (item.id)}
-        <Tbody
-          id={item.id}
-          key={item.id}
-          type={item.type}
-          applName={item.applName}
-          disp={item.disp}
-          comments={item.comments}
-        />
-      {/each}
+      <tbody>
+        <tr>
+          <td>{items}</td>
+          <td>{items}</td>
+          <td>{items}</td>
+        </tr>
+      </tbody>
       <!-- TABLE CONTENTS GO HERE 🦃🦆🐔 -->
     </table>
-    <div id="signature" style="display: block;" class="s-y_bCXRrkrYfP">
-      <div class="row s-y_bCXRrkrYfP">
-        <div class="col sign s-y_bCXRrkrYfP">
-          <label
-            for="chairS"
-            class="s-y_bCXRrkrYfP"
-            data-svelte-h="svelte-ubo3tj">Chair Signature:</label
-          >
-          <input type="text" name="chairS" id="chairS" class="s-y_bCXRrkrYfP" />
-          <br class="s-y_bCXRrkrYfP" />
-          <label
-            for="cDate"
-            class="s-y_bCXRrkrYfP"
-            data-svelte-h="svelte-1e92ppj">Date:</label
-          > <input type="text" name="cDate" id="cDate" class="s-y_bCXRrkrYfP" />
+    <div id="signature" style="display: block;">
+      <div class="row">
+        <div class="col sign">
+          <label for="chairS">Chair Signature:</label>
+          <input type="text" name="chairS" id="chairS" />
+          <br />
+          <label for="cDate">Date:</label>
+          <input type="text" name="cDate" id="cDate" />
         </div>
-        <div class="col sign s-y_bCXRrkrYfP">
-          <label
-            for="plannerS"
-            class="s-y_bCXRrkrYfP"
-            data-svelte-h="svelte-19pj3xf">Planner Signature:</label
-          >
-          <input
-            type="text"
-            name="plannerS"
-            id="plannerS"
-            class="s-y_bCXRrkrYfP"
-          /> <br class="s-y_bCXRrkrYfP" />
-          <label
-            for="pDate"
-            class="s-y_bCXRrkrYfP"
-            data-svelte-h="svelte-smxmwc">Date:</label
-          > <input type="text" name="pDate" id="pDate" class="s-y_bCXRrkrYfP" />
+        <div class="col sign">
+          <label for="plannerS">Planner Signature:</label>
+          <input type="text" name="plannerS" id="plannerS" /> <br />
+          <label for="pDate">Date:</label>
+          <input type="text" name="pDate" id="pDate" />
         </div>
       </div>
     </div>
-    <div class="mt-3 noBreak s-y_bCXRrkrYfP">
-      <legend class="s-y_bCXRrkrYfP" data-svelte-h="svelte-1orji3r"
-        >Planner's Notes:</legend
-      >
+    <div class="mt-3 noBreak">
+      <legend>Planner's Notes:</legend>
       <!-- svelte-ignore a11y-missing-content -->
       <h5 id="pNotes"></h5>
-      <div class="d-flex justify-content-around s-y_bCXRrkrYfP">
+      <div class="d-flex justify-content-around">
         <button
           name="print"
           id="print"
-          class="m-4 flex-grow-1 s-y_bCXRrkrYfP"
-          data-svelte-h="svelte-ax8brt"
+          class="m-4 flex-grow-1"
           style="display: none;"
           >Print
         </button>
@@ -325,136 +145,111 @@
         <button
           name="docuSign"
           id="docuSign"
-          class="m-4 flex-grow-1 btn btn-primary s-y_bCXRrkrYfP"
-          onclick="window.open('/print', '_blank')"
-          data-svelte-h="svelte-33byvj">DocuSign</button
+          class="m-4 flex-grow-1 btn btn-primary"
+          onclick="window.open('/print', '_blank')">DocuSign</button
         >
       </div>
-      <div id="links" class="s-y_bCXRrkrYfP" style="display: flex;">
-        <h5 class="s-y_bCXRrkrYfP">
+      <div id="links" style="display: flex;">
+        <h5>
           <a
             href="https://drive.google.com/file/d/1yFpIpTjEiqv4PuyYg1Jjc60yIQtx3J1h/view?usp=drive_link"
-            target="_blank"
-            class="s-y_bCXRrkrYfP"
-            data-svelte-h="svelte-1md42ym">Planner's Script</a
+            target="_blank">Planner's Script</a
           >
         </h5>
-        <h5 class="s-y_bCXRrkrYfP">
+        <h5>
           <a
             href="https://www.atlantaga.gov/government/departments/city-planning/neighborhood-planning-units/updates"
-            target="_blank"
-            class="s-y_bCXRrkrYfP"
-            data-svelte-h="svelte-1qkv34p">Updates Page</a
+            target="_blank">Updates Page</a
           >
-          <button
-            id="copyLink"
-            onclick="copyLink()"
-            class="s-y_bCXRrkrYfP"
-            data-svelte-h="svelte-8t0w54">Copy Link</button
-          >
+          <button id="copyLink" onclick="copyLink()">Copy Link</button>
         </h5>
       </div>
     </div>
   </main>
-  <footer class="container s-y_bCXRrkrYfP">
-    <details id="instructions" class="s-y_bCXRrkrYfP" style="display: block;">
-      <li
-        style="list-style-type:none;"
-        class="s-y_bCXRrkrYfP"
-        data-svelte-h="svelte-6kakqf"
-      >
+  <footer class="container">
+    <details id="instructions" style="display: block;">
+      <li style="list-style-type:none;">
         Send the saved .PDF to the NPU Chair, Daniel Vasquez and Kip Dunlap.
       </li>
-      <summary class="s-y_bCXRrkrYfP" data-svelte-h="svelte-1essji5"
-        >Instructions:</summary
-      >
-      <ul style="list-style-type:'✨'" class="s-y_bCXRrkrYfP">
-        <h5 class="s-y_bCXRrkrYfP">
-          <b class="s-y_bCXRrkrYfP" data-svelte-h="svelte-z9yesn">NEW!</b>
+      <summary>Instructions:</summary>
+      <ul style="list-style-type:'✨'">
+        <h5>
+          <b>NEW!</b>
         </h5>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-1j1lct2">
+        <li>
           When changes are made, agenda items and Planner's Notes are saved to
           your device until cleared. To clear them, click 'Clear Items' at the
           top of the page. Stored items are editable just like new ones!
         </li>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-1fenk6d">
+        <li>
           When 'Autofill application numbers' is selected, applications with a
           defined naming convention will be formatted automatically (no need to
           enter dashes). This preference is also saved to your device.
         </li>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-97nglr">
+        <li>
           Instead of a pop-up telling you to enter a meeting date, the
           datepicker will present itself.
         </li>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-1gqdyr5">
+        <li>
           Items are now draggable! Grab items by their type cell and drag them
           into any order you'd like.
         </li>
       </ul>
-      <ul class="s-y_bCXRrkrYfP">
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-17kp18s">
+      <ul>
+        <li>
           Fill page header info - this information is saved to your device for
           future use when you click print.
         </li>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-17br7ii">
+        <li>
           For each voting item: Select item type, complete the pre-filled
           application numbers where applicable, and select NPU recommendation
           from drop-down - do not list the outcomes of each vote, only
           disposition.
         </li>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-18ijxd1">
-          Add comments/conditions if applicable and submit.
-        </li>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-9hm7dm">
+        <li>Add comments/conditions if applicable and submit.</li>
+        <li>
           To delete an item, click the 'X' button next to the item. Comments and
           application numbers are editable after submission.
         </li>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-1ncrn8g">
+        <li>
           When finished, click 'Print'. You may print the page if you have
           access to a printer, or print to .PDF for emailing.
         </li>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-mqon1m">
-          In iOS - Tap the print preview image to share the filled form.
-        </li>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-cibx4">
+        <li>In iOS - Tap the print preview image to share the filled form.</li>
+        <li>
           When saving, please do not rename the file - but pay attention to
           where the file is being saved.
         </li>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-zh2fs">
+        <li>
           This page is built for Chrome browser, and can be downloaded for use
           offline.
         </li>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-cr6yty">
+        <li>
           Recommendation field is not required, so you can pre-fill items and
           edit them later.
         </li>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-1dbahpi">
+        <li>
           If a recommendation isn't selected it will show as "PENDING" - Click
           on the recommendation cell to change it.
         </li>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-6m9uve">
+        <li>
           The print button is disabled if any item's NPU Recommendation field is
           "PENDING". Select a recommendation to continue printing.
         </li>
-        <li class="s-y_bCXRrkrYfP" data-svelte-h="svelte-1u5ubj">
+        <li>
           Add a comments line to an existing item by pressing 'tab' inside the
           Application Name field.
         </li>
       </ul>
     </details>
-    <br class="s-y_bCXRrkrYfP" />
-    <p class="s-y_bCXRrkrYfP">
+    <br />
+    <p>
       Prepared by the <a
         href="https://www.atlantaga.gov/government/departments/city-planning"
-        target="_blank"
-        class="s-y_bCXRrkrYfP"
-        data-svelte-h="svelte-xbxkfh">Department of City Planning</a
+        target="_blank">Department of City Planning</a
       >, City of Atlanta | Send questions and bug reports to
-      <a
-        href="mailto:kdunlap@atlantaga.gov"
-        class="s-y_bCXRrkrYfP"
-        data-svelte-h="svelte-49a3gm">KDunlap@AtlantaGA.gov</a
-      > | Version 1.6.9
+      <a href="mailto:kdunlap@atlantaga.gov">KDunlap@AtlantaGA.gov</a> | Version
+      1.6.9
     </p>
   </footer>
 </div>
