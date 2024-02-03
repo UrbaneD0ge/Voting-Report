@@ -67,7 +67,7 @@ function makeEnvelope(args) {
   let doc1 = new Document();
   let doc1b64 = Buffer.from(document1(args)).toString('base64');
   doc1.documentBase64 = doc1b64;
-  doc1.name = 'Order acknowledgement'; // can be different from actual file name
+  doc1.name = `Planner's Report`; // can be different from actual file name
   doc1.fileExtension = 'html'; // Source data format. Signed docs are always pdf.
   doc1.documentId = '1'; // a label used to reference the doc
 
@@ -88,11 +88,11 @@ function makeEnvelope(args) {
 
   // create a cc recipient to receive a copy of the documents, identified by name and email
   // We're setting the parameters via setters
-  let cc1 = new CarbonCopy();
-  cc1.email = args.ccEmail;
-  cc1.name = args.ccName;
-  cc1.routingOrder = '2';
-  cc1.recipientId = '2';
+  // let cc1 = new CarbonCopy();
+  // cc1.email = args.ccEmail;
+  // cc1.name = args.ccName;
+  // cc1.routingOrder = '2';
+  // cc1.recipientId = '2';
 
   // Create signHere fields (also known as tabs) on the documents,
   // We're using anchor (autoPlace) positioning
@@ -120,7 +120,7 @@ function makeEnvelope(args) {
   // Add the recipients to the envelope object
   let recipients = Recipients.constructFromObject({
     signers: [signer1],
-    carbonCopies: [cc1],
+    // carbonCopies: [cc1],
   });
   env.recipients = recipients;
 
@@ -160,7 +160,7 @@ function document1(args) {
           color: darkblue;">Neighborhood Planning Units</h2>
         <h4>Assigned Planner: ${args.signerName}</h4>
         <p style="margin-top:0em; margin-bottom:0em;">Email: ${args.signerEmail}</p>
-        <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${args.ccName}, ${args.ccEmail}</p>
+        <p style="margin-top:0em; margin-bottom:0em;">Copy to: {args.ccName}, {args.ccEmail}</p>
         <p style="margin-top:3em;">
   Candy bonbon pastry jujubes lollipop wafer biscuit biscuit. Topping brownie sesame snaps sweet roll pie. Croissant danish biscuit soufflé caramels jujubes jelly. Dragée danish caramels lemon drops dragée. Gummi bears cupcake biscuit tiramisu sugar plum pastry. Dragée gummies applicake pudding liquorice. Donut jujubes oat cake jelly-o. Dessert bear claw chocolate cake gummies lollipop sugar plum ice cream gummies cheesecake.
         </p>

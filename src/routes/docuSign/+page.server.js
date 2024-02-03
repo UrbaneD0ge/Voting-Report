@@ -1,11 +1,9 @@
 export const ssr = false;
 import pkg from 'docusign-esign';
 const { ApiClient } = pkg;
-import { sendEnvelope, makeEnvelope, document1 } from '$lib/signingViaEmail.js';
+import { sendEnvelope } from '$lib/signingViaEmail.js';
 import { readFileSync } from 'fs';
 import { error } from '@sveltejs/kit';
-
-
 import { dsOauthServer, dsJWTClientId, privateKeyLocation, impersonatedUserGuid } from '$lib/jwtConfig.json';
 import { ProvisioningInformation } from 'docusign-esign';
 
@@ -17,10 +15,10 @@ export const actions = {
     // get the submitted agenda item
     const form = await request.formData();
 
-    // const data = form.get('items');
+    const data = form.get('items');
 
     // console.log(data);
-    // main(data);
+    main(data);
   }
 };
 
@@ -101,10 +99,11 @@ function getArgs(apiAccountId, accessToken, basePath) {
   const envelopeArgs = {
     signerEmail: 'kipling.dunlap@gmail.com',
     signerName: 'Kipling Dunlap',
-    ccEmail: 'kdunlap@atlantaga.gov',
-    ccName: 'Kip Dunlap',
+    // ccEmail: 'kdunlap@atlantaga.gov',
+    // ccName: 'Kip Dunlap',
     status: 'sent',
   };
+
   const args = {
     accessToken: accessToken,
     basePath: basePath,

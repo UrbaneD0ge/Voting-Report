@@ -6,6 +6,10 @@
 
   // get items from local storage and turn them into an array
   let items = JSON.parse(localStorage.getItem('items'));
+
+  // transform items into an array
+  items = Object.values(items);
+
   console.log(items);
 
   $: ({ args } = data);
@@ -891,6 +895,13 @@
             <td class="applName">{item.applName}</td>
             <td class="disp">{item.disposal}</td>
           </tr>
+          {#if item.comments}
+            <tr>
+              <td colspan="3" class="comments" contenteditable="true"
+                >{item.comments}</td
+              >
+            </tr>
+          {/if}
         </tbody>
       {/each}
     {/if}
@@ -932,11 +943,7 @@
       >
       <form method="POST" action="/docuSign?/docuSign">
         <button class="btn btn-primary m-4" id="docuSign">Docusign</button>
-        <input
-          type="hidden"
-          name="items"
-          value={localStorage.getItem('items')}
-        />
+        <input type="hidden" name="items" />
       </form>
     </div>
     <div id="links">
