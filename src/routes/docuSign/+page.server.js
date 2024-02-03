@@ -123,7 +123,7 @@ function handleEnvelopeError(err) {
 async function main(data) {
   let accountInfo = await authenticate();
   let args = getArgs(accountInfo.apiAccountId, accountInfo.accessToken, accountInfo.basePath);
-  // let envelopeId = await sendEnvelope(args).catch(handleEnvelopeError);
-  // console.log(envelopeId);
+  let envelopeId = await sendEnvelope(args).catch(handleEnvelopeError);
+  console.log(envelopeId);
   // console.log(args);
 }
