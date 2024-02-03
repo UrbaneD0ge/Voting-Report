@@ -20,6 +20,20 @@
       this.style.color = 'black';
       this.style.borderColor = 'black';
     }, 1000);
+  function copyLink() {
+    let thisButton = this.previousElementSibling;
+    navigator.clipboard.writeText(thisButton.href);
+    console.log(thisButton.href);
+    this.innerText = 'Copied!';
+    this.style.backgroundColor = 'black';
+    this.style.color = 'white';
+    this.style.borderColor = 'white';
+    setTimeout(() => {
+      this.innerText = 'Copy Link';
+      this.style.backgroundColor = 'buttonface';
+      this.style.color = 'black';
+      this.style.borderColor = 'black';
+    }, 1000);
   }
 
   onMount(() => {
@@ -28,6 +42,28 @@
     let dialog = document.getElementById('dialog');
     let message = document.getElementById('message');
 
+    // function to store the values of the form in local storage
+    function storeForm() {
+      // header inputs
+      let NPU = document.getElementById('NPU').selectedOptions[0].value || '';
+      let chair = document.querySelector('#chair').value.trim() || '';
+      let loc = document.querySelector('#location').value.trim() || '';
+      let planner = document.querySelector('#planner').value.trim() || '';
+      let date = document.getElementById('date').value || '';
+      let fillToggle = document.querySelector('#autofill').checked;
+      let pNotes = document.querySelector('#pNotes').value.trim() || '';
+      // save the table contents as a JSON object
+      let items = {};
+      let i = 0;
+      document.querySelectorAll('tbody').forEach((tbody) => {
+        items[i] = {
+          type: tbody.querySelector('.typeTD').innerText,
+          applName: tbody.querySelector('.applName').innerText,
+          disposal: tbody.querySelector('.disp').innerText,
+          comments: tbody?.querySelector('.comments')?.innerText || null,
+        };
+        i++;
+      });
     // function to store the values of the form in local storage
     function storeForm() {
       // header inputs
@@ -317,6 +353,22 @@
             applName.value = '';
           }
           break;
+        case 'CIG':
+          applName.setAttribute('placeholder', 'Community Impact Grant Vote');
+          conditions.value = 'Yeas:    Nays:    Abstentions: ';
+          if (autoFill.checked) {
+            applName.value = 'Community Impact Grant vote';
+            applName.oninput = (e) => {
+              e.target.value = patternMatch({
+                input: e.target.value,
+                template:
+                  'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+              });
+            };
+          } else {
+            applName.value = '';
+          }
+          break;
         case 'N/A':
           applName.removeAttribute('placeholder');
           applName.value = '';
@@ -330,6 +382,7 @@
           };
           break;
         default:
+          applName.setAttribute('placeholder', 'Application number or name');
           applName.setAttribute('placeholder', 'Application number or name');
           applName.value = '';
           applName.setAttribute('type', 'text');

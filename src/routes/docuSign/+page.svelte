@@ -294,7 +294,8 @@
         <button
           name="print"
           id="print"
-          class="m-4 flex-grow-1"
+          class="m-4 flex-grow-1 s-y_bCXRrkrYfP"
+          data-svelte-h="svelte-ax8brt"
           style="display: none;"
           >Print
         </button>
