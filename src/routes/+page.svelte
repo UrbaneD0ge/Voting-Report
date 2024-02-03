@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import Tbody from './../components/Tbody.svelte';
   export let data;
   let NPUselect;
   let NPU;
@@ -38,6 +39,7 @@
       let date = document.getElementById('date').value || '';
       let fillToggle = document.querySelector('#autofill').checked;
       let pNotes = document.querySelector('#pNotes').value.trim() || '';
+
       // save the table contents as a JSON object
       let items = {};
       let i = 0;
@@ -87,61 +89,61 @@
 
       // TODO: Create a tbody component and append it to the table
       // reconstruct the table from the JSON object
-      for (let i = 0; i < Object.keys(items).length; i++) {
-        // create table row
-        let row = document.createElement('tr');
-        // create table cells
-        let itmTypeCell = document.createElement('td');
-        let deleteButton = document.createElement('button');
-        let applNameCell = document.createElement('td');
-        let disposalCell = document.createElement('td');
-        let commentsCell = document.createElement('td');
-        // add text to cells
-        itmTypeCell.innerText = items[i].type;
-        itmTypeCell.setAttribute('class', 'typeTD');
-        itmTypeCell.prepend(deleteButton);
-        deleteButton.setAttribute('type', 'button');
-        deleteButton.setAttribute('class', 'btn-close');
-        deleteButton.setAttribute('aria-label', 'delete item');
-        applNameCell.textContent = items[i].applName;
-        applNameCell.setAttribute('contenteditable', 'true');
-        applNameCell.classList.add('applName');
-        disposalCell.textContent = items[i].disposal;
-        disposalCell.classList.add('disp');
-        commentsCell.textContent = items[i].comments;
-        commentsCell.classList.add('comments');
+      // for (let i = 0; i < Object.keys(items).length; i++) {
+      //   // create table row
+      //   let row = document.createElement('tr');
+      //   // create table cells
+      //   let itmTypeCell = document.createElement('td');
+      //   let deleteButton = document.createElement('button');
+      //   let applNameCell = document.createElement('td');
+      //   let disposalCell = document.createElement('td');
+      //   let commentsCell = document.createElement('td');
+      //   // add text to cells
+      //   itmTypeCell.innerText = items[i].type;
+      //   itmTypeCell.setAttribute('class', 'typeTD');
+      //   itmTypeCell.prepend(deleteButton);
+      //   deleteButton.setAttribute('type', 'button');
+      //   deleteButton.setAttribute('class', 'btn-close');
+      //   deleteButton.setAttribute('aria-label', 'delete item');
+      //   applNameCell.textContent = items[i].applName;
+      //   applNameCell.setAttribute('contenteditable', 'true');
+      //   applNameCell.classList.add('applName');
+      //   disposalCell.textContent = items[i].disposal;
+      //   disposalCell.classList.add('disp');
+      //   commentsCell.textContent = items[i].comments;
+      //   commentsCell.classList.add('comments');
 
-        // wrap each new item in a <tbody> that is draggable
-        let tbody = document.createElement('tbody');
-        tbody.setAttribute('draggable', 'true');
-        tbody.setAttribute('class', 'draggable');
-        tbody.append(row);
+      //   // wrap each new item in a <tbody> that is draggable
+      //   let tbody = document.createElement('tbody');
+      //   tbody.setAttribute('draggable', 'true');
+      //   tbody.setAttribute('class', 'draggable');
+      //   tbody.append(row);
 
-        // append new tbody to table
-        table.append(tbody);
+      //   // append new tbody to table
+      //   table.append(tbody);
 
-        // append cells to row
-        row.appendChild(itmTypeCell);
-        row.appendChild(applNameCell);
-        row.appendChild(disposalCell);
+      //   // append cells to row
+      //   row.appendChild(itmTypeCell);
+      //   row.appendChild(applNameCell);
+      //   row.appendChild(disposalCell);
 
-        // If there are comments, add them to the table
-        if (items[i].comments !== '' && items[i].comments !== null) {
-          // create new row for comments
-          let commentsRow = document.createElement('tr');
-          // create new cell for comments
-          // let commentsCell = document.createElement('td')
-          commentsCell.setAttribute('colspan', '3');
-          commentsCell.setAttribute('contenteditable', 'true');
-          commentsCell.classList.add('comments');
-          // add text to cell
-          commentsCell.textContent = items[i].comments;
-          // append cell to row
-          commentsRow.appendChild(commentsCell);
-          // append row to tbody
-          tbody.appendChild(commentsRow);
-        }
-      }
+      //   // If there are comments, add them to the table
+      //   if (items[i].comments !== '' && items[i].comments !== null) {
+      //     // create new row for comments
+      //     let commentsRow = document.createElement('tr');
+      //     // create new cell for comments
+      //     // let commentsCell = document.createElement('td')
+      //     commentsCell.setAttribute('colspan', '3');
+      //     commentsCell.setAttribute('contenteditable', 'true');
+      //     commentsCell.classList.add('comments');
+      //     // add text to cell
+      //     commentsCell.textContent = items[i].comments;
+      //     // append cell to row
+      //     commentsRow.appendChild(commentsCell);
+      //     // append row to tbody
+      //     tbody.appendChild(commentsRow);
+      //   }
+      // }
     }
 
     if (localStorage.getItem('pNotes')) {
@@ -871,6 +873,21 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
+  {#each localStorage.getItem('items') as item}
+    <Tbody>
+      <tr>
+        <td>{item.type}</td>
+        <td>{item.applName}</td>
+        <td>{item.disp}</td></tr
+      >
+      {#if item.comments}
+        <tr>
+          <td colspan="3">{item.comments}</td>
+        </tr>
+      {/if}
+    </Tbody>
+  {/each}
 
   <div id="signature" style="display: none;">
     <div class="row">

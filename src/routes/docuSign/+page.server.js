@@ -1,5 +1,6 @@
+let ssr = false;
 import pkg from 'docusign-esign';
-const { ApiClient, EnvelopesApi, EnvelopeDefinition, Document, Signer, CarbonCopy, SignHere, Tabs, Recipients } = pkg;
+const { ApiClient } = pkg;
 import { sendEnvelope, makeEnvelope, document1 } from '$lib/signingViaEmail.js';
 import { readFileSync } from 'fs';
 import { error } from '@sveltejs/kit';
@@ -16,10 +17,10 @@ export const actions = {
     // get the submitted agenda item
     const form = await request.formData();
 
-    const data = form.get('items');
+    // const data = form.get('items');
 
     // console.log(data);
-    main(data)
+    // main(data);
   }
 };
 
@@ -110,7 +111,7 @@ function getArgs(apiAccountId, accessToken, basePath) {
     accountId: apiAccountId,
     envelopeArgs: envelopeArgs
   };
-  console.log(args);
+  // console.log(args);
 
   return args;
 }
@@ -122,7 +123,7 @@ function handleEnvelopeError(err) {
 async function main(data) {
   let accountInfo = await authenticate();
   let args = getArgs(accountInfo.apiAccountId, accountInfo.accessToken, accountInfo.basePath);
-  let envelopeId = await sendEnvelope(args).catch(handleEnvelopeError);
-  console.log(envelopeId);
-  //return { accessToken: accountInfo.accessToken };
+  // let envelopeId = await sendEnvelope(args).catch(handleEnvelopeError);
+  // console.log(envelopeId);
+  // console.log(args);
 }
