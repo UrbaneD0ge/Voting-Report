@@ -1,4 +1,5 @@
-import { ApiClient, EnvelopesApi, EnvelopeDefinition, Document, Signer, CarbonCopy, SignHere, Tabs, Recipients } from 'docusign-esign';
+import pkg from 'docusign-esign';
+const { ApiClient, EnvelopesApi, EnvelopeDefinition, Document, Signer, CarbonCopy, SignHere, Tabs, Recipients } = pkg;
 import { sendEnvelope, makeEnvelope, document1 } from '$lib/signingViaEmail.js';
 import { readFileSync } from 'fs';
 import { error } from '@sveltejs/kit';
