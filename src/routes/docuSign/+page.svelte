@@ -1,7 +1,16 @@
 <script>
   import { onMount } from 'svelte';
+  import Tbody from '../../components/Tbody.svelte';
+
+  // let items = localStorage.getItem('items') || [];
+
+  let items = globalThis.localStorage?.getItem('items') || [];
+
+  console.log(items);
 
   onMount(() => {
+    // let items = globalThis.localStorage?.getItem('items') || [];
+
     if (localStorage.getItem('data')) {
       // console.log(localStorage.getItem('data'));
       let data = JSON.parse(localStorage.getItem('data'));
@@ -11,14 +20,17 @@
       document.querySelector('#planner').value = data.planner;
       document.querySelector('#date').value = data.date;
     }
-    if (localStorage.getItem('items')) {
-      let items = localStorage.getItem('items');
-      // remove all button elements from items
-      items = items.replace(/<button.*?<\/button>/g, '');
-      document
-        .querySelector('#table')
-        .insertAdjacentHTML('beforeend', JSON.parse(items));
-    }
+
+    // if (localStorage.getItem('items')) {
+    //   let items = localStorage.getItem('items');
+
+    //   // TODO: Create a tbody component and append it to the table
+    //   // reconstruct the table from the JSON object
+    //   // for (let i = 0; i < Object.keys(items).length; i++) {
+    //   //   // insert Tbody component here
+
+    //   // }
+    // }
     if (localStorage.getItem('pNotes')) {
       let pNotes = localStorage.getItem('pNotes') || '';
       document.querySelector('#pNotes').innerText = pNotes;
@@ -246,6 +258,16 @@
           ></tr
         ></thead
       >
+      {#each items as item (item.id)}
+        <Tbody
+          id={item.id}
+          key={item.id}
+          type={item.type}
+          applName={item.applName}
+          disp={item.disp}
+          comments={item.comments}
+        />
+      {/each}
       <!-- TABLE CONTENTS GO HERE 🦃🦆🐔 -->
     </table>
     <div id="signature" style="display: block;" class="s-y_bCXRrkrYfP">
@@ -296,8 +318,10 @@
           id="print"
           class="m-4 flex-grow-1 s-y_bCXRrkrYfP"
           data-svelte-h="svelte-ax8brt"
-          style="display: none;">Print</button
-        >
+          style="display: none;"
+          >Print
+        </button>
+
         <button
           name="docuSign"
           id="docuSign"
