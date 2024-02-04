@@ -1,13 +1,18 @@
+<script>
+  export let item;
+</script>
+
 <tbody class="draggable" draggable="true">
   <tr>
-    <td class="typeTD applName" contenteditable="true">
-      <!-- <button type="button" class="btn-close" aria-label="delete item"
-      ></button> -->
-    </td>
-    <td class="applName" contenteditable="true"></td>
-    <td class="disp"></td>
+    <td class="typeTD"><button class="btn-close"></button>{item.type}</td>
+    <td class="applName" contenteditable="true">{item.applName}</td>
+    <td class="disp">{item.disposal}</td>
   </tr>
-  <!-- <tr>
-    <td class="comments" contenteditable="true"></td>
-  </tr> -->
+  {#if item.comments}
+    <tr>
+      <td colspan="3" class="comments" contenteditable="true"
+        >{item.comments}</td
+      >
+    </tr>
+  {/if}
 </tbody>

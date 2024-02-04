@@ -1,11 +1,11 @@
 <script>
   import { onMount } from 'svelte';
   import Tbody from './../components/Tbody.svelte';
-  export let data;
+  export let items, data;
   let NPUselect;
 
   // get items from local storage and turn them into an array
-  let items = JSON.parse(localStorage.getItem('items'));
+  items = JSON.parse(localStorage.getItem('items'));
 
   // transform items into an array
   items = Object.values(items);
@@ -70,7 +70,7 @@
     localStorage.setItem('items', JSON.stringify(items));
     localStorage.setItem('pNotes', pNotes);
 
-    console.log('form saved');
+    console.log('form saved', items);
   }
 
   onMount(() => {
@@ -703,6 +703,7 @@
 
     container.addEventListener('dragend', (e) => {
       e.target.classList.remove('dragging');
+      storeForm();
     });
 
     container.addEventListener('dragover', (e) => {
@@ -889,7 +890,8 @@
       </tbody>
     {:else}
       {#each items as item}
-        <tbody>
+        <Tbody {item} />
+        <!-- <tbody>
           <tr>
             <td class="typeTD">{item.type}</td>
             <td class="applName">{item.applName}</td>
@@ -902,7 +904,7 @@
               >
             </tr>
           {/if}
-        </tbody>
+        </tbody>-->
       {/each}
     {/if}
   </table>
