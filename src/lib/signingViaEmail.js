@@ -196,7 +196,7 @@ function document1(args) {
         <h4>Chair Email: ${args.chairEmail}</h4>
         <h4>Assigned Planner: ${args.plannerName}</h4>
         <h4>Planner Email: ${args.plannerEmail}</h4>
-        <h4>Meeting Location: ${args.signerData.loc}</h4>
+        <h4>Meeting Location: ${args.loc}</h4>
         <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${args.ccName}, ${args.ccEmail}</p>
 
         <table border='1' style='border-collapse:collapse;' width='100%'>`

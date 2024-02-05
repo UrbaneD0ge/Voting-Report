@@ -134,6 +134,7 @@ function getArgs(apiAccountId, accessToken, basePath, applications, data) {
 
 function handleEnvelopeError(err) {
   error(500, 'Failed to create the envelope. ' + err);
+  console.log(err);
 }
 
 async function main(data, applications) {
