@@ -155,20 +155,32 @@ function document1(args) {
         <head>
           <meta charset="UTF-8">
         </head>
-        <body style="font-family:sans-serif;margin-left:2em;">
+        <body style="font-family:sans-serif;margin:2em;">
         <h1 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
             color: darkblue;margin-bottom: 0;">Atlanta Department of City Planning</h1>
         <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
-          margin-top: 0px;margin-bottom: 3.5em;font-size: 1em;
+          margin-top: 0px;margin-bottom: 2em;font-size: 1em;
           color: darkblue;">Neighborhood Planning Units</h2>
-          <br>
         <h2>Planner's Report</h2>
         <h4>NPU-${args.signerData.NPU}</h4>
         <h4>Assigned Planner: ${args.signerName}</h4>
         <p style="margin-top:0em; margin-bottom:0em;">Email: ${args.signerEmail}</p>
         <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${args.ccName}, ${args.ccEmail}</p>
 
-        <pre>${JSON.stringify(args.signerArgs)}</pre>
+        <table border='1' style='border-collapse:collapse;' width='100%'>`
+
+    + args.signerArgs.map(item => {
+      return `
+        <tr>
+          <td>${item.type}</td>
+          <td>${item.applName}</td>
+          <td>${item.disposal}</td>
+        </tr>
+        ${item.comments ? `<tr><td colspan="3">${item.comments}</td></tr>` : ''}
+      `;
+    }).join('') +
+
+    `</table>
         <!-- Note the anchor tag for the signature field is in white. -->
         <h3 style="margin-top:3em;">Agreed: <span>**signature_1**/</span></h3>
         </body>
