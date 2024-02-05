@@ -1,14 +1,13 @@
 <script>
   import { onMount } from 'svelte';
   import Tbody from './../components/Tbody.svelte';
-  export let items, data;
+  export let items;
+  export let data;
   let NPUselect;
 
   // get items from local storage and turn them into an array
   items = JSON.parse(localStorage.getItem('items'));
-
-  // transform items into an array
-  items = Object.values(items);
+  items ? (items = Object.values(items)) : (items = []);
   data = JSON.parse(localStorage.getItem('data'));
 
   // console.log(items);
@@ -816,12 +815,10 @@
         <th>NPU Recommendation</th>
       </tr>
     </thead>
-    {#if !items}
-      <tbody>
-        <tr>
-          <td colspan="3" class="text-center">No items added yet</td>
-        </tr>
-      </tbody>
+    {#if !items || items.length === 0}
+      <tr>
+        <td colspan="3" class="text-center">No items added yet</td>
+      </tr>
     {:else}
       {#each items as item}
         <Tbody {item} />

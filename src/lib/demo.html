@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body style="font-family:sans-serif;margin:2em;">
+  <h1 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
+          ;margin-bottom: 0;">Atlanta Department of City Planning</h1>
+  <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
+          margin-top: 0px;margin-bottom: 2em;font-size: 1em;">Neighborhood Planning Units</h2>
+  <h2>Voting Report: NPU-${args.signerData.NPU} | ${$args.signerData.date}</h2>
+  <h4>NPU Chair: ${args.chair}</h4>
+  <h4>Meeting Location: ${args.loc}</h4>
+  <h4>Assigned Planner: ${args.signerName}</h4>
+  <p style="margin-top:0em; margin-bottom:0em;">Email: ${args.signerEmail}</p>
+  <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${args.ccName}, ${args.ccEmail}</p>
+
+  <table border='1' style='border-collapse:collapse;' width='100%'>
+
+    <tr>
+      <td>${item.type}</td>
+      <td>${item.applName}</td>
+      <td>${item.disposal}</td>
+    </tr>
+    <tr>
+      <td colspan="3">${item.comments}</td>
+    </tr>
+  </table>
+  <!-- Note the anchor tag for the signature field is in white. -->
+  <div id="signature" style="display: block;">
+    <div style='display: flex; flex-direction: row; justify-content: space-around;'>
+      <div style='display: flex; flex-direction: column; justify-content: space-around;'>
+        <label for="chairS">Chair Signature:</label>
+        <input type="text" name="chairS" id="chairS" /><span>**signature_1**/</span>
+        <br />
+        <label for="cDate">Date:</label>
+        <input type="text" name="cDate" id="cDate" />
+      </div>
+      <div style='display: flex; flex-direction: column; justify-content: space-around;'>
+        <label for="plannerS">Planner Signature:</label>
+        <input type="text" name="plannerS" id="plannerS" /><span>**ccName**/</span> <br />
+        <label for="pDate">Date:</label>
+        <input type="text" name="pDate" id="pDate" />
+      </div>
+    </div>
+  </div>
+  <p>
+    Prepared by the Department of City Planning, City of Atlanta | Send questions and bug reports to
+    KDunlap@AtlantaGA.gov| Version 2.0.0
+  </p>
+</body>
+
+</html>

@@ -25,7 +25,6 @@ export const actions = {
   }
 };
 
-
 // console.log(signerArgs);
 
 const SCOPES = [
@@ -129,7 +128,9 @@ function getArgs(apiAccountId, accessToken, basePath, signerArgs, data) {
 }
 
 function handleEnvelopeError(err) {
-  error(404, "Failed to transmit file <br>" + err.toString())
+
+  console.log(err);
+  return error(err);
 }
 
 async function main(data, signerArgs) {

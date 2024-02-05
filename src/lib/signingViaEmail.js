@@ -1,4 +1,4 @@
-import { ApiClient, EnvelopesApi, EnvelopeDefinition, Document, Signer, CarbonCopy, SignHere, Tabs, Recipients } from 'docusign-esign';
+import { ApiClient, EnvelopesApi, EnvelopeDefinition, Document, Signer, CarbonCopy, SignHere, date, Tabs, Recipients } from 'docusign-esign';
 
 /**
  * This function does the work of creating the envelope
@@ -24,7 +24,10 @@ const sendEnvelope = async (args) => {
   // Exceptions will be caught by the calling function
   results = await envelopesApi.createEnvelope(args.accountId, {
     envelopeDefinition: envelope,
-  });
+  }).catch(e => {
+    console.log(e);
+  }
+  );
   let envelopeId = results.envelopeId;
 
   console.log(`Envelope was created. EnvelopeId ${envelopeId}`);
@@ -61,7 +64,7 @@ function makeEnvelope(args) {
 
   // create the envelope definition
   let env = new EnvelopeDefinition();
-  env.emailSubject = 'Please sign this document';
+  env.emailSubject = `NPU-${args.signerData.NPU} Voting Report`;
 
   // add the documents
   let doc1 = new Document();
@@ -81,6 +84,13 @@ function makeEnvelope(args) {
     name: args.signerName,
     recipientId: '1',
     routingOrder: '1',
+  });
+
+  let signer2 = Signer.constructFromObject({
+    email: args.plannerEmail,
+    name: args.planner,
+    recipientId: '2',
+    routingOrder: '2',
   });
   // routingOrder (lower means earlier) determines the order of deliveries
   // to the recipients. Parallel routing order is supported by using the
@@ -106,16 +116,32 @@ function makeEnvelope(args) {
     anchorXOffset: '20',
   });
   let signHere2 = SignHere.constructFromObject({
-    anchorString: '/sn1/',
+    anchorString: '**signature_2**',
     anchorYOffset: '10',
     anchorUnits: 'pixels',
     anchorXOffset: '20',
   });
+  // let date1 = date.constructFromObject({
+  //   anchorString: '**date_1**',
+  //   anchorYOffset: '10',
+  //   anchorUnits: 'pixels',
+  //   anchorXOffset: '20',
+  // });
+  // let date2 = date.constructFromObject({
+  //   anchorString: '**date_2**',
+  //   anchorYOffset: '10',
+  //   anchorUnits: 'pixels',
+  //   anchorXOffset: '20',
+  // });
   // Tabs are set per recipient / signer
   let signer1Tabs = Tabs.constructFromObject({
-    signHereTabs: [signHere1, signHere2],
+    signHereTabs: [signHere1],
+  });
+  let signer2Tabs = Tabs.constructFromObject({
+    signHereTabs: [signHere2],
   });
   signer1.tabs = signer1Tabs;
+  signer2.tabs = signer2Tabs;
 
   // Add the recipients to the envelope object
   let recipients = Recipients.constructFromObject({
@@ -157,14 +183,14 @@ function document1(args) {
         </head>
         <body style="font-family:sans-serif;margin:2em;">
         <h1 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
-            color: darkblue;margin-bottom: 0;">Atlanta Department of City Planning</h1>
+                ;margin-bottom: 0;">Atlanta Department of City Planning</h1>
         <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
-          margin-top: 0px;margin-bottom: 2em;font-size: 1em;
-          color: darkblue;">Neighborhood Planning Units</h2>
-        <h2>Planner's Report</h2>
-        <h4>NPU-${args.signerData.NPU}</h4>
-        <h4>Assigned Planner: ${args.signerName}</h4>
-        <p style="margin-top:0em; margin-bottom:0em;">Email: ${args.signerEmail}</p>
+                margin-top: 0px;margin-bottom: 2em;font-size: 1em;">Neighborhood Planning Units</h2>
+        <h2>Voting Report: NPU-${args.signerData.NPU} | ${args.signerData.date}</h2>
+        <h4>NPU Chair: ${args.signerData.chair}</h4>
+        <h4>Meeting Location: ${args.signerData.loc}</h4>
+        <h4>Assigned Planner: ${args.signerData.planner}</h4>
+        <p style="margin-top:0em; margin-bottom:0em;">Email: {args.signerEmail}</p>
         <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${args.ccName}, ${args.ccEmail}</p>
 
         <table border='1' style='border-collapse:collapse;' width='100%'>`
@@ -181,10 +207,32 @@ function document1(args) {
     }).join('') +
 
     `</table>
-        <!-- Note the anchor tag for the signature field is in white. -->
-        <h3 style="margin-top:3em;">Agreed: <span>**signature_1**/</span></h3>
-        </body>
-    </html>
+    <br>
+    <div id="signature" style="display: block;">
+    <div style='display: flex; flex-direction: row; justify-content: space-around;'>
+      <div style='display: flex; flex-direction: column; justify-content: space-around;'>
+        <label for="chairS">Chair Signature:</label>
+        <span style='color:white'>**signature_1**/</span>
+        <br>
+        <label for="chairD">Date:</label>
+        <span style='color:white'>**date_1**/</span>
+      </div>
+      <div style='display: flex; flex-direction: column; justify-content: space-around;'>
+        <label for="plannerS">Planner Signature:</label>
+        <span style='color:white'>**signature_2**/</span>
+        <br>
+        <label for="plannerD">Date:</label>
+        <span style='color:white'>**date_2**/</span>
+      </div>
+    </div>
+  </div>
+  <p>
+    Prepared by the Department of City Planning, City of Atlanta | Send questions and bug reports to
+    KDunlap@AtlantaGA.gov| Version 2.0.0
+  </p>
+</body>
+
+</html>
   `;
 }
 //ds-snippet-end:eSign2Step2
