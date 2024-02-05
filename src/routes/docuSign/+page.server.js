@@ -14,9 +14,11 @@ export const actions = {
     // get the agenda items
     const form = await request.formData();
 
-    // const items = form.get('items');
     const data = form.get('items');
     const signerArgs = form.get('data');
+
+    data.chairE = form.get('chairE');
+    data.plannerE = form.get('plannerE');
 
     // console.log('22', signerArgs);
 
@@ -107,10 +109,12 @@ function getArgs(apiAccountId, accessToken, basePath, signerArgs, data) {
 
 
   const envelopeArgs = {
-    signerEmail: 'kipling.dunlap@gmail.com',
-    signerName: data.chair,
+    chairEmail: data.chairE,
+    chairName: data.chair,
+    plannerEmail: data.plannerE,
+    plannerName: data.planner,
     ccEmail: 'kdunlap@atlantaga.gov',
-    ccName: data.planner,
+    ccName: 'NPU Resources & Support',
     status: 'sent',
     signerArgs: signerArgs,
     signerData: data

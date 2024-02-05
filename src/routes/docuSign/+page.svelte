@@ -93,7 +93,7 @@
         {/each}
       {/if}
     </table>
-    <div id="signature" style="display: block;">
+    <!-- <div id="signature" style="display: block;">
       <div class="row">
         <div class="col sign">
           <label for="chairS">Chair Signature:</label>
@@ -109,7 +109,7 @@
           <input type="text" name="pDate" id="pDate" />
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="mt-3 noBreak">
       <legend>Planner's Notes:</legend>
       <!-- svelte-ignore a11y-missing-content -->

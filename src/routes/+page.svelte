@@ -35,8 +35,10 @@
     // header inputs
     let NPU = document.getElementById('NPU').selectedOptions[0].value || '';
     let chair = document.querySelector('#chair').value.trim() || '';
+    let chairE = document.querySelector('#chairE').value.trim() || '';
     let loc = document.querySelector('#location').value.trim() || '';
     let planner = document.querySelector('#planner').value.trim() || '';
+    let plannerE = document.querySelector('#plannerE').value.trim() || '';
     let date = document.getElementById('date').value || '';
     let fillToggle = document.querySelector('#autofill').checked;
     let pNotes = document.querySelector('#pNotes').value.trim() || '';
@@ -59,8 +61,10 @@
     let data = {
       NPU: NPU,
       chair: chair,
+      chairE: chairE,
       loc: loc,
       planner: planner,
+      plannerE: plannerE,
       date: date,
       fillToggle: fillToggle,
     };
@@ -727,13 +731,20 @@
           class="mb-1"
           type="reset">Clear Table</button
         >
-        <br />
-        <label class="pHead" for="chair">Chair:</label>
-        <input class="pHead" type="text" name="chair" id="chair" />
-        <br />
-        <label class="pHead" for="date">Meeting Date:</label>
-        <input class="pHead" type="date" name="date" id="date" required />
+        <div style="display: flex; justify-content:space-between;">
+          <label class="pHead" for="chair">Chair:</label>
+          <input class="pHead" type="text" name="chair" id="chair" />
+        </div>
+        <div style="display: flex; justify-content:space-between;">
+          <label class="pHead" for="chairE">Chair Email:</label>
+          <input class="pHead" type="email" name="chairE" id="chairE" />
+        </div>
+        <div style="display: flex; justify-content:space-between;">
+          <label class="pHead" for="date">Meeting Date:</label>
+          <input class="pHead" type="date" name="date" id="date" required />
+        </div>
       </div>
+
       <div
         class="flex-column flex-wrap d-flex justify-content-end align-items-end col noBreak"
       >
@@ -742,9 +753,13 @@
           <input class="pHead" type="text" name="location" id="location" />
         </div>
 
-        <div>
+        <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="planner">Planner:</label>
           <input class="pHead" type="text" name="planner" id="planner" />
+        </div>
+        <div style="display: flex; justify-content:space-between;">
+          <label class="pHead" for="plannerE">Planner Email:</label>
+          <input class="pHead" type="email" name="plannerE" id="plannerE" />
         </div>
 
         <div id="fillToggle">

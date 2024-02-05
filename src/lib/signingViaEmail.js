@@ -80,8 +80,8 @@ function makeEnvelope(args) {
   // create a signer recipient to sign the document, identified by name and email
   // We're setting the parameters via the object constructor
   let signer1 = Signer.constructFromObject({
-    email: args.signerEmail,
-    name: args.signerName,
+    email: args.chairEmail,
+    name: args.chairName,
     recipientId: '1',
     routingOrder: '1',
   });
@@ -186,11 +186,11 @@ function document1(args) {
                 ;margin-bottom: 0;">Atlanta Department of City Planning</h1>
         <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
                 margin-top: 0px;margin-bottom: 2em;font-size: 1em;">Neighborhood Planning Units</h2>
-        <h2>Voting Report: NPU-${args.signerData.NPU} | ${args.signerData.date}</h2>
+        <h2>Voting Report: NPU-${args.signerData.NPU} | ${args.signerData.date.toLocaleDateString()}</h2>
         <h4>NPU Chair: ${args.signerData.chair}</h4>
         <h4>Meeting Location: ${args.signerData.loc}</h4>
         <h4>Assigned Planner: ${args.signerData.planner}</h4>
-        <p style="margin-top:0em; margin-bottom:0em;">Email: {args.signerEmail}</p>
+        <p style="margin-top:0em; margin-bottom:0em;">Email: ${args.signerEmail}</p>
         <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${args.ccName}, ${args.ccEmail}</p>
 
         <table border='1' style='border-collapse:collapse;' width='100%'>`
