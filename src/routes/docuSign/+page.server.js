@@ -6,21 +6,28 @@ import { readFileSync } from 'fs';
 import { error } from '@sveltejs/kit';
 import { dsOauthServer, dsJWTClientId, privateKeyLocation, impersonatedUserGuid } from '$lib/jwtConfig.json';
 import { ProvisioningInformation } from 'docusign-esign';
+import { makeEnvelope } from '../../lib/signingViaEmail.js';
+import { sign } from 'crypto';
 
 // Form Action
 export const actions = {
   docuSign: async ({ request }) => {
-    // console.log('default action');
-
-    // get the submitted agenda item
+    // get the agenda items
     const form = await request.formData();
 
+    // const items = form.get('items');
     const data = form.get('items');
+    const signerArgs = form.get('data');
 
-    // console.log(data);
-    main(data);
+    // console.log('22', signerArgs);
+
+    // makeEnvelope(signerArgs);
+    main(data, signerArgs);
   }
 };
+
+
+// console.log(signerArgs);
 
 const SCOPES = [
   'signature', 'impersonation'
@@ -85,30 +92,37 @@ async function authenticate() {
         ${JSON.stringify(body, null, 4)}\n\n`);
       }
     }
-    // throw e;
   }
 }
 
-function getArgs(apiAccountId, accessToken, basePath) {
+function getArgs(apiAccountId, accessToken, basePath, signerArgs, data) {
   // TODO: GET THESE FROM FORM
-  // signerEmail = prompt("Enter the signer's email address: ");
-  // signerName = prompt("Enter the signer's name: ");
+  // signerEmail = signerArgs.chair;
+  // signerName = signerArgs.chair;
   // ccEmail = prompt("Enter the carbon copy's email address: ");
   // ccName = prompt("Enter the carbon copy's name: ");
 
+  data = JSON.parse(data);
+  signerArgs = JSON.parse(signerArgs);
+
+  console.log(signerArgs);
+
+
   const envelopeArgs = {
     signerEmail: 'kipling.dunlap@gmail.com',
-    signerName: 'Kipling Dunlap',
-    // ccEmail: 'kdunlap@atlantaga.gov',
-    // ccName: 'Kip Dunlap',
+    signerName: data.chair,
+    ccEmail: 'kdunlap@atlantaga.gov',
+    ccName: data.planner,
     status: 'sent',
+    signerArgs: signerArgs,
+    signerData: data
   };
 
   const args = {
     accessToken: accessToken,
     basePath: basePath,
     accountId: apiAccountId,
-    envelopeArgs: envelopeArgs
+    envelopeArgs: envelopeArgs,
   };
   // console.log(args);
 
@@ -119,10 +133,10 @@ function handleEnvelopeError(err) {
   error(404, "Failed to transmit file <br>" + err.toString())
 }
 
-async function main(data) {
+async function main(data, signerArgs) {
   let accountInfo = await authenticate();
-  let args = getArgs(accountInfo.apiAccountId, accountInfo.accessToken, accountInfo.basePath);
+  let args = getArgs(accountInfo.apiAccountId, accountInfo.accessToken, accountInfo.basePath, data, signerArgs);
   let envelopeId = await sendEnvelope(args).catch(handleEnvelopeError);
+  // console.log(data, signerArgs);
   console.log(envelopeId);
-  // console.log(args);
 }

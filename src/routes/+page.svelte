@@ -9,10 +9,11 @@
 
   // transform items into an array
   items = Object.values(items);
+  data = JSON.parse(localStorage.getItem('data'));
 
-  console.log(items);
+  // console.log(items);
 
-  $: ({ args } = data);
+  // $: ({ args } = data);
 
   function copyLink() {
     let thisButton = this.previousElementSibling;
@@ -70,7 +71,7 @@
     localStorage.setItem('items', JSON.stringify(items));
     localStorage.setItem('pNotes', pNotes);
 
-    console.log('form saved', items);
+    console.log('form saved', items, data);
   }
 
   onMount(() => {
@@ -81,7 +82,7 @@
 
     // on load, check if there is data in local storage and if so, pre-fill the form
     if (localStorage.getItem('data')) {
-      console.log(localStorage.getItem('data'));
+      // console.log(localStorage.getItem('data'));
       let data = JSON.parse(localStorage.getItem('data'));
       NPUselect = data.NPU;
       document.querySelector('#NPU').value = data.NPU;
@@ -90,73 +91,6 @@
       document.querySelector('#planner').value = data.planner;
       document.querySelector('#autofill').checked = data.fillToggle;
     }
-
-    // if (localStorage.getItem('items')) {
-    // let items = localStorage.getItem('items');
-
-    // //unpack the JSON object so it can be iterated over
-    // items = JSON.parse(items);
-
-    // console.log(items);
-
-    // TODO: Create a tbody component and append it to the table
-    // reconstruct the table from the JSON object
-    // for (let i = 0; i < Object.keys(items).length; i++) {
-    //   // create table row
-    //   let row = document.createElement('tr');
-    //   // create table cells
-    //   let itmTypeCell = document.createElement('td');
-    //   let deleteButton = document.createElement('button');
-    //   let applNameCell = document.createElement('td');
-    //   let disposalCell = document.createElement('td');
-    //   let commentsCell = document.createElement('td');
-    //   // add text to cells
-    //   itmTypeCell.innerText = items[i].type;
-    //   itmTypeCell.setAttribute('class', 'typeTD');
-    //   itmTypeCell.prepend(deleteButton);
-    //   deleteButton.setAttribute('type', 'button');
-    //   deleteButton.setAttribute('class', 'btn-close');
-    //   deleteButton.setAttribute('aria-label', 'delete item');
-    //   applNameCell.textContent = items[i].applName;
-    //   applNameCell.setAttribute('contenteditable', 'true');
-    //   applNameCell.classList.add('applName');
-    //   disposalCell.textContent = items[i].disposal;
-    //   disposalCell.classList.add('disp');
-    //   commentsCell.textContent = items[i].comments;
-    //   commentsCell.classList.add('comments');
-
-    //   // wrap each new item in a <tbody> that is draggable
-    //   let tbody = document.createElement('tbody');
-    //   tbody.setAttribute('draggable', 'true');
-    //   tbody.setAttribute('class', 'draggable');
-    //   tbody.append(row);
-
-    //   // append new tbody to table
-    //   table.append(tbody);
-
-    //   // append cells to row
-    //   row.appendChild(itmTypeCell);
-    //   row.appendChild(applNameCell);
-    //   row.appendChild(disposalCell);
-
-    //   // If there are comments, add them to the table
-    //   if (items[i].comments !== '' && items[i].comments !== null) {
-    //     // create new row for comments
-    //     let commentsRow = document.createElement('tr');
-    //     // create new cell for comments
-    //     // let commentsCell = document.createElement('td')
-    //     commentsCell.setAttribute('colspan', '3');
-    //     commentsCell.setAttribute('contenteditable', 'true');
-    //     commentsCell.classList.add('comments');
-    //     // add text to cell
-    //     commentsCell.textContent = items[i].comments;
-    //     // append cell to row
-    //     commentsRow.appendChild(commentsCell);
-    //     // append row to tbody
-    //     tbody.appendChild(commentsRow);
-    //   }
-    // }
-    // }
 
     if (localStorage.getItem('pNotes')) {
       let pNotes = localStorage.getItem('pNotes') || '';
@@ -891,20 +825,6 @@
     {:else}
       {#each items as item}
         <Tbody {item} />
-        <!-- <tbody>
-          <tr>
-            <td class="typeTD">{item.type}</td>
-            <td class="applName">{item.applName}</td>
-            <td class="disp">{item.disposal}</td>
-          </tr>
-          {#if item.comments}
-            <tr>
-              <td colspan="3" class="comments" contenteditable="true"
-                >{item.comments}</td
-              >
-            </tr>
-          {/if}
-        </tbody>-->
       {/each}
     {/if}
   </table>
@@ -945,7 +865,8 @@
       >
       <form method="POST" action="/docuSign?/docuSign">
         <button class="btn btn-primary m-4" id="docuSign">Docusign</button>
-        <input type="hidden" name="items" />
+        <input type="hidden" name="items" value={JSON.stringify(items)} />
+        <input type="hidden" name="data" value={JSON.stringify(data)} />
       </form>
     </div>
     <div id="links">

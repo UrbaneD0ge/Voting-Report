@@ -11,7 +11,7 @@
 
     items = Object.values(items);
 
-    console.log(items);
+    // console.log(items);
 
     if (localStorage.getItem('data')) {
       // console.log(localStorage.getItem('data'));
@@ -71,7 +71,7 @@
       {#if !items}
         <tbody>
           <tr>
-            <td colspan="3" class="text-center">No items added yet</td>
+            <td colspan="3" class="text-center">No Voting Items.</td>
           </tr>
         </tbody>
       {:else}

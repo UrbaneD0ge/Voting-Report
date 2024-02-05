@@ -88,11 +88,11 @@ function makeEnvelope(args) {
 
   // create a cc recipient to receive a copy of the documents, identified by name and email
   // We're setting the parameters via setters
-  // let cc1 = new CarbonCopy();
-  // cc1.email = args.ccEmail;
-  // cc1.name = args.ccName;
-  // cc1.routingOrder = '2';
-  // cc1.recipientId = '2';
+  let cc1 = new CarbonCopy();
+  cc1.email = args.ccEmail;
+  cc1.name = args.ccName;
+  cc1.routingOrder = '2';
+  cc1.recipientId = '2';
 
   // Create signHere fields (also known as tabs) on the documents,
   // We're using anchor (autoPlace) positioning
@@ -120,7 +120,7 @@ function makeEnvelope(args) {
   // Add the recipients to the envelope object
   let recipients = Recipients.constructFromObject({
     signers: [signer1],
-    // carbonCopies: [cc1],
+    carbonCopies: [cc1],
   });
   env.recipients = recipients;
 
@@ -140,6 +140,9 @@ function makeEnvelope(args) {
  */
 
 function document1(args) {
+
+  console.log('document1 args: ', args);
+
   // Data for this method
   // args.signerEmail
   // args.signerName
@@ -158,14 +161,16 @@ function document1(args) {
         <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
           margin-top: 0px;margin-bottom: 3.5em;font-size: 1em;
           color: darkblue;">Neighborhood Planning Units</h2>
+          <br>
+        <h2>Planner's Report</h2>
+        <h4>NPU-${args.signerData.NPU}</h4>
         <h4>Assigned Planner: ${args.signerName}</h4>
         <p style="margin-top:0em; margin-bottom:0em;">Email: ${args.signerEmail}</p>
-        <p style="margin-top:0em; margin-bottom:0em;">Copy to: {args.ccName}, {args.ccEmail}</p>
-        <p style="margin-top:3em;">
-  Candy bonbon pastry jujubes lollipop wafer biscuit biscuit. Topping brownie sesame snaps sweet roll pie. Croissant danish biscuit soufflé caramels jujubes jelly. Dragée danish caramels lemon drops dragée. Gummi bears cupcake biscuit tiramisu sugar plum pastry. Dragée gummies applicake pudding liquorice. Donut jujubes oat cake jelly-o. Dessert bear claw chocolate cake gummies lollipop sugar plum ice cream gummies cheesecake.
-        </p>
+        <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${args.ccName}, ${args.ccEmail}</p>
+
+        <pre>${JSON.stringify(args.signerArgs)}</pre>
         <!-- Note the anchor tag for the signature field is in white. -->
-        <h3 style="margin-top:3em;">Agreed: <span style="color:white;">**signature_1**/</span></h3>
+        <h3 style="margin-top:3em;">Agreed: <span>**signature_1**/</span></h3>
         </body>
     </html>
   `;
