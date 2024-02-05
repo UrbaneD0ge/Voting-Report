@@ -1,13 +1,12 @@
 export const ssr = false;
-import pkg from 'docusign-esign';
-const { ApiClient } = pkg;
+import { ApiClient } from 'docusign-esign';
 import { sendEnvelope } from '$lib/signingViaEmail.js';
 import { readFileSync } from 'fs';
 import { error } from '@sveltejs/kit';
 import { dsOauthServer, dsJWTClientId, privateKeyLocation, impersonatedUserGuid } from '$lib/jwtConfig.json';
-import { ProvisioningInformation } from 'docusign-esign';
-import { makeEnvelope } from '../../lib/signingViaEmail.js';
-import { sign } from 'crypto';
+// import { ProvisioningInformation } from 'docusign-esign';
+// import { makeEnvelope } from '../../lib/signingViaEmail.js';
+// import { sign } from 'crypto';
 
 // Form Action
 export const actions = {
