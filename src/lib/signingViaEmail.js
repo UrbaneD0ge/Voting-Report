@@ -1,5 +1,7 @@
 import { ApiClient, EnvelopesApi, EnvelopeDefinition, Document, Signer, CarbonCopy, SignHere, date, Tabs, Recipients } from 'docusign-esign';
 
+// console.log(data, applications);
+
 /**
  * This function does the work of creating the envelope
  */
@@ -10,6 +12,8 @@ const sendEnvelope = async (args) => {
   // args.basePath
   // args.accessToken
   // args.accountId
+
+  // console.log('sendEnvelope args: ', args)
 
   let dsApiClient = new ApiClient();
   dsApiClient.setBasePath(args.basePath);
@@ -52,6 +56,7 @@ function makeEnvelope(args) {
   // args.ccName
   // args.status
 
+  // console.log('makeEnvelope args: ', args)
 
   // document 1 (html) has tag **signature_1**
 
@@ -64,7 +69,7 @@ function makeEnvelope(args) {
 
   // create the envelope definition
   let env = new EnvelopeDefinition();
-  env.emailSubject = `NPU-${args.signerData.NPU} Voting Report`;
+  env.emailSubject = `NPU-${args.NPU} Voting Report`;
 
   // add the documents
   let doc1 = new Document();
@@ -88,7 +93,7 @@ function makeEnvelope(args) {
 
   let signer2 = Signer.constructFromObject({
     email: args.plannerEmail,
-    name: args.planner,
+    name: args.plannerName,
     recipientId: '2',
     routingOrder: '2',
   });
@@ -101,8 +106,8 @@ function makeEnvelope(args) {
   let cc1 = new CarbonCopy();
   cc1.email = args.ccEmail;
   cc1.name = args.ccName;
-  cc1.routingOrder = '2';
-  cc1.recipientId = '2';
+  cc1.routingOrder = '3';
+  cc1.recipientId = '3';
 
   // Create signHere fields (also known as tabs) on the documents,
   // We're using anchor (autoPlace) positioning
@@ -145,7 +150,7 @@ function makeEnvelope(args) {
 
   // Add the recipients to the envelope object
   let recipients = Recipients.constructFromObject({
-    signers: [signer1],
+    signers: [signer1, signer2],
     carbonCopies: [cc1],
   });
   env.recipients = recipients;
@@ -186,23 +191,24 @@ function document1(args) {
                 ;margin-bottom: 0;">Atlanta Department of City Planning</h1>
         <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
                 margin-top: 0px;margin-bottom: 2em;font-size: 1em;">Neighborhood Planning Units</h2>
-        <h2>Voting Report: NPU-${args.signerData.NPU} | ${args.signerData.date.toLocaleDateString()}</h2>
-        <h4>NPU Chair: ${args.signerData.chair}</h4>
+        <h2>Voting Report: NPU-${args.NPU} | ${args.date}</h2>
+        <h4>NPU Chair: ${args.chairName}</h4>
+        <h4>Chair Email: ${args.chairEmail}</h4>
+        <h4>Assigned Planner: ${args.plannerName}</h4>
+        <h4>Planner Email: ${args.plannerEmail}</h4>
         <h4>Meeting Location: ${args.signerData.loc}</h4>
-        <h4>Assigned Planner: ${args.signerData.planner}</h4>
-        <p style="margin-top:0em; margin-bottom:0em;">Email: ${args.signerEmail}</p>
         <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${args.ccName}, ${args.ccEmail}</p>
 
         <table border='1' style='border-collapse:collapse;' width='100%'>`
 
-    + args.signerArgs.map(item => {
+    + args.applications.map(application => {
       return `
         <tr>
-          <td>${item.type}</td>
-          <td>${item.applName}</td>
-          <td>${item.disposal}</td>
+          <td>${application.type}</td>
+          <td>${application.applName}</td>
+          <td>${application.disposal}</td>
         </tr>
-        ${item.comments ? `<tr><td colspan="3">${item.comments}</td></tr>` : ''}
+        ${application.comments ? `<tr><td colspan="3">${application.comments}</td></tr>` : ''}
       `;
     }).join('') +
 
@@ -236,5 +242,15 @@ function document1(args) {
   `;
 }
 //ds-snippet-end:eSign2Step2
+
+// handle errors
+function processError(e) {
+  console.log('Error: ', e);
+  if (e) {
+    if (e.response) {
+      console.log('e.response: ', e.response);
+    }
+  }
+}
 
 export { sendEnvelope, makeEnvelope, document1 };

@@ -15,19 +15,19 @@ export const actions = {
     const form = await request.formData();
 
     const data = form.get('items');
-    const signerArgs = form.get('data');
+    const applications = form.get('data');
 
-    data.chairE = form.get('chairE');
-    data.plannerE = form.get('plannerE');
+    // data.chairE = form.get('chairE');
+    // data.plannerE = form.get('plannerE');
 
-    // console.log('22', signerArgs);
+    // console.log('applications', applications);
 
-    // makeEnvelope(signerArgs);
-    main(data, signerArgs);
+    // makeEnvelope(applications);
+    main(data, applications);
   }
 };
 
-// console.log(signerArgs);
+// console.log(applications);
 
 const SCOPES = [
   'signature', 'impersonation'
@@ -95,18 +95,17 @@ async function authenticate() {
   }
 }
 
-function getArgs(apiAccountId, accessToken, basePath, signerArgs, data) {
+function getArgs(apiAccountId, accessToken, basePath, applications, data) {
   // TODO: GET THESE FROM FORM
-  // signerEmail = signerArgs.chair;
-  // signerName = signerArgs.chair;
+  // signerEmail = applications.chair;
+  // signerName = applications.chair;
   // ccEmail = prompt("Enter the carbon copy's email address: ");
   // ccName = prompt("Enter the carbon copy's name: ");
 
   data = JSON.parse(data);
-  signerArgs = JSON.parse(signerArgs);
+  applications = JSON.parse(applications);
 
-  console.log(signerArgs);
-
+  // console.log('data', data, '\napplications', applications);
 
   const envelopeArgs = {
     chairEmail: data.chairE,
@@ -115,9 +114,11 @@ function getArgs(apiAccountId, accessToken, basePath, signerArgs, data) {
     plannerName: data.planner,
     ccEmail: 'kdunlap@atlantaga.gov',
     ccName: 'NPU Resources & Support',
+    NPU: data.NPU,
+    loc: data.loc,
+    date: data.date,
     status: 'sent',
-    signerArgs: signerArgs,
-    signerData: data
+    applications: applications
   };
 
   const args = {
@@ -132,15 +133,13 @@ function getArgs(apiAccountId, accessToken, basePath, signerArgs, data) {
 }
 
 function handleEnvelopeError(err) {
-
-  console.log(err);
-  return error(err);
+  error(500, 'Failed to create the envelope. ' + err);
 }
 
-async function main(data, signerArgs) {
+async function main(data, applications) {
   let accountInfo = await authenticate();
-  let args = getArgs(accountInfo.apiAccountId, accountInfo.accessToken, accountInfo.basePath, data, signerArgs);
+  let args = getArgs(accountInfo.apiAccountId, accountInfo.accessToken, accountInfo.basePath, data, applications);
   let envelopeId = await sendEnvelope(args).catch(handleEnvelopeError);
-  // console.log(data, signerArgs);
-  console.log(envelopeId);
+  // console.log(args);
+  console.log('envelopeID:', envelopeId);
 }

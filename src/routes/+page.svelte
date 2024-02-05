@@ -36,7 +36,7 @@
     let NPU = document.getElementById('NPU').selectedOptions[0].value || '';
     let chair = document.querySelector('#chair').value.trim() || '';
     let chairE = document.querySelector('#chairE').value.trim() || '';
-    let loc = document.querySelector('#location').value.trim() || '';
+    let loc = document.querySelector('#loc').value.trim() || '';
     let planner = document.querySelector('#planner').value.trim() || '';
     let plannerE = document.querySelector('#plannerE').value.trim() || '';
     let date = document.getElementById('date').value || '';
@@ -56,6 +56,10 @@
       };
       i++;
     });
+
+    // TODO: format date as MM-DD-YYYY
+    date = new Date(`${date}T00:00:00`);
+    date = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
 
     // save inputs to object
     let data = {
@@ -90,9 +94,12 @@
       NPUselect = data.NPU;
       document.querySelector('#NPU').value = data.NPU;
       document.querySelector('#chair').value = data.chair;
-      document.querySelector('#location').value = data.loc;
+      document.querySelector('#loc').value = data.loc;
       document.querySelector('#planner').value = data.planner;
       document.querySelector('#autofill').checked = data.fillToggle;
+      document.querySelector('#date').value = data.date;
+      document.querySelector('#chairE').value = data.chairE;
+      document.querySelector('#plannerE').value = data.plannerE;
     }
 
     if (localStorage.getItem('pNotes')) {
@@ -749,8 +756,8 @@
         class="flex-column flex-wrap d-flex justify-content-end align-items-end col noBreak"
       >
         <div style="display: flex; justify-content:space-between;">
-          <label class="pHead" for="location">Location:</label>
-          <input class="pHead" type="text" name="location" id="location" />
+          <label class="pHead" for="loc">Location:</label>
+          <input class="pHead" type="text" name="loc" id="loc" />
         </div>
 
         <div style="display: flex; justify-content:space-between;">
@@ -1231,7 +1238,7 @@
 
   @media print {
     #planner,
-    #location {
+    #loc {
       width: 45% !important;
     }
     #signature {
