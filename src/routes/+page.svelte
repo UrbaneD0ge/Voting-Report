@@ -7,13 +7,9 @@
   let NPUselect;
 
   // get items from local storage and turn them into an array
-  items = JSON.parse(localStorage.getItem('items'));
-  items ? (items = Object.values(items)) : (items = []);
+  // items = JSON.parse(localStorage.getItem('items'));
+  // items ? (items = Object.values(items)) : (items = []);
   data = JSON.parse(localStorage.getItem('data'));
-
-  // console.log(items);
-
-  // $: ({ args } = data);
 
   function copyLink() {
     let thisButton = this.previousElementSibling;
@@ -392,12 +388,7 @@
         tbody.appendChild(commentsRow);
       }
 
-      // console.log('new row added');
-      // clear inputs
       document.querySelector('#addItem').reset();
-
-      // // set disposal input to the first option
-      // disposal.value = disposal.options[0].value;
 
       document
         .getElementById('applName')
@@ -407,8 +398,8 @@
       document.querySelector('#itmType').value = 'Type';
 
       preFill();
-      // removeDemo();
       storeForm();
+      items = items;
     });
 
     // on button click, remove that tbody
@@ -847,7 +838,8 @@
         <th>NPU Recommendation</th>
       </tr>
     </thead>
-    {#if !items || items.length === 0}
+    <!-- TODO: Needs to update appropriately -->
+    {#if !items || items.length == 0}
       <tr>
         <td colspan="3" class="text-center">No items added yet</td>
       </tr>

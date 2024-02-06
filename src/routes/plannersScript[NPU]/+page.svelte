@@ -121,7 +121,7 @@
     I have one last thing to report. In May of 2023, we began a pilot program to
     provide updates on your voting items as they progress through the approval
     process. We’re excited to roll this out to all NPUs citywide and here is the
-    first application update for NPU-H!
+    first application update for NPU-{npu}!
   </h2>
   <ul>
     {#if data.length == 0}
