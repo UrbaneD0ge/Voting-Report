@@ -905,7 +905,7 @@
         <h6>
           {form.status == 200 ? 'Sent Successfully!' : 'DocuSigning Failed'}
           <br />
-          Form ID: {form.body.confirmation.envelopeId}
+          Form ID: {form.body.confirmation?.envelopeId}
         </h6>
       </div>
     {/if}
