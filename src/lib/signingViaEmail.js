@@ -1,4 +1,5 @@
-import { ApiClient, EnvelopesApi, EnvelopeDefinition, Document, Signer, CarbonCopy, SignHere, date, Tabs, Recipients } from 'docusign-esign';
+import pkg from 'docusign-esign';
+const { ApiClient, EnvelopesApi, EnvelopeDefinition, Document, Signer, CarbonCopy, SignHere, date, Tabs, Recipients } = pkg;
 
 // console.log(data, applications);
 
@@ -186,61 +187,112 @@ function document1(args) {
         <head>
           <meta charset="UTF-8">
         </head>
-        <body style="font-family:sans-serif;margin:2em;">
-        <h1 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
-                ;margin-bottom: 0;">Atlanta Department of City Planning</h1>
-        <h2 style="font-family: 'Trebuchet MS', Helvetica, sans-serif;
-                margin-top: 0px;margin-bottom: 2em;font-size: 1em;">Neighborhood Planning Units</h2>
-        <h2>Voting Report: NPU-${args.NPU} | ${args.date}</h2>
-        <h4>NPU Chair: ${args.chairName}</h4>
-        <h4>Chair Email: ${args.chairEmail}</h4>
-        <h4>Assigned Planner: ${args.plannerName}</h4>
-        <h4>Planner Email: ${args.plannerEmail}</h4>
-        <h4>Meeting Location: ${args.loc}</h4>
-        <p style="margin-top:0em; margin-bottom:0em;">Copy to: ${args.ccName}, ${args.ccEmail}</p>
+        <body style="font-family:Helvetica,sans-serif;margin:1.5em;">
+        <h1 style="margin-bottom: 0;">Atlanta Department of City Planning</h1>
+        <h2 style="
+                      margin-top: 0px;margin-bottom: 2em;font-size: 1em;">Neighborhood Planning Units</h2>
+        <h2 style='margin-bottom:0;'>Voting Report: NPU-${args.NPU} | ${args.date}</h2>
+        <h4 style='margin-top:0'>Meeting Location: ${args.loc}</h4>
 
-        <table border='1' style='border-collapse:collapse;' width='100%'>`
+        <table border='0' style='border-collapse:collapse;margin: auto;font-family:Helvetica,sans-serif;' width='90%'>
+        <tr>
+          <!-- CHAIR AND PLANNER CONTACT INFO -->
+          <td>
+            <h4>NPU Chair: ${args.chairName}</h4>
+          </td>
+          <td>
+            <h4>Assigned Planner: ${args.plannerName}</h4>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4>Chair Email: ${args.chairEmail}</h4>
+          </td>
+          <td>
+            <h4>Planner Email: ${args.plannerEmail}</h4>
+          </td>
+        </tr>
+        <tr>
+          <td colspan='2'>
+            <p style="margin:0em; margin-bottom:0em;">Copied to: ${args.ccName}: ${args.ccEmail}</p>
+          </td>
+        </tr>
+      </table>
+        <br><br>
+
+        <table border='1' style='border-collapse:collapse;font-family:Helvetica,sans-serif;' width='100%'>
+        <thead>
+          <tr>
+            <th>Application Type</th>
+            <th>Application Name</th>
+            <th>Disposal</th>
+          </tr>
+        </thead>`
 
     + args.applications.map(application => {
       return `
-        <tr>
-          <td>${application.type}</td>
-          <td>${application.applName}</td>
-          <td>${application.disposal}</td>
-        </tr>
-        ${application.comments ? `<tr><td colspan="3">${application.comments}</td></tr>` : ''}
+      <tr>
+      <td style='padding-inline: 2%;'> ${application.type}</td>
+      <td style='padding-inline: 2%;'> ${application.applName}</td>
+      <td style='Padding-inline: 2%; text-align: right;'>${application.disposal}</td>
+    </tr>
+        ${application.comments ? `<tr>      <td colspan="3" style='padding-inline: 2%;'> ${application.comments}</td></tr>` : ''}
       `;
     }).join('') +
 
     `</table>
     <br>
     <h3>Planner's Notes:</h3>
-    <p>${args.pNotes}</p>
-    <br>
-    <div id="signature" style="display: block;">
-    <div style='display: flex; flex-direction: row; justify-content: space-around;'>
-      <div style='display: flex; flex-direction: column; justify-content: space-around;'>
-        <label for="chairS">Chair Signature:</label>
+  <p>${args.pNotes}</p>
+  <br>
+  <!-- SIGNATURE BLOCKS -->
+  <table border='0' style='font-family:Helvetica,sans-serif;margin: auto;' width='60%'>
+    <thead>
+      <tr>
+        <td style='padding-left:3%;'>
+          <h4>Chair Signature:</h4>
+        </td>
+        <td style='padding-left:3%;'>
+          <h4>Planner Signature:</h4>
+        </td>
+      </tr>
+    </thead>
+    <tr style='text-align: center;'>
+      <td>
         <span style='color:white'>**signature_1**/</span>
-        <br>
-        <label for="chairD">Date:</label>
-        <span style='color:white'>**date_1**/</span>
-      </div>
-      <div style='display: flex; flex-direction: column; justify-content: space-around;'>
-        <label for="plannerS">Planner Signature:</label>
+      </td>
+      <td>
         <span style='color:white'>**signature_2**/</span>
-        <br>
-        <label for="plannerD">Date:</label>
-        <span style='color:white'>**date_2**/</span>
-      </div>
-    </div>
-  </div>
-  <p>
-    Prepared by the Department of City Planning, City of Atlanta | Send questions and bug reports to
-    KDunlap@AtlantaGA.gov| Version 2.0.0
-  </p>
-</body>
+      </td>
+    </tr>
+    </thead>
+    <tr>
+      <td style='padding-left:3%;'>
+        <h4>Date:</h4>
 
+      </td>
+      <td style='padding-left:3%;'>
+        <h4>Date:</h4>
+
+      </td>
+    </tr>
+    <tr style='text-align: center;'>
+      <td>
+        <span style='color:white'>**date_1**/</span>
+      </td>
+      <td>
+        <span style='color:white'>**date_2**/</span>
+      </td>
+    </tr>
+
+  </table>
+</body>
+<br><br><br>
+<!-- FOOTER -->
+<footer>
+  Prepared by the Department of City Planning, City of Atlanta | Send questions and bug reports to
+  KDunlap@AtlantaGA.gov| Version 2.0.0
+</footer>
 </html>
   `;
 }

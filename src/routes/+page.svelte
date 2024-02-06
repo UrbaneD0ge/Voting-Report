@@ -892,7 +892,9 @@
       <!-- <button id='save' class='m-3 flex-grow-1'>Save</button> -->
       <button name="print" id="print" class="m-4">Print to .PDF</button>
       <form method="POST" use:enhance>
-        <button class="btn btn-primary m-4" id="docuSign">Docusign</button>
+        <button class="btn btn-primary m-4" id="docuSign" on:click={storeForm}
+          >Docusign</button
+        >
         <input type="hidden" name="items" value={JSON.stringify(items)} />
         <input type="hidden" name="data" value={JSON.stringify(data)} />
       </form>
