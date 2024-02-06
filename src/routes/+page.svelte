@@ -705,8 +705,8 @@
     >
   </dialog>
   <form id="pageInfo">
-    <div style="display: flex;justify-content:space-between ;">
-      <div class="col" style="max-width: 40%;">
+    <div id="headerInputs" style="display: flex;justify-content:space-between;">
+      <div class="col headerI" style="max-width: 40%;">
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="chair">Chair:</label>
           <input class="pHead" type="text" name="chair" id="chair" />
@@ -752,7 +752,7 @@
       </div>
 
       <div
-        class="flex-column flex-wrap d-flex justify-content-between col noBreak"
+        class="headerI flex-column flex-wrap d-flex justify-content-between col noBreak"
         style="max-width:40%;"
       >
         <div style="display: flex; justify-content:space-between;">
@@ -905,7 +905,7 @@
         <h6>
           {form.status == 200 ? 'Sent Successfully!' : 'DocuSigning Failed'}
           <br />
-          Form ID: {form.body.confirmation?.envelopeId}
+          Envelope ID: {form.body.confirmation.envelopeId || 'N/A'}
         </h6>
       </div>
     {/if}
@@ -1233,9 +1233,21 @@
     #addItem {
       grid-template-columns: 1fr 1fr 1fr;
     }
-    /* .text-end {
-      text-align: inherit !important;
-    } */
+
+    main {
+      margin: 0 0 !important;
+      max-width: 100% !important;
+    }
+
+    #headerInputs {
+      flex-direction: column;
+      max-width: 100%;
+    }
+
+    .headerI {
+      max-width: 100% !important;
+    }
+
     tbody > tr :nth-child(2) {
       width: 33%;
     }
