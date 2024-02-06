@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import Tbody from '../../components/Tbody.svelte';
 
-  export let items, data;
+  export let items, data, form;
 
   data = JSON.parse(localStorage.getItem('data'));
 
@@ -37,6 +37,9 @@
       src="./NPU Logo Black.png"
       alt="Logo: City of Atlanta Dept of City Planning Neighborhood Planning Units"
     />
+    {#if form?.status && form.status !== ''}
+      <h4>{form.status}</h4>
+    {/if}
     <h1 id="header">VOTING REPORT: NPU-{data.NPU} | {data.date}</h1>
   </header>
   <main class="container">

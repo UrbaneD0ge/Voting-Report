@@ -23,7 +23,17 @@ export const actions = {
     // console.log('applications', applications);
 
     // makeEnvelope(applications);
-    main(data, applications);
+    confirmation = await main(data, applications).catch(err => {
+      console.log(err);
+    }
+    );
+
+    return {
+      status: 200,
+      message: {
+        confirmation
+      }
+    };
   }
 };
 
@@ -108,10 +118,10 @@ function getArgs(apiAccountId, accessToken, basePath, applications, data) {
   // console.log('data', data, '\napplications', applications);
 
   const envelopeArgs = {
-    chairEmail: data.chairE,
     chairName: data.chair,
-    plannerEmail: data.plannerE,
+    chairEmail: data.chairE,
     plannerName: data.planner,
+    plannerEmail: data.plannerE,
     ccEmail: 'kdunlap@atlantaga.gov',
     ccName: 'NPU Resources & Support',
     NPU: data.NPU,
@@ -143,4 +153,5 @@ async function main(data, applications) {
   let envelopeId = await sendEnvelope(args).catch(handleEnvelopeError);
   // console.log(args);
   console.log('envelopeID:', envelopeId);
+  return envelopeId;
 }

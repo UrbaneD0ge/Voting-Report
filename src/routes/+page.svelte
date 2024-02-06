@@ -1,8 +1,9 @@
 <script>
   import { onMount } from 'svelte';
+  import { enhance } from '$app/forms';
+  import { page } from '$app/stores';
   import Tbody from './../components/Tbody.svelte';
-  export let items;
-  export let data;
+  export let items, data, form;
   let NPUselect;
 
   // get items from local storage and turn them into an array
@@ -879,15 +880,16 @@
     ></textarea>
     <div class="d-flex justify-content-around">
       <!-- <button id='save' class='m-3 flex-grow-1'>Save</button> -->
-      <button name="print" id="print" class="m-4 flex-grow-1"
-        >Print to .PDF</button
-      >
-      <form method="POST" action="/docuSign?/docuSign">
+      <button name="print" id="print" class="m-4">Print to .PDF</button>
+      <form method="POST" use:enhance>
         <button class="btn btn-primary m-4" id="docuSign">Docusign</button>
         <input type="hidden" name="items" value={JSON.stringify(items)} />
         <input type="hidden" name="data" value={JSON.stringify(data)} />
       </form>
     </div>
+    {#if form && form !== ''}
+      <h6>Form Status: {JSON.stringify(form)}</h6>
+    {/if}
     <div id="links">
       <div style="text-align: center;">
         <h5>
