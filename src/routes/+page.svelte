@@ -72,14 +72,15 @@
       plannerE: plannerE,
       date: date,
       fillToggle: fillToggle,
+      pNotes: pNotes,
     };
 
     // save data to local storage
     localStorage.setItem('data', JSON.stringify(data));
     localStorage.setItem('items', JSON.stringify(items));
-    localStorage.setItem('pNotes', pNotes);
+    // localStorage.setItem('pNotes', pNotes);
 
-    console.log('form saved', items, data);
+    // console.log('form saved', items, data);
   }
 
   onMount(() => {
@@ -101,12 +102,13 @@
       document.querySelector('#date').value = data.date;
       document.querySelector('#chairE').value = data.chairE;
       document.querySelector('#plannerE').value = data.plannerE;
+      document.querySelector('#pNotes').value = data.pNotes || '';
     }
 
-    if (localStorage.getItem('pNotes')) {
-      let pNotes = localStorage.getItem('pNotes') || '';
-      document.querySelector('#pNotes').value = pNotes;
-    }
+    // if (localStorage.getItem('pNotes')) {
+    //   let pNotes = localStorage.getItem('pNotes') || '';
+    //   document.querySelector('#pNotes').value = pNotes;
+    // }
 
     // Clear agenda items
     document.getElementById('clear').addEventListener('click', function () {
@@ -703,8 +705,8 @@
     >
   </dialog>
   <form id="pageInfo">
-    <div class="row">
-      <div class="col">
+    <div style="display: flex;justify-content:space-between ;">
+      <div class="col" style="max-width: 40%;">
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="chair">Chair:</label>
           <input class="pHead" type="text" name="chair" id="chair" />
@@ -750,7 +752,8 @@
       </div>
 
       <div
-        class="flex-column flex-wrap d-flex justify-content-end align-items-end col noBreak"
+        class="flex-column flex-wrap d-flex justify-content-between col noBreak"
+        style="max-width:40%;"
       >
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="loc">Location:</label>
@@ -766,7 +769,10 @@
           <input class="pHead" type="email" name="plannerE" id="plannerE" />
         </div>
 
-        <div id="fillToggle">
+        <div
+          id="fillToggle"
+          style="display: flex; justify-content:space-between;"
+        >
           <label class="pHead" for="autofill"
             >Autofill application numbers:</label
           >
@@ -876,6 +882,7 @@
   <div class="mt-3 noBreak">
     <legend>Planner's Notes:</legend>
     <textarea
+      on:blur={storeForm}
       placeholder="Note any themes or discussions of concern to the NPU..."
       id="pNotes"
       cols="30"

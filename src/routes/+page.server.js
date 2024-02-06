@@ -122,6 +122,7 @@ function getArgs(apiAccountId, accessToken, basePath, applications, data) {
     chairEmail: data.chairE,
     plannerName: data.planner,
     plannerEmail: data.plannerE,
+    pNotes: data.pNotes,
     ccEmail: 'kdunlap@atlantaga.gov',
     ccName: 'NPU Resources & Support',
     NPU: data.NPU,

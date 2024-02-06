@@ -214,6 +214,9 @@ function document1(args) {
 
     `</table>
     <br>
+    <h3>Planner's Notes:</h3>
+    <p>${args.pNotes}</p>
+    <br>
     <div id="signature" style="display: block;">
     <div style='display: flex; flex-direction: row; justify-content: space-around;'>
       <div style='display: flex; flex-direction: column; justify-content: space-around;'>
