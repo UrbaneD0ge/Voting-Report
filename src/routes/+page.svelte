@@ -705,40 +705,6 @@
   <form id="pageInfo">
     <div class="row">
       <div class="col">
-        <label class="pHead" for="NPU">NPU:</label>
-        <select class="pHead" name="NPU" id="NPU" bind:value={NPUselect}>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
-          <option value="D">D</option>
-          <option value="E">E</option>
-          <option value="F">F</option>
-          <option value="G">G</option>
-          <option value="H">H</option>
-          <option value="I">I</option>
-          <option value="J">J</option>
-          <option value="K">K</option>
-          <option value="L">L</option>
-          <option value="M">M</option>
-          <option value="N">N</option>
-          <option value="O">O</option>
-          <option value="P">P</option>
-          <option value="Q">Q</option>
-          <option value="R">R</option>
-          <option value="S">S</option>
-          <option value="T">T</option>
-          <option value="V">V</option>
-          <option value="W">W</option>
-          <option value="X">X</option>
-          <option value="Y">Y</option>
-          <option value="Z">Z</option>
-        </select>
-        <button
-          aria-label="clear saved agenda items"
-          id="clear"
-          class="mb-1"
-          type="reset">Clear Table</button
-        >
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="chair">Chair:</label>
           <input class="pHead" type="text" name="chair" id="chair" />
@@ -750,6 +716,36 @@
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="date">Meeting Date:</label>
           <input class="pHead" type="date" name="date" id="date" required />
+        </div>
+        <div style="display: flex; justify-content:space-between;">
+          <label class="pHead" for="NPU">NPU:</label>
+          <select class="pHead" name="NPU" id="NPU" bind:value={NPUselect}>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="H">H</option>
+            <option value="I">I</option>
+            <option value="J">J</option>
+            <option value="K">K</option>
+            <option value="L">L</option>
+            <option value="M">M</option>
+            <option value="N">N</option>
+            <option value="O">O</option>
+            <option value="P">P</option>
+            <option value="Q">Q</option>
+            <option value="R">R</option>
+            <option value="S">S</option>
+            <option value="T">T</option>
+            <option value="V">V</option>
+            <option value="W">W</option>
+            <option value="X">X</option>
+            <option value="Y">Y</option>
+            <option value="Z">Z</option>
+          </select>
         </div>
       </div>
 
@@ -809,7 +805,7 @@
         autocomplete="off"
       />
       <select name="disposal" id="disposal">
-        <option value="PENDING" hidden selected readonly>Recommend..</option>
+        <option value="PENDING" hidden selected readonly>Recommend</option>
         <option value="Approval">Approval</option>
         <option value="Approval w/C">Approval w/C</option>
         <option value="Denial">Denial</option>
@@ -825,6 +821,13 @@
         rows="2"
         placeholder="Comments / Conditions..."
       ></textarea>
+      <button
+        aria-label="clear saved agenda items"
+        id="clear"
+        class="mt-1"
+        type="reset"
+        >Clear Table
+      </button>
       <button id="submit" value="submit" type="submit" class="mt-1"
         >Add to Table</button
       >
@@ -887,8 +890,15 @@
         <input type="hidden" name="data" value={JSON.stringify(data)} />
       </form>
     </div>
+    <!-- TODO: Add loading spinner -->
     {#if form && form !== ''}
-      <h6>Form Status: {JSON.stringify(form)}</h6>
+      <div style="text-align: right;">
+        <h6>
+          {form.status == 200 ? 'Sent Successfully!' : 'DocuSigning Failed'}
+          <br />
+          Form ID: {form.body.confirmation.envelopeId}
+        </h6>
+      </div>
     {/if}
     <div id="links">
       <div style="text-align: center;">
@@ -1201,10 +1211,13 @@
     width: 100%;
   }
 
-  #submit,
-  #clear {
+  #submit {
     grid-area: 3 / 3 / 4 / 4;
     border-radius: 5px;
+  }
+
+  #clear {
+    grid-area: 3 / 1 / 4 / 2;
   }
 
   @media only screen and (max-width: 768px) {
@@ -1270,12 +1283,12 @@
     :global(.typeTD) {
       padding-left: 35px !important;
     }
-    /* #clear {
-    display: none !important;
-  } */
+
     input,
     select {
       border: none;
+      border-bottom: 1px solid rgb(183, 183, 183);
+      border-radius: 0;
       outline: none;
       box-shadow: none;
     }
