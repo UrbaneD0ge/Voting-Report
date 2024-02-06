@@ -1,5 +1,6 @@
 export const ssr = false;
-import { ApiClient } from 'docusign-esign';
+import pkg from 'docusign-esign';
+const { ApiClient: ApiClient$1 } = pkg;
 import { sendEnvelope } from '$lib/signingViaEmail.js';
 import { readFileSync } from 'fs';
 import { error } from '@sveltejs/kit';
