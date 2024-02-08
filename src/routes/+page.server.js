@@ -65,7 +65,7 @@ function getConsent() {
 
 async function authenticate() {
   const jwtLifeSec = 10 * 60; // requested lifetime for the JWT is 10 min
-  const dsApi = new ApiClient();
+  const dsApi = new ApiClient$1();
   dsApi.setOAuthBasePath(dsOauthServer.replace('https://', '')); // it should be domain only.
   let rsaKey = readFileSync(privateKeyLocation);
 
