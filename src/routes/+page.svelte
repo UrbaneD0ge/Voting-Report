@@ -76,7 +76,7 @@
     localStorage.setItem('items', JSON.stringify(items));
     // localStorage.setItem('pNotes', pNotes);
 
-    // console.log('form saved', items, data);
+    console.log('form saved');
   }
 
   onMount(() => {
@@ -700,19 +700,44 @@
       <div class="col headerI" style="max-width: 40%;">
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="chair">Chair:</label>
-          <input class="pHead" type="text" name="chair" id="chair" />
+          <input
+            class="pHead"
+            type="text"
+            name="chair"
+            id="chair"
+            on:blur={storeForm}
+          />
         </div>
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="chairE">Chair Email:</label>
-          <input class="pHead" type="email" name="chairE" id="chairE" />
+          <input
+            class="pHead"
+            type="email"
+            name="chairE"
+            id="chairE"
+            on:blur={storeForm}
+          />
         </div>
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="date">Meeting Date:</label>
-          <input class="pHead" type="date" name="date" id="date" required />
+          <input
+            class="pHead"
+            type="date"
+            name="date"
+            id="date"
+            on:blur={storeForm}
+            required
+          />
         </div>
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="NPU">NPU:</label>
-          <select class="pHead" name="NPU" id="NPU" bind:value={NPUselect}>
+          <select
+            class="pHead"
+            name="NPU"
+            id="NPU"
+            bind:value={NPUselect}
+            on:blur={storeForm}
+          >
             <option value="A">A</option>
             <option value="B">B</option>
             <option value="C">C</option>
@@ -748,16 +773,34 @@
       >
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="loc">Location:</label>
-          <input class="pHead" type="text" name="loc" id="loc" />
+          <input
+            class="pHead"
+            type="text"
+            name="loc"
+            id="loc"
+            on:blur={storeForm}
+          />
         </div>
 
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="planner">Planner:</label>
-          <input class="pHead" type="text" name="planner" id="planner" />
+          <input
+            class="pHead"
+            type="text"
+            name="planner"
+            id="planner"
+            on:blur={storeForm}
+          />
         </div>
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="plannerE">Planner Email:</label>
-          <input class="pHead" type="email" name="plannerE" id="plannerE" />
+          <input
+            class="pHead"
+            type="email"
+            name="plannerE"
+            id="plannerE"
+            on:blur={storeForm}
+          />
         </div>
 
         <div
