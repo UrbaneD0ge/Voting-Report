@@ -7,8 +7,8 @@
   let NPUselect;
 
   // get items from local storage and turn them into an array
-  // items = JSON.parse(localStorage.getItem('items'));
-  // items ? (items = Object.values(items)) : (items = []);
+  items = JSON.parse(localStorage.getItem('items'));
+  items ? (items = Object.values(items)) : (items = []);
   data = JSON.parse(localStorage.getItem('data'));
 
   function copyLink() {

@@ -3,6 +3,8 @@ import { sendEnvelope } from '$lib/signingViaEmail.js';
 import { readFileSync } from 'fs';
 import { error } from '@sveltejs/kit';
 import { dsOauthServer, dsJWTClientId, privateKeyLocation, impersonatedUserGuid } from '$lib/jwtConfig.json';
+import pkg from 'docusign-esign';
+const { ApiClient: ApiClient$1 } = pkg;
 
 
 // Form Action

@@ -237,7 +237,7 @@
     background-color: rgb(6, 80, 80);
   }
 
-  h2 {
+  /* h2 {
     text-align: center;
     color: black;
   }
@@ -250,7 +250,7 @@
   p {
     overflow-wrap: break-word;
     font-size: large;
-  }
+  } */
 
   /* p:hover {
   cursor: grab;

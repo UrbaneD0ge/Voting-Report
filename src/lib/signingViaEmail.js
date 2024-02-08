@@ -205,14 +205,6 @@ function document1(args) {
           </td>
         </tr>
         <tr>
-          <td>
-            <h4>Chair Email: ${args.chairEmail}</h4>
-          </td>
-          <td>
-            <h4>Planner Email: ${args.plannerEmail}</h4>
-          </td>
-        </tr>
-        <tr>
           <td colspan='2'>
             <p style="margin:0em; margin-bottom:0em;">Copied to: ${args.ccName}: ${args.ccEmail}</p>
           </td>
