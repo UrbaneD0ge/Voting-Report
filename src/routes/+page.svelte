@@ -5,14 +5,24 @@
   import Tbody from './../components/Tbody.svelte';
   import Loader from '../components/Loader.svelte';
   export let items, data, form;
-  let NPUselect;
+  let NPUselect, disabled;
   let loading = false;
-  let printable = true;
+
+  // docuSign button is disabled until all required fields are filled, remove disabled attribute when all fields are filled
+  $: disabled =
+    !data ||
+    !data.NPU ||
+    !data.chair ||
+    !data.chairE ||
+    !data.loc ||
+    !data.planner ||
+    !data.plannerE ||
+    !data.date;
 
   // get items from local storage and turn them into an array
   items = JSON.parse(localStorage.getItem('items'));
   items ? (items = Object.values(items)) : (items = []);
-  data = JSON.parse(localStorage.getItem('data'));
+  $: data = JSON.parse(localStorage.getItem('data'));
 
   function copyLink() {
     let thisButton = this.previousElementSibling;
@@ -31,7 +41,7 @@
   }
 
   // function to store the values of the form in local storage
-  function storeForm() {
+  function storeForm(data) {
     // header inputs
     let NPU = document.getElementById('NPU').selectedOptions[0].value || '';
     let chair = document.querySelector('#chair').value.trim() || '';
@@ -62,7 +72,7 @@
     date = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
 
     // save inputs to object
-    let data = {
+    data = {
       NPU: NPU,
       chair: chair,
       chairE: chairE,
@@ -81,12 +91,12 @@
 
     console.log('form saved');
   }
+  let dialog = document.getElementById('dialog');
+  let message = document.getElementById('message');
 
   onMount(() => {
     const submit = document.getElementById('submit');
     const table = document.getElementById('table');
-    let dialog = document.getElementById('dialog');
-    let message = document.getElementById('message');
 
     // on load, check if there is data in local storage and if so, pre-fill the form
     if (localStorage.getItem('data')) {
@@ -701,6 +711,7 @@
             name="chair"
             id="chair"
             on:blur={storeForm}
+            required
           />
         </div>
         <div style="display: flex; justify-content:space-between;">
@@ -711,6 +722,7 @@
             name="chairE"
             id="chairE"
             on:blur={storeForm}
+            required
           />
         </div>
         <div style="display: flex; justify-content:space-between;">
@@ -726,7 +738,13 @@
         </div>
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="NPU">NPU:</label>
-          <select class="pHead" name="NPU" id="NPU" bind:value={NPUselect}>
+          <select
+            class="pHead"
+            name="NPU"
+            id="NPU"
+            bind:value={NPUselect}
+            required
+          >
             <option value="A">A</option>
             <option value="B">B</option>
             <option value="C">C</option>
@@ -768,6 +786,7 @@
             name="loc"
             id="loc"
             on:blur={storeForm}
+            required
           />
         </div>
 
@@ -779,6 +798,7 @@
             name="planner"
             id="planner"
             on:blur={storeForm}
+            required
           />
         </div>
         <div style="display: flex; justify-content:space-between;">
@@ -789,6 +809,7 @@
             name="plannerE"
             id="plannerE"
             on:blur={storeForm}
+            required
           />
         </div>
 
@@ -936,24 +957,21 @@
             };
           }}
         >
-          <!-- disabled={data.chair == '' ||
-              data.planner == '' ||
-              data.date === 'NaN-NaN-NaN' ||
-              data.loc == '' ||
-              data.chairE == '' ||
-              data.plannerE == ''} -->
-          <button
-            class="finalButtons btn btn-primary m-4"
-            id="docuSign"
-            on:click={storeForm}
-            >{#if loading}
-              <Loader />
-            {:else}
-              DocuSign
-            {/if}</button
-          >
+          {#key disabled}
+            <button
+              class="finalButtons btn btn-primary m-4"
+              id="docuSign"
+              on:click={storeForm}
+              {disabled}
+            >
+              {#if loading}
+                <Loader />
+              {:else}
+                DocuSign
+              {/if}</button
+            >{/key}
           <input type="hidden" name="items" value={JSON.stringify(items)} />
-          <input type="hidden" name="data" value={JSON.stringify(data)} />
+          <input type="none" name="data" value={JSON.stringify(data)} />
         </form>
       </div>
     </div>
@@ -1063,7 +1081,7 @@
       href="https://www.atlantaga.gov/government/departments/city-planning"
       target="_blank">Department of City Planning</a
     >, City of Atlanta | Send questions and bug reports to
-    <a href="mailto:kdunlap@atlantaga.gov">KDunlap@AtlantaGA.gov</a> | Version 1.6.9
+    <a href="mailto:kdunlap@atlantaga.gov">KDunlap@AtlantaGA.gov</a> | Version 2.0.0
   </p>
 </footer>
 

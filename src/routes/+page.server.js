@@ -16,20 +16,35 @@ export const actions = {
     const data = form.get('items');
     const applications = form.get('data');
 
-    // console.log('applications', applications);
+    if (data.chair == '' ||
+      data.planner == '' ||
+      data.date === 'NaN-NaN-NaN' ||
+      data.loc == '' ||
+      data.chairE == '' ||
+      data.plannerE == '') {
+      return {
+        status: 400,
+        body: {
+          confirmation: 'Please fill out all required fields.'
+        }
+      };
+    } else {
 
-    // makeEnvelope(applications);
-    let confirmation = await main(data, applications).catch(err => {
-      console.log(err);
-    });
+      // console.log('applications', applications);
 
-    return {
-      loading: false,
-      status: 200,
-      body: {
-        confirmation: confirmation
-      }
-    };
+      // makeEnvelope(applications);
+      let confirmation = await main(data, applications).catch(err => {
+        console.log(err);
+      });
+
+      return {
+        loading: false,
+        status: 200,
+        body: {
+          confirmation: confirmation
+        }
+      };
+    }
   }
 };
 
