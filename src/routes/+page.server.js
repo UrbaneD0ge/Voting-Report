@@ -16,18 +16,15 @@ export const actions = {
     const data = form.get('items');
     const applications = form.get('data');
 
-    // data.chairE = form.get('chairE');
-    // data.plannerE = form.get('plannerE');
-
     // console.log('applications', applications);
 
     // makeEnvelope(applications);
     let confirmation = await main(data, applications).catch(err => {
       console.log(err);
-    }
-    );
+    });
 
     return {
+      loading: false,
       status: 200,
       body: {
         confirmation: confirmation

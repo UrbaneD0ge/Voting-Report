@@ -6,12 +6,12 @@
 
 <style>
   .loader {
-    border: 16px solid #f3f3f3f6;
-    border-top: 16px solid #e0c300;
+    border: 5px solid #c3c2c2f3;
+    border-top: 5px solid #0b5ed7;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 1s linear infinite;
+    width: 20px;
+    height: 20px;
+    animation: spin 0.5s linear infinite;
     margin: 0 auto;
     box-sizing: content-box;
   }

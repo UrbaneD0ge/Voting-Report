@@ -1,10 +1,13 @@
 <script>
   import { onMount } from 'svelte';
   import { enhance } from '$app/forms';
-  import { page } from '$app/stores';
+  import { fade } from 'svelte/transition';
   import Tbody from './../components/Tbody.svelte';
+  import Loader from '../components/Loader.svelte';
   export let items, data, form;
   let NPUselect;
+  let loading = false;
+  let printable = true;
 
   // get items from local storage and turn them into an array
   items = JSON.parse(localStorage.getItem('items'));
@@ -457,14 +460,6 @@
       }
     });
 
-    // Warn before leaving page
-    // window.onbeforeunload = function (e) {
-    //   return 'Unsaved form contents may be lost!';
-    // };
-
-    // set datepicker to today
-    // today = document.querySelector('#date').valueAsDate = new Date();
-
     // expand pNotes textarea on to fit text
     document.querySelector('#pNotes').addEventListener('input', (e) => {
       e.target.style.height = 'auto';
@@ -731,13 +726,7 @@
         </div>
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="NPU">NPU:</label>
-          <select
-            class="pHead"
-            name="NPU"
-            id="NPU"
-            bind:value={NPUselect}
-            on:blur={storeForm}
-          >
+          <select class="pHead" name="NPU" id="NPU" bind:value={NPUselect}>
             <option value="A">A</option>
             <option value="B">B</option>
             <option value="C">C</option>
@@ -922,28 +911,53 @@
       id="pNotes"
       cols="30"
       rows="3"
-    ></textarea>
-    <div class="d-flex justify-content-around">
-      <!-- <button id='save' class='m-3 flex-grow-1'>Save</button> -->
-      <button name="print" id="print" class="m-4">Print to .PDF</button>
-      <form method="POST" use:enhance>
-        <button class="btn btn-primary m-4" id="docuSign" on:click={storeForm}
-          >Docusign</button
-        >
-        <input type="hidden" name="items" value={JSON.stringify(items)} />
-        <input type="hidden" name="data" value={JSON.stringify(data)} />
-      </form>
-    </div>
-    <!-- TODO: Add loading spinner -->
+    ></textarea><br /><br />
     {#if form && form !== ''}
-      <div style="text-align: right;">
+      <div style="text-align: center;" transition:fade>
         <h6>
-          {form.status == 200 ? 'Sent Successfully!' : 'DocuSigning Failed'}
-          <br />
-          Envelope ID: {form.body.confirmation.envelopeId || 'N/A'}
+          {form.status == 200 ? 'Sent Successfully!' : 'DocuSigning Failed'} | Envelope
+          ID: {form.body.confirmation.envelopeId || 'N/A'}
         </h6>
       </div>
     {/if}
+    <div class="d-flex justify-content-around align-flex-start">
+      <button name="print" id="print" class="finalButtons m-4"
+        >Print to .PDF</button
+      >
+      <div>
+        <form
+          method="POST"
+          use:enhance={() => {
+            loading = true;
+            return ({ update }) => {
+              update().finally(async () => {
+                loading = false;
+              });
+            };
+          }}
+        >
+          <!-- disabled={data.chair == '' ||
+              data.planner == '' ||
+              data.date === 'NaN-NaN-NaN' ||
+              data.loc == '' ||
+              data.chairE == '' ||
+              data.plannerE == ''} -->
+          <button
+            class="finalButtons btn btn-primary m-4"
+            id="docuSign"
+            on:click={storeForm}
+            >{#if loading}
+              <Loader />
+            {:else}
+              DocuSign
+            {/if}</button
+          >
+          <input type="hidden" name="items" value={JSON.stringify(items)} />
+          <input type="hidden" name="data" value={JSON.stringify(data)} />
+        </form>
+      </div>
+    </div>
+
     <div id="links">
       <div style="text-align: center;">
         <h5>
@@ -1196,6 +1210,10 @@
 
   #addItem input {
     width: 100%;
+  }
+
+  .finalButtons {
+    width: 200px;
   }
 
   #clear {
