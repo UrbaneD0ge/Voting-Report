@@ -84,13 +84,6 @@
         you will celebrate with us!
       </li>
       <li>
-        Speaking of celebrating our 50th Anniversary, on February 8th, NPU
-        University is hosting a brand-new class, walking through Atlanta’s
-        history leading up to the NPU system, and its evolution since then. We
-        also have Zoning Fundamentals coming up on February 13th for those who
-        want to learn the basics or need a refresher.
-      </li>
-      <li>
         The Department of City Planning is leading an 18-month planning process
         to update Plan_A: Atlanta’s Comprehensive Development Plan. This effort
         will include pop-ups, community workshops, and other events across the
