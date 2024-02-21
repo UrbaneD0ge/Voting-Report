@@ -7,17 +7,19 @@
   export let items, data, form;
   let NPUselect, disabled;
   let loading = false;
+  let dialog = document.getElementById('dialog');
+  let message = document.getElementById('message');
 
   // docuSign button is disabled until all required fields are filled, remove disabled attribute when all fields are filled
-  $: disabled =
-    !data ||
-    !data.NPU ||
-    !data.chair ||
-    !data.chairE ||
-    !data.loc ||
-    !data.planner ||
-    !data.plannerE ||
-    !data.date;
+  $: disabled = !(
+    data.NPU &&
+    data.chair &&
+    data.chairE &&
+    data.loc &&
+    data.planner &&
+    data.plannerE &&
+    data.date !== 'NaN-NaN-NaN'
+  );
 
   // get items from local storage and turn them into an array
   items = JSON.parse(localStorage.getItem('items'));
@@ -41,7 +43,7 @@
   }
 
   // function to store the values of the form in local storage
-  function storeForm(data) {
+  function storeForm() {
     // header inputs
     let NPU = document.getElementById('NPU').selectedOptions[0].value || '';
     let chair = document.querySelector('#chair').value.trim() || '';
@@ -91,8 +93,6 @@
 
     console.log('form saved');
   }
-  let dialog = document.getElementById('dialog');
-  let message = document.getElementById('message');
 
   onMount(() => {
     const submit = document.getElementById('submit');
@@ -114,11 +114,6 @@
       document.querySelector('#pNotes').value = data.pNotes || '';
     }
 
-    // if (localStorage.getItem('pNotes')) {
-    //   let pNotes = localStorage.getItem('pNotes') || '';
-    //   document.querySelector('#pNotes').value = pNotes;
-    // }
-
     // Clear agenda items
     document.getElementById('clear').addEventListener('click', function () {
       document.getElementById('date').setAttribute('disabled', 'disabled');
@@ -138,7 +133,7 @@
     autoFill.addEventListener('change', () => {
       storeForm();
     });
-    // TODO: preFill not acknowledging form submission, remains on previous value. Remove from onMount function and bind to type value?
+
     function preFill() {
       switch (document.querySelector('#itmType').value) {
         case 'MOSE':
@@ -348,58 +343,13 @@
         return;
       }
 
-      // create table row
-      let row = document.createElement('tr');
-      // create table cells
-      let itmTypeCell = document.createElement('td');
-      let deleteButton = document.createElement('button');
-      let applNameCell = document.createElement('td');
-      let disposalCell = document.createElement('td');
-      let commentsCell = document.createElement('td');
-      // add text to cells
-      itmTypeCell.innerText = itmType;
-      itmTypeCell.setAttribute('class', 'typeTD');
-      itmTypeCell.prepend(deleteButton);
-      deleteButton.setAttribute('type', 'button');
-      deleteButton.setAttribute('class', 'btn-close');
-      deleteButton.setAttribute('aria-label', 'delete item');
-      applNameCell.textContent = applName;
-      applNameCell.setAttribute('contenteditable', 'true');
-      applNameCell.classList.add('applName');
-      disposalCell.textContent = disposal;
-      disposalCell.classList.add('disp');
-      commentsCell.textContent = comments;
-      commentsCell.classList.add('comments');
-
-      // wrap each new item in a <tbody> that is draggable
-      let tbody = document.createElement('tbody');
-      tbody.setAttribute('draggable', 'true');
-      tbody.setAttribute('class', 'draggable');
-      tbody.append(row);
-
-      // append new tbody to table
-      table.append(tbody);
-
-      // append cells to row
-      row.appendChild(itmTypeCell);
-      row.appendChild(applNameCell);
-      row.appendChild(disposalCell);
-
-      if (comments !== '') {
-        // create new row for comments
-        let commentsRow = document.createElement('tr');
-        // create new cell for comments
-        // let commentsCell = document.createElement('td')
-        commentsCell.setAttribute('colspan', '3');
-        commentsCell.setAttribute('contenteditable', 'true');
-        commentsCell.classList.add('comments');
-        // add text to cell
-        commentsCell.textContent = comments;
-        // append cell to row
-        commentsRow.appendChild(commentsCell);
-        // append row to tbody
-        tbody.appendChild(commentsRow);
-      }
+      // push new item to items array
+      items.push({
+        type: itmType,
+        applName: applName,
+        disposal: disposal,
+        comments: comments,
+      });
 
       document.querySelector('#addItem').reset();
 
@@ -969,9 +919,9 @@
               {:else}
                 DocuSign
               {/if}</button
-            >{/key}
+            >{/key}<br />
+          <input type="hidden" name="data" value={JSON.stringify(data)} />
           <input type="hidden" name="items" value={JSON.stringify(items)} />
-          <input type="none" name="data" value={JSON.stringify(data)} />
         </form>
       </div>
     </div>
