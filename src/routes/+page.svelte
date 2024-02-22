@@ -789,7 +789,7 @@
         <option value="BZA">BZA</option>
         <option value="Text Am.">Text Am.</option>
         <option value="CDP">CDP Am.</option>
-        <option value="SD">SD</option>
+        <option value="MSD">MSD</option>
         <option value="LOR">LOR</option>
         <option value="CIG">CIG</option>
         <option value="N/A">Other...</option>
