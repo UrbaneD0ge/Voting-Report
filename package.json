@@ -17,6 +17,6 @@
 	"type": "module",
 	"dependencies": {
 		"docusign-esign": "^6.5.1",
-		"prompt-sync": "^4.2.0"
+		"node": "^20.11.1"
 	}
 }

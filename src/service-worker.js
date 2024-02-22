@@ -1,17 +1,14 @@
 const cacheName = 'sw-cache-v1';
 const filesToCache = [
   './',
-  './index.html',
-  './style.css',
-  './app.js',
-  './NPU Logo Black-10.png',
-  './manifest',
-  './manifest/manifest.webmanifest',
+  './app.html',
+  './NPU Logo Black.png',
+  './manifest.webmanifest',
 ];
 
 self.addEventListener('install', async e => {
   try {
-  const cache = await caches.open(cacheName);
+    const cache = await caches.open(cacheName);
     await cache.addAll(filesToCache);
     console.log('Cached all files');
   } catch (error) {
@@ -29,10 +26,10 @@ self.addEventListener('fetch', async e => {
   const url = new URL(req.url);
 
   if (url.origin === location.origin) {
-   e.respondWith(cacheFirst(req));
-} else {
-  e.respondWith(networkAndCache(req));
-}
+    e.respondWith(cacheFirst(req));
+  } else {
+    e.respondWith(networkAndCache(req));
+  }
 });
 
 async function cacheFirst(req) {
@@ -53,18 +50,15 @@ async function networkAndCache(req) {
   }
 }
 
-var GHPATH = '/VotingForm';
+var GHPATH = '/';
 
 var APP_PREFIX = 'voting_';
 
-var VERSION = 'v1';
+var VERSION = 'v2';
 
 var URLS = [
   `${GHPATH}/`,
-  `${GHPATH}/index.html`,
-  `${GHPATH}/style.css`,
-  `${GHPATH}/app.js`,
-  `${GHPATH}/NPU Logo Black-10.png`,
-  `${GHPATH}/manifest`,
-  `${GHPATH}/manifest/manifest.webmanifest`,
+  `${GHPATH}../app.html`,
+  `${GHPATH}/NPU Logo Black.png`,
+  `${GHPATH}/manifest.webmanifest`,
 ];
