@@ -91,7 +91,7 @@
     localStorage.setItem('items', JSON.stringify(items));
     // localStorage.setItem('pNotes', pNotes);
 
-    console.log('form saved');
+    console.log(data);
   }
 
   onMount(() => {
@@ -652,7 +652,7 @@
   </dialog>
   <form id="pageInfo">
     <div id="headerInputs" style="display: flex;justify-content:space-between;">
-      <div class="col headerI" style="max-width: 40%;">
+      <div class="col headerI">
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="chair">Chair:</label>
           <input
@@ -726,20 +726,7 @@
 
       <div
         class="headerI flex-column flex-wrap d-flex justify-content-between col noBreak"
-        style="max-width:40%;"
       >
-        <div style="display: flex; justify-content:space-between;">
-          <label class="pHead" for="loc">Location:</label>
-          <input
-            class="pHead"
-            type="text"
-            name="loc"
-            id="loc"
-            on:blur={storeForm}
-            required
-          />
-        </div>
-
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="planner">Planner:</label>
           <input
@@ -758,6 +745,17 @@
             type="email"
             name="plannerE"
             id="plannerE"
+            on:blur={storeForm}
+            required
+          />
+        </div>
+        <div style="display: flex; justify-content:space-between;">
+          <label class="pHead" for="loc">Location:</label>
+          <input
+            class="pHead"
+            type="text"
+            name="loc"
+            id="loc"
             on:blur={storeForm}
             required
           />
@@ -883,11 +881,27 @@
       cols="30"
       rows="3"
     ></textarea><br /><br />
-    {#if form && form !== ''}
+    <!-- {#if form && form !== ''}
       <div style="text-align: center;" transition:fade>
         <h6>
           {form.status == 200 ? 'Sent Successfully!' : 'DocuSigning Failed'} | Envelope
           ID: {form.body.confirmation.envelopeId || 'N/A'}
+        </h6>
+      </div>
+    {/if} -->
+
+    {#if form && form?.status == 200}
+      <div style="text-align: center;">
+        <h6>
+          Sent Successfully! | Envelope ID: {form.body.confirmation.envelopeId}
+        </h6>
+      </div>
+    {:else if form && form?.status !== 200 && form?.status !== undefined}
+      <div style="text-align: center;">
+        <h6>
+          DocuSigning Failed | Error: <span style="color: red;"
+            >{form?.body.confirmation}</span
+          >
         </h6>
       </div>
     {/if}
@@ -1068,6 +1082,10 @@
 
   :global(.item) {
     background-color: lightgray;
+  }
+
+  .headerI {
+    margin: 0 1rem;
   }
 
   .noBreak {
@@ -1263,10 +1281,6 @@
     #headerInputs {
       flex-direction: column;
       max-width: 100%;
-    }
-
-    .headerI {
-      max-width: 100% !important;
     }
 
     tbody > tr :nth-child(2) {

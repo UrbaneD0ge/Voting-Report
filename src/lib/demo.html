@@ -5,14 +5,14 @@
   <meta charset="UTF-8">
 </head>
 
-<body style="font-family:Helvetica,sans-serif;margin:3em;">
+<body style="font-family:Helvetica,sans-serif;margin:1.5em;">
   <h1 style="margin-bottom: 0;">Atlanta Department of City Planning</h1>
   <h2 style="
-                margin-top: 0px;margin-bottom: 2em;font-size: 1em;">Neighborhood Planning Units</h2>
+                      margin-top: 0px;margin-bottom: 2em;font-size: 1em;">Neighborhood Planning Units</h2>
   <h2 style='margin-bottom:0;'>Voting Report: NPU-${args.NPU} | ${args.date}</h2>
   <h4 style='margin-top:0'>Meeting Location: ${args.loc}</h4>
 
-  <table border='0' style='border-collapse:collapse;margin: auto;' width='90%'>
+  <table border='0' style='border-collapse:collapse;margin: auto;font-family:Helvetica,sans-serif;' width='90%'>
     <tr>
       <!-- CHAIR AND PLANNER CONTACT INFO -->
       <td>
@@ -23,22 +23,14 @@
       </td>
     </tr>
     <tr>
-      <td>
-        <h4>Chair Email: ${args.chairEmail}</h4>
-      </td>
-      <td>
-        <h4>Planner Email: ${args.plannerEmail}</h4>
-      </td>
-    </tr>
-    <tr>
       <td colspan='2'>
         <p style="margin:0em; margin-bottom:0em;">Copied to: ${args.ccName}: ${args.ccEmail}</p>
       </td>
     </tr>
   </table>
   <br><br>
-  <!-- APPLICATIONS TABLE -->
-  <table border='1' style='border-collapse:collapse;' width='100%'>
+
+  <table border='1' style='border-collapse:collapse;font-family:Helvetica,sans-serif;' width='100%'>
     <thead>
       <tr>
         <th>Application Type</th>
@@ -56,12 +48,11 @@
     </tr>
   </table>
   <br>
-  <!-- PLANNERS NOTES -->
   <h3>Planner's Notes:</h3>
   <p>${args.pNotes}</p>
   <br>
   <!-- SIGNATURE BLOCKS -->
-  <table border='0' style=' margin: auto;' width='60%'>
+  <table border='0' style='font-family:Helvetica,sans-serif;margin: auto;' width='60%'>
     <thead>
       <tr>
         <td style='padding-left:3%;'>
@@ -81,6 +72,9 @@
       </td>
     </tr>
     </thead>
+    <tr>
+      <td><br></td>
+    </tr>
     <tr>
       <td style='padding-left:3%;'>
         <h4>Date:</h4>
@@ -103,10 +97,9 @@
   </table>
 </body>
 <br><br><br>
-<!-- FOOTER -->
-<footer>
+<div>
   Prepared by the Department of City Planning, City of Atlanta | Send questions and bug reports to
   KDunlap@AtlantaGA.gov| Version 2.0.0
-</footer>
+</div>
 
 </html>

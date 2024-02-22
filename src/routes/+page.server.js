@@ -5,7 +5,7 @@ import { error } from '@sveltejs/kit';
 import { dsOauthServer, dsJWTClientId, privateKeyLocation, impersonatedUserGuid } from '$lib/jwtConfig.json';
 import pkg from 'docusign-esign';
 const { ApiClient: ApiClient$1 } = pkg;
-
+const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
 // Form Action
 export const actions = {
@@ -13,21 +13,19 @@ export const actions = {
     // get the agenda items
     const form = await request.formData();
 
-    const data = form.get('items');
-    const applications = form.get('data');
+    const data = JSON.parse(form.get('items'));
+    const applications = JSON.parse(form.get('data'));
 
-    if (data.chair == '' ||
-      data.planner == '' ||
-      data.date === 'NaN-NaN-NaN' ||
-      data.loc == '' ||
-      data.chairE == '' ||
-      data.plannerE == '') {
+    if (!emailRegex.test(applications.chairE) || !emailRegex.test(applications.plannerE)) {
+      console.log(applications.chairE, emailRegex.test(applications.chairE));
+      console.log(applications.plannerE, emailRegex.test(applications.plannerE));
+      // console.log(!emailRegex.test(applications.chairE) || !emailRegex.test(applications.plannerE));
       return {
         status: 400,
         body: {
-          confirmation: 'Please fill out all required fields.'
+          confirmation: 'Please ensure email addresses are valid.'
         }
-      };
+      }
     } else {
 
       // console.log('applications', applications);
@@ -122,11 +120,6 @@ function getArgs(apiAccountId, accessToken, basePath, applications, data) {
   // signerName = applications.chair;
   // ccEmail = prompt("Enter the carbon copy's email address: ");
   // ccName = prompt("Enter the carbon copy's name: ");
-
-  data = JSON.parse(data);
-  applications = JSON.parse(applications);
-
-  // console.log('data', data, '\napplications', applications);
 
   const envelopeArgs = {
     chairName: data.chair,
