@@ -50,11 +50,11 @@ async function networkAndCache(req) {
   }
 }
 
-var GHPATH = '/VotingForm';
+var GHPATH = '/';
 
 var APP_PREFIX = 'voting_';
 
-var VERSION = 'v1';
+var VERSION = 'v2';
 
 var URLS = [
   `${GHPATH}/`,
