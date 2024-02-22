@@ -5,6 +5,10 @@
     "scope": "https://voting-report-svelte.vercel.app/",
     "start_url": "/",
     "name": "Planner's Report",
+    "version": "2.0.0",
+    "engines": {
+        "node": "20.0.0"
+    },
     "short_name": "DCP Report",
     "id": "dcp-report",
     "description": "A mobile-friendly, offline-capable tool for recording and submitting City of Atlanta NPU Voting reports.",
