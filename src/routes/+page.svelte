@@ -5,14 +5,26 @@
   import Tbody from './../components/Tbody.svelte';
   import Loader from '../components/Loader.svelte';
   export let items, data, form;
-  let NPUselect;
+  let NPUselect, disabled;
   let loading = false;
-  let printable = true;
+  let dialog = document.getElementById('dialog');
+  let message = document.getElementById('message');
+
+  // docuSign button is disabled until all required fields are filled, remove disabled attribute when all fields are filled
+  $: disabled = !(
+    data.NPU &&
+    data.chair &&
+    data.chairE &&
+    data.loc &&
+    data.planner &&
+    data.plannerE &&
+    data.date !== 'NaN-NaN-NaN'
+  );
 
   // get items from local storage and turn them into an array
   items = JSON.parse(localStorage.getItem('items'));
   items ? (items = Object.values(items)) : (items = []);
-  data = JSON.parse(localStorage.getItem('data'));
+  $: data = JSON.parse(localStorage.getItem('data'));
 
   function copyLink() {
     let thisButton = this.previousElementSibling;
@@ -62,7 +74,7 @@
     date = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
 
     // save inputs to object
-    let data = {
+    data = {
       NPU: NPU,
       chair: chair,
       chairE: chairE,
@@ -79,14 +91,12 @@
     localStorage.setItem('items', JSON.stringify(items));
     // localStorage.setItem('pNotes', pNotes);
 
-    console.log('form saved');
+    console.log(data);
   }
 
   onMount(() => {
     const submit = document.getElementById('submit');
     const table = document.getElementById('table');
-    let dialog = document.getElementById('dialog');
-    let message = document.getElementById('message');
 
     // on load, check if there is data in local storage and if so, pre-fill the form
     if (localStorage.getItem('data')) {
@@ -103,11 +113,6 @@
       document.querySelector('#plannerE').value = data.plannerE;
       document.querySelector('#pNotes').value = data.pNotes || '';
     }
-
-    // if (localStorage.getItem('pNotes')) {
-    //   let pNotes = localStorage.getItem('pNotes') || '';
-    //   document.querySelector('#pNotes').value = pNotes;
-    // }
 
     // Clear agenda items
     document.getElementById('clear').addEventListener('click', function () {
@@ -128,7 +133,7 @@
     autoFill.addEventListener('change', () => {
       storeForm();
     });
-    // TODO: preFill not acknowledging form submission, remains on previous value. Remove from onMount function and bind to type value?
+
     function preFill() {
       switch (document.querySelector('#itmType').value) {
         case 'MOSE':
@@ -338,58 +343,13 @@
         return;
       }
 
-      // create table row
-      let row = document.createElement('tr');
-      // create table cells
-      let itmTypeCell = document.createElement('td');
-      let deleteButton = document.createElement('button');
-      let applNameCell = document.createElement('td');
-      let disposalCell = document.createElement('td');
-      let commentsCell = document.createElement('td');
-      // add text to cells
-      itmTypeCell.innerText = itmType;
-      itmTypeCell.setAttribute('class', 'typeTD');
-      itmTypeCell.prepend(deleteButton);
-      deleteButton.setAttribute('type', 'button');
-      deleteButton.setAttribute('class', 'btn-close');
-      deleteButton.setAttribute('aria-label', 'delete item');
-      applNameCell.textContent = applName;
-      applNameCell.setAttribute('contenteditable', 'true');
-      applNameCell.classList.add('applName');
-      disposalCell.textContent = disposal;
-      disposalCell.classList.add('disp');
-      commentsCell.textContent = comments;
-      commentsCell.classList.add('comments');
-
-      // wrap each new item in a <tbody> that is draggable
-      let tbody = document.createElement('tbody');
-      tbody.setAttribute('draggable', 'true');
-      tbody.setAttribute('class', 'draggable');
-      tbody.append(row);
-
-      // append new tbody to table
-      table.append(tbody);
-
-      // append cells to row
-      row.appendChild(itmTypeCell);
-      row.appendChild(applNameCell);
-      row.appendChild(disposalCell);
-
-      if (comments !== '') {
-        // create new row for comments
-        let commentsRow = document.createElement('tr');
-        // create new cell for comments
-        // let commentsCell = document.createElement('td')
-        commentsCell.setAttribute('colspan', '3');
-        commentsCell.setAttribute('contenteditable', 'true');
-        commentsCell.classList.add('comments');
-        // add text to cell
-        commentsCell.textContent = comments;
-        // append cell to row
-        commentsRow.appendChild(commentsCell);
-        // append row to tbody
-        tbody.appendChild(commentsRow);
-      }
+      // push new item to items array
+      items.push({
+        type: itmType,
+        applName: applName,
+        disposal: disposal,
+        comments: comments,
+      });
 
       document.querySelector('#addItem').reset();
 
@@ -692,7 +652,7 @@
   </dialog>
   <form id="pageInfo">
     <div id="headerInputs" style="display: flex;justify-content:space-between;">
-      <div class="col headerI" style="max-width: 40%;">
+      <div class="col headerI">
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="chair">Chair:</label>
           <input
@@ -701,6 +661,7 @@
             name="chair"
             id="chair"
             on:blur={storeForm}
+            required
           />
         </div>
         <div style="display: flex; justify-content:space-between;">
@@ -711,6 +672,7 @@
             name="chairE"
             id="chairE"
             on:blur={storeForm}
+            required
           />
         </div>
         <div style="display: flex; justify-content:space-between;">
@@ -726,7 +688,13 @@
         </div>
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="NPU">NPU:</label>
-          <select class="pHead" name="NPU" id="NPU" bind:value={NPUselect}>
+          <select
+            class="pHead"
+            name="NPU"
+            id="NPU"
+            bind:value={NPUselect}
+            required
+          >
             <option value="A">A</option>
             <option value="B">B</option>
             <option value="C">C</option>
@@ -758,19 +726,7 @@
 
       <div
         class="headerI flex-column flex-wrap d-flex justify-content-between col noBreak"
-        style="max-width:40%;"
       >
-        <div style="display: flex; justify-content:space-between;">
-          <label class="pHead" for="loc">Location:</label>
-          <input
-            class="pHead"
-            type="text"
-            name="loc"
-            id="loc"
-            on:blur={storeForm}
-          />
-        </div>
-
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="planner">Planner:</label>
           <input
@@ -779,6 +735,7 @@
             name="planner"
             id="planner"
             on:blur={storeForm}
+            required
           />
         </div>
         <div style="display: flex; justify-content:space-between;">
@@ -789,6 +746,18 @@
             name="plannerE"
             id="plannerE"
             on:blur={storeForm}
+            required
+          />
+        </div>
+        <div style="display: flex; justify-content:space-between;">
+          <label class="pHead" for="loc">Location:</label>
+          <input
+            class="pHead"
+            type="text"
+            name="loc"
+            id="loc"
+            on:blur={storeForm}
+            required
           />
         </div>
 
@@ -912,11 +881,27 @@
       cols="30"
       rows="3"
     ></textarea><br /><br />
-    {#if form && form !== ''}
+    <!-- {#if form && form !== ''}
       <div style="text-align: center;" transition:fade>
         <h6>
           {form.status == 200 ? 'Sent Successfully!' : 'DocuSigning Failed'} | Envelope
           ID: {form.body.confirmation.envelopeId || 'N/A'}
+        </h6>
+      </div>
+    {/if} -->
+
+    {#if form && form?.status == 200}
+      <div style="text-align: center;">
+        <h6>
+          Sent Successfully! | Envelope ID: {form.body.confirmation.envelopeId}
+        </h6>
+      </div>
+    {:else if form && form?.status !== 200 && form?.status !== undefined}
+      <div style="text-align: center;">
+        <h6>
+          DocuSigning Failed | Error: <span style="color: red;"
+            >{form?.body.confirmation}</span
+          >
         </h6>
       </div>
     {/if}
@@ -936,24 +921,21 @@
             };
           }}
         >
-          <!-- disabled={data.chair == '' ||
-              data.planner == '' ||
-              data.date === 'NaN-NaN-NaN' ||
-              data.loc == '' ||
-              data.chairE == '' ||
-              data.plannerE == ''} -->
-          <button
-            class="finalButtons btn btn-primary m-4"
-            id="docuSign"
-            on:click={storeForm}
-            >{#if loading}
-              <Loader />
-            {:else}
-              DocuSign
-            {/if}</button
-          >
-          <input type="hidden" name="items" value={JSON.stringify(items)} />
+          {#key disabled}
+            <button
+              class="finalButtons btn btn-primary m-4"
+              id="docuSign"
+              on:click={storeForm}
+              {disabled}
+            >
+              {#if loading}
+                <Loader />
+              {:else}
+                DocuSign
+              {/if}</button
+            >{/key}<br />
           <input type="hidden" name="data" value={JSON.stringify(data)} />
+          <input type="hidden" name="items" value={JSON.stringify(items)} />
         </form>
       </div>
     </div>
@@ -1063,7 +1045,7 @@
       href="https://www.atlantaga.gov/government/departments/city-planning"
       target="_blank">Department of City Planning</a
     >, City of Atlanta | Send questions and bug reports to
-    <a href="mailto:kdunlap@atlantaga.gov">KDunlap@AtlantaGA.gov</a> | Version 1.6.9
+    <a href="mailto:kdunlap@atlantaga.gov">KDunlap@AtlantaGA.gov</a> | Version 2.0.0
   </p>
 </footer>
 
@@ -1100,6 +1082,10 @@
 
   :global(.item) {
     background-color: lightgray;
+  }
+
+  .headerI {
+    margin: 0 1rem;
   }
 
   .noBreak {
@@ -1295,10 +1281,6 @@
     #headerInputs {
       flex-direction: column;
       max-width: 100%;
-    }
-
-    .headerI {
-      max-width: 100% !important;
     }
 
     tbody > tr :nth-child(2) {

@@ -172,9 +172,6 @@ function makeEnvelope(args) {
  */
 
 function document1(args) {
-
-  console.log('document1 args: ', args);
-
   // Data for this method
   // args.signerEmail
   // args.signerName
