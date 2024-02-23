@@ -664,7 +664,10 @@
             required
           />
         </div>
-        <div style="display: flex; justify-content:space-between;">
+        <div
+          class="hidePrint"
+          style="display: flex; justify-content:space-between;"
+        >
           <label class="pHead" for="chairE">Chair Email:</label>
           <input
             class="pHead"
@@ -738,7 +741,10 @@
             required
           />
         </div>
-        <div style="display: flex; justify-content:space-between;">
+        <div
+          class="hidePrint"
+          style="display: flex; justify-content:space-between;"
+        >
           <label class="pHead" for="plannerE">Planner Email:</label>
           <input
             class="pHead"
@@ -1325,6 +1331,7 @@
       margin: 0.5in 0.1in !important;
     }
 
+    .hidePrint,
     #clear,
     #fillToggle,
     #links,
