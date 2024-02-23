@@ -2,7 +2,7 @@ export const ssr = false;
 import { sendEnvelope } from '$lib/signingViaEmail.js';
 import { readFileSync } from 'fs';
 import { error } from '@sveltejs/kit';
-import { dsOauthServer, dsJWTClientId, privateKeyLocation, impersonatedUserGuid } from '$lib/jwtConfig.json';
+import { dsOauthServer, dsJWTClientId, impersonatedUserGuid } from '$lib/jwtConfig.json';
 import { PRIVATE_KEY } from '$env/static/private';
 import pkg from 'docusign-esign';
 const { ApiClient: ApiClient$1 } = pkg;
@@ -78,7 +78,6 @@ async function authenticate() {
   const jwtLifeSec = 10 * 60; // requested lifetime for the JWT is 10 min
   const dsApi = new ApiClient$1();
   dsApi.setOAuthBasePath(dsOauthServer.replace('https://', '')); // it should be domain only.
-  // let rsaKey = readFileSync(privateKeyLocation);
   let rsaKey = PRIVATE_KEY;
 
   try {
