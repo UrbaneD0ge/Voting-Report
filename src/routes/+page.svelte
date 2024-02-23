@@ -830,10 +830,10 @@
         id="clear"
         class="mt-1"
         type="reset"
-        >Clear Table
+        ><i class="material-symbols-outlined">clear_all</i>Clear Table
       </button>
       <button id="submit" value="submit" type="submit" class="mt-1"
-        >Add to Table</button
+        ><i class="material-symbols-outlined">list_alt_add</i>Add to Table</button
       >
     </form>
   </div>
@@ -912,9 +912,11 @@
       </div>
     {/if}
     <div class="d-flex justify-content-around align-flex-start">
-      <button name="print" id="print" class="finalButtons m-4"
-        >Print to .PDF</button
-      >
+      <div>
+        <button name="print" id="print" class="finalButtons m-4"
+          ><i class="material-symbols-outlined">picture_as_pdf</i>Print to .PDF</button
+        >
+      </div>
       <div>
         <form
           method="POST"
@@ -937,7 +939,7 @@
               {#if loading}
                 <Loader />
               {:else}
-                DocuSign
+                <i class="material-symbols-outlined">signature</i>DocuSign
               {/if}</button
             >{/key}<br />
           <input type="hidden" name="data" value={JSON.stringify(data)} />
@@ -1077,6 +1079,14 @@
     border-radius: 5px;
   }
 
+  #clear,
+  #submit,
+  .finalButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   :global(.dragging) {
     opacity: 30%;
   }
@@ -1206,11 +1216,12 @@
 
   .finalButtons {
     width: 200px;
+    height: 45px;
   }
 
-  #clear {
+  /* #clear {
     font-size: 1rem;
-  }
+  } */
 
   #conditions {
     grid-area: 2 / 1 / 3 / 4;
@@ -1461,5 +1472,10 @@
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #555;
+  }
+
+  i {
+    font-size: 1.5rem;
+    padding-right: 5px;
   }
 </style>
