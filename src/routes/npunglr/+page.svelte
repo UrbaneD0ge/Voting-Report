@@ -10,7 +10,6 @@
 
 <header>
   <h1 class="display-4"><strong><span id="DCP">NPU</span>NGLR2</strong></h1>
-  <h6>Prepared by the Department of City Planning, City of Atlanta</h6>
 </header>
 
 <body>
