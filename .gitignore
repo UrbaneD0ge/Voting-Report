@@ -11,3 +11,7 @@ vite.config.ts.timestamp-*
 .vercel
 private.key
 *.key
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
