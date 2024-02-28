@@ -58,7 +58,7 @@ Access Code: 842 6707 3478#`
         plannerE = `rkkaushik@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom1@atlantaga.gov'
-        zCred = 'Wehostmeetings1'
+
         break;
       case 'B':
         isHybrid = false;
@@ -74,7 +74,7 @@ Access Code: 832 4836 8602#`
         plannerE = `jlavandier@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom8@atlantaga.gov'
-        zCred = 'Wehostmeetings8'
+
         break;
       case 'C':
         isHybrid = false;
@@ -90,7 +90,7 @@ Access Code: 934 4511 6340#`
         plannerE = `TJordan-Madden@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom4@atlantaga.gov'
-        zCred = 'Wehostmeetings44'
+
         break;
       case 'D':
         isHybrid = true;
@@ -112,7 +112,7 @@ Atlanta, GA 30318`
         plannerE = `nhoelzel@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom2@atlantaga.gov'
-        zCred = 'Wehostmeetings2'
+
         break;
       case 'E':
         isHybrid = false;
@@ -143,7 +143,7 @@ Access Code: 845 9824 9006#`
         plannerE = `dyoung@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom6@atlantaga.gov'
-        zCred = 'Wehostmeetings6'
+
         break;
       case 'G':
         isHybrid = false;
@@ -159,7 +159,7 @@ Access Code: 935 8093 0222#`
         plannerE = `ltovar@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom1@atlantaga.gov'
-        zCred = 'Wehostmeetings1'
+
         break;
       case 'H':
         isHybrid = false;
@@ -175,7 +175,7 @@ Access Code: 976 5253 7837#`
         plannerE = `abeattie@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom1@atlantaga.gov'
-        zCred = 'Wehostmeetings1'
+
         break;
       case 'I':
         isHybrid = false;
@@ -191,7 +191,7 @@ Access Code: 926 1333 2610#`
         plannerE = `sucoleman@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom3@atlantaga.gov'
-        zCred = 'Wehostmeetings3'
+
         break;
       case 'J':
         isHybrid = false;
@@ -207,7 +207,7 @@ Access Code: 914 9575 9127#`
         plannerE = `kmholmes@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom3@atlantaga.gov'
-        zCred = 'Wehostmeetings3'
+
         break;
       case 'K':
         isHybrid = true;
@@ -229,7 +229,7 @@ Bistro Room
         plannerE = `twarren@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom5@atlantaga.gov'
-        zCred = 'Wehostmeetings5'
+
         break;
       case 'L':
         isHybrid = false;
@@ -245,7 +245,7 @@ Access Code: 961 2883 9632#`
         plannerE = `dvasquez@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom1@atlantaga.gov'
-        zCred = 'Wehostmeetings1'
+
         break;
       case 'M':
         isHybrid = false;
@@ -261,7 +261,7 @@ Access Code: 972 3364 7127#`
         plannerE = `mdadams@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom5@atlantaga.gov'
-        zCred = 'Wehostmeetings5'
+
         break;
       case 'N':
         isHybrid = false;
@@ -278,7 +278,7 @@ Password: euclid`
         plannerE = `tletang@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom2@atlantaga.gov'
-        zCred = 'Wehostmeetings2'
+
         break;
       case 'O':
         isHybrid = false;
@@ -294,7 +294,7 @@ Access Code: 812 4045 1335#`
         plannerE = `sxayavong@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom5@atlantaga.gov'
-        zCred = 'Wehostmeetings5'
+
         break;
       case 'P':
         isHybrid = false;
@@ -310,7 +310,7 @@ Access Code: 940 8702 7097#`
         plannerE = `kbakari@AtlantaGa.Gov`
         note = ''
         zMail = 'npuzoomroom5@atlantaga.gov'
-        zCred = 'Wehostmeetings5'
+
         break;
       case 'Q':
         isHybrid = false;
@@ -326,13 +326,17 @@ Access Code: 985 5727 1692#`
         plannerE = `franrozier@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom3@atlantaga.gov'
-        zCred = 'Wehostmeetings3'
+
         break;
       case 'R':
         isHybrid = true;
         meet = `Meeting ID: 886 2169 6544
 Dial In: +1 646 558 8656
-Access Code: 886 2169 6544#`
+Access Code: 886 2169 6544#
+
+And in person:
+Adams Park Recreation Center
+1620 Delowe Dr SW`
         zURL = `https://us06web.zoom.us/meeting/register/tZwrdeiupz0vHtCSIPdEIa-N6avVbaNnGXlb`
         time = `7:00PM`
         chair = `Rita Harden`
@@ -342,7 +346,7 @@ Access Code: 886 2169 6544#`
         plannerE = `crodriguez@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom1@atlantaga.gov'
-        zCred = 'Wehostmeetings1'
+
         break;
       case 'S':
         isHybrid = true;
@@ -353,7 +357,7 @@ Access Code: 993 2987 4388#
 
 And in person:
 VICARS Community Center
-838 Cascade Ave SW, 30311`
+838 Cascade Ave SW`
         zURL = `https://us06web.zoom.us/meeting/register/tJ0udeCgqT8pEtycXQZ9s7Tk4_0J_73DZmQD`
         time = `7:00PM`
         chair = `Kyle Lamont`
@@ -363,7 +367,7 @@ VICARS Community Center
         plannerE = `cmgarcia@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom7@atlantaga.gov'
-        zCred = 'Wehostmeetings7'
+
         break;
       case 'T':
         isHybrid = false;
@@ -379,7 +383,7 @@ Access Code: 973 7964 7582#`
         plannerE = `mbforte@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom2@atlantaga.gov'
-        zCred = 'Wehostmeetings2'
+
         break;
       case 'U':
         isHybrid = false;
@@ -409,7 +413,7 @@ Access Code: 992 1132 0112#`
         plannerE = `ngandhi@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom4@atlantaga.gov'
-        zCred = 'Wehostmeetings44'
+
         break;
       case 'W':
         isHybrid = false;
@@ -425,7 +429,7 @@ Access Code: 916 2580 5725#`
         plannerE = `saceto@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom4@atlantaga.gov'
-        zCred = 'Wehostmeetings44'
+
         break;
       case 'X':
         isHybrid = false;
@@ -441,7 +445,7 @@ Access Code: 940 6017 9815#`
         plannerE = `icue@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom3@atlantaga.gov'
-        zCred = 'Wehostmeetings3'
+
         break;
       case 'Y':
         isHybrid = false;
@@ -458,7 +462,7 @@ Access Code:  956 6564 6943#`
         plannerE = `eaclappin@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom5@atlantaga.gov'
-        zCred = 'Wehostmeetings5'
+
         break;
       case 'Z':
         isHybrid = false;
@@ -474,7 +478,7 @@ Access Code: 929 8209 4616#`
         plannerE = `totoo@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom1@atlantaga.gov'
-        zCred = 'Wehostmeetings1'
+
         break;
     }
     let HybStatus = '';
@@ -484,7 +488,7 @@ Access Code: 929 8209 4616#`
     } else {
       HybStatus = `Virtual`;
     };
-    return { HybStatus: HybStatus, meet: meet, chair: chair, planner: planner, time: time, chairE: chairE, plannerE: plannerE, zURL: zURL, chairHon: chairHon, note: note, zMail: zMail, zCred: zCred };
+    return { HybStatus: HybStatus, meet: meet, chair: chair, planner: planner, time: time, chairE: chairE, plannerE: plannerE, zURL: zURL, chairHon: chairHon, note: note, zMail: zMail };
   };
 
   // console.log(title);
@@ -525,13 +529,13 @@ Access Code: 929 8209 4616#`
     $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="https://nextdoor.com/city/feed/?" target="_blank" noopener>NEXTDOOR</a></h2><p id="nextdoor" onclick="copy(this)"><strong>NPU-' + title + ' | ' + casual + ' ' + meeting.time + '</strong><br>Hey Neighbors!<br><br>NPU-' + title + ' meets next ' + casual + ' at ' + meeting.time + '<br><br>To register in advance go to:<br>' + meeting.zURL + '<pre>' + meeting.meet + '<br><br></pre>Thank you,</p></div>')
     // console.log('Nextdoor');
   }
-  if ($('#ZoomCreds')[0].checked) {
-    $('#textZone').append('<div class="y-2 calendar col-12"><h2>ZOOM CREDENTIALS</h2><p id="ZoomCreds" onclick="copy(this)"><span style="color: red; text-decoration: underline;"><strong>Zoom Credentials/Usage Reminder</strong></span><br>Please use the NPU Zoom room only for the express purpose of your scheduled meeting or related activity. DO NOT share the account credentials, make changes to settings, or schedule meetings. DO NOT log in under City credentials/username for any other meetings or schedule/edit meetings.<br><br>' + zMail + '<br>' + zCred + '</p></div>')
-    // console.log('ZoomCreds');
-  }
   if ($('#attendance')[0].checked) {
     $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="mailto:' + title + ' chair;' + '?subject=NPU-' + title + ' ' + month + ' GB Attendance&cc= kdunlap@atlantaga.gov; dvasquez@atlantaga.gov;&body=Good day ' + meeting.chairHon + ',%0D%0DPlease see the attached NPU-' + title + ' ' + month + ' GB attendance report for your records.%0D%0DThank you,">Attendance</a></h2>'
       + '<p onclick="copy(this)"><strong>NPU-' + title + ' ' + month + ' GB Attendance</strong><br>Good day ' + meeting.chairHon + ',<br><br>Please see the attached NPU-' + title + ' ' + month + ' GB attendance report for your records.<br><br>Thank you,</p></div>')
+  }
+  if ($('#pReport')[0].checked) {
+    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="mailto:' + meeting.plannerE + '?subject=NPU-' + title + ' ' + month + ' Planner\'s Report&cc= kdunlap@atlantaga.gov;&body=Good day ' + meeting.planner.split(' ')[0] + ',%0D%0DPlease see the attached NPU-' + title + ' ' + month + ' Planner\'s report .%0D%0DThank you,">Planner\'s Report</a></h2>'
+      + '<p onclick="copy(this)"><strong>NPU-' + title + ' ' + month + ' Planner\'s Report</strong><br>Good day ' + meeting.planner.split(' ')[0] + ',<br><br>Please see the attached NPU-' + title + ' ' + month + ' Planner\'s report.<br><br>Thank you,</p></div>')
   }
 });
 

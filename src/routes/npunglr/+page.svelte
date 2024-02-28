@@ -108,11 +108,11 @@
           <span class="mx-2">
             <input
               type="checkbox"
-              name="ZoomCreds"
-              value="ZoomCreds"
-              id="ZoomCreds"
+              name="pReport"
+              value="pReport"
+              id="pReport"
             />
-            <label for="ZoomCreds">Zoom Credentials</label>
+            <label for="pReport">Planner's Report</label>
           </span>
           <span class="mx-2">
             <input
@@ -236,25 +236,6 @@
     background-color: rgb(6, 80, 80);
   }
 
-  /* h2 {
-    text-align: center;
-    color: black;
-  }
-
-  pre {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: large;
-  }
-
-  p {
-    overflow-wrap: break-word;
-    font-size: large;
-  } */
-
-  /* p:hover {
-  cursor: grab;
-} */
-
   :global(.calendar) {
     background-color: whitesmoke;
     padding: 10px;
@@ -288,5 +269,10 @@
     td {
       display: block;
     }
+  }
+
+  table {
+    border-width: 1px;
+    text-align: center;
   }
 </style>
