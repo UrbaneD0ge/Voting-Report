@@ -442,7 +442,7 @@
         storeForm();
       }
       // if comments are empty, remove the box
-      if (e.target.textContent === '') {
+      if (e.target.textContent === '' && e.target.classList.contains('comments')) {
         e.target.parentElement.remove();
       }
     });
@@ -478,14 +478,15 @@
       document.querySelectorAll('.btn-close').forEach((btn) => {
         btn.style.display = 'none';
       });
+
       // if comment cells are empty, remove them
-      document
-        .querySelectorAll('td[contenteditable="true"]')
-        .forEach((cell) => {
-          if (cell.textContent === '') {
-            cell.parentElement.remove();
-          }
-        });
+      // document
+      //   .querySelectorAll('td.comments[contenteditable="true"]')
+      //   .forEach((cell) => {
+      //     if (cell.textContent === '' && cell.classList.contains('comments')) {
+      //       cell.parentElement.remove();
+      //     }
+      //   });
     });
 
     // on print button click, print page
