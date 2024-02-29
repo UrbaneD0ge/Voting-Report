@@ -1,14 +1,12 @@
 <script>
   // get NPU from query params
   import { page } from '$app/stores';
-
   let npu = $page.url.pathname.slice(-1);
-
-  // console.log(npu);
-
   export let data;
 
   data = data.props.data.features;
+
+  console.log(data);
 
   // replace the month number with the month name
   data.forEach((app) => {
@@ -128,7 +126,7 @@
             In {app.attributes.MonthChoice}, NPU-{app.attributes.NPU} voted to
             {app.attributes.Reccomendation}
             <strong
-              >{app.attributes.NameNumber}
+              > <a href={app.attributes.ApplicationLink} target="_blank">{app.attributes.NameNumber}</a>
               | {app.attributes.Address}</strong
             >.<br />
 

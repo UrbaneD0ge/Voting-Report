@@ -1,7 +1,6 @@
 const cacheName = 'sw-cache-v1';
 const filesToCache = [
   './',
-  './app.html',
   './NPU Logo Black.png',
   './manifest.webmanifest',
 ];
@@ -58,7 +57,6 @@ var VERSION = 'v2';
 
 var URLS = [
   `${GHPATH}/`,
-  `${GHPATH}../app.html`,
   `${GHPATH}/NPU Logo Black.png`,
   `${GHPATH}/manifest.webmanifest`,
 ];
