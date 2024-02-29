@@ -96,7 +96,7 @@
 
   onMount(() => {
     const submit = document.getElementById('submit');
-    const table = document.getElementById('table');
+    // const table = document.getElementById('table');
 
     // on load, check if there is data in local storage and if so, pre-fill the form
     if (localStorage.getItem('data')) {
@@ -336,6 +336,8 @@
       let applName = document.querySelector('#applName').value.trim();
       let disposal = document.querySelector('#disposal').value || '';
       let comments = document.querySelector('#conditions').value.trim() || '';
+      let dialog = document.getElementById('dialog');
+      let message = document.getElementById('message');
 
       if (itmType === 'Type' || applName === '') {
         message.innerText = 'Please enter an item type and applicant name';
@@ -440,7 +442,7 @@
         storeForm();
       }
       // if comments are empty, remove the box
-      if (e.target.textContent === '') {
+      if (e.target.textContent === '' && e.target.classList.contains('comments')) {
         e.target.parentElement.remove();
       }
     });
@@ -476,14 +478,15 @@
       document.querySelectorAll('.btn-close').forEach((btn) => {
         btn.style.display = 'none';
       });
+
       // if comment cells are empty, remove them
-      document
-        .querySelectorAll('td[contenteditable="true"]')
-        .forEach((cell) => {
-          if (cell.textContent === '') {
-            cell.parentElement.remove();
-          }
-        });
+      // document
+      //   .querySelectorAll('td.comments[contenteditable="true"]')
+      //   .forEach((cell) => {
+      //     if (cell.textContent === '' && cell.classList.contains('comments')) {
+      //       cell.parentElement.remove();
+      //     }
+      //   });
     });
 
     // on print button click, print page
@@ -629,6 +632,8 @@
         { offset: Number.NEGATIVE_INFINITY },
       ).element;
     }
+
+    storeForm();
   });
 </script>
 
@@ -887,14 +892,6 @@
       cols="30"
       rows="3"
     ></textarea><br /><br />
-    <!-- {#if form && form !== ''}
-      <div style="text-align: center;" transition:fade>
-        <h6>
-          {form.status == 200 ? 'Sent Successfully!' : 'DocuSigning Failed'} | Envelope
-          ID: {form.body.confirmation.envelopeId || 'N/A'}
-        </h6>
-      </div>
-    {/if} -->
 
     {#if form && form?.status == 200}
       <div style="text-align: center;">
@@ -919,22 +916,27 @@
       </div>
       <div>
         <form
-          method="POST"
-          use:enhance={() => {
-            loading = true;
-            return ({ update }) => {
-              update().finally(async () => {
-                loading = false;
+        method="POST"
+        use:enhance={() => {
+          loading = true;
+          return ({ update }) => {
+            update().finally(async () => {
+              loading = false;
               });
             };
           }}
         >
+        <!-- {#if disabled}
+        <p style="text-align: center;margin-bottom: 0">Check fields at top!</p>
+        {/if} -->
+
           {#key disabled}
             <button
               class="finalButtons btn btn-primary m-4"
               id="docuSign"
               on:click={storeForm}
               {disabled}
+              data-tooltip={disabled ? 'Check fields at top!' : '✔ Ready to sign!'}
             >
               {#if loading}
                 <Loader />
@@ -948,8 +950,8 @@
       </div>
     </div>
 
-    <div id="links">
-      <div style="text-align: center;">
+    <div id="links" style="text-align: center;">
+      <div>
         <h5>
           <a href="/plannersScript{NPUselect}" target="_blank"
             >Planner's Script</a
@@ -961,14 +963,14 @@
         <a
           href="https://www.atlantaga.gov/government/departments/city-planning/neighborhood-planning-units/updates"
           target="_blank">Updates Page</a
-        >
+        ><br>
         <button id="copyLink" on:click={copyLink}>Copy Link</button>
       </h5>
       <h5>
         <a
           href="https://coaplangis.maps.arcgis.com/apps/dashboards/a7ab4e0bb5034b219c63a160a7538708#&NPU={NPUselect}"
           target="_blank">Applications Table</a
-        >
+        ><br>
         <button id="copyApp" on:click={copyLink}>Copy Link</button>
       </h5>
     </div>
@@ -982,10 +984,17 @@
     <summary>Instructions:</summary>
     <ul style="list-style-type:'✨'">
       <h5><b>NEW!</b></h5>
+      <li>DocuSign is here! When everything's ready, click the blue button to automatically email signing links to the chair and yourself (in that order). The completed document will be sent to the NPU team as well!
+      </li>
       <li>
-        When changes are made, agenda items and Planner's Notes are saved to
-        your device until cleared. To clear them, click 'Clear Items' at the top
-        of the page. Stored items are editable just like new ones!
+        Fill page header info - this information is saved to your device for
+        future use when you click print. DocuSign depends on this info and is disabled until it's filled.
+      </li>
+      </ul>
+      <ul>
+      <li>
+        When changes are made, data is saved to
+        your device until cleared. To clear voting items, click 'Clear Items'. Stored items are editable just like new ones.
       </li>
       <li>
         When 'Autofill application numbers' is selected, applications with a
@@ -997,14 +1006,8 @@
         will present itself.
       </li>
       <li>
-        Items are now draggable! Grab items by their type cell and drag them
-        into any order you'd like.
-      </li>
-    </ul>
-    <ul>
-      <li>
-        Fill page header info - this information is saved to your device for
-        future use when you click print.
+        Items are draggable: Grab items by their type cell and drag them
+        into any order you'd like (preferably matching agenda order!)
       </li>
       <li>
         For each voting item: Select item type, complete the pre-filled
@@ -1218,6 +1221,34 @@
     width: 200px;
     height: 45px;
   }
+
+  /* #docusign disabled tooltip */
+  [data-tooltip] {
+    position: relative;
+  }
+
+  button[data-tooltip]:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px;
+    background: #000;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    display: none;
+  }
+
+  [data-tooltip]:hover:before {
+    display: block;
+  }
+
+button[disabled] {
+  pointer-events: auto;
+}
 
   /* #clear {
     font-size: 1rem;

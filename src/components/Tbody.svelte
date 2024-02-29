@@ -1,4 +1,5 @@
 <script>
+  import VoteLine from "./VoteLine.svelte";
   export let item;
 </script>
 
@@ -15,4 +16,5 @@
       >
     </tr>
   {/if}
+<!-- <VoteLine/> -->
 </tbody>
