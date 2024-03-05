@@ -6,7 +6,7 @@ import { dsOauthServer, dsJWTClientId, impersonatedUserGuid } from '$lib/jwtConf
 import { PRIVATE_KEY } from '$env/static/private';
 import pkg from 'docusign-esign';
 const { ApiClient: ApiClient$1 } = pkg;
-const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i;
 
 // Form Action
 export const actions = {

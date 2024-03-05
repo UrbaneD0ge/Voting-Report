@@ -70,7 +70,7 @@ function makeEnvelope(args) {
 
   // create the envelope definition
   let env = new EnvelopeDefinition();
-  env.emailSubject = `NPU-${args.NPU} Voting Report`;
+  env.emailSubject = `NPU-${args.NPU} Voting Report ${args.date}`;
 
   // add the documents
   let doc1 = new Document();
