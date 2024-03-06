@@ -120,11 +120,11 @@
       <h2><i>No application updates to report.</i></h2>
     {/if}
     {#each data as app}
-      {#if (app.attributes.Reccomendation == 'support' && app.attributes.LC1 != 'Approved') || (app.attributes.Reccomendation != 'support' && app.attributes.LC1 == 'Approved')}
+      <!-- {#if (app.attributes.Reccomendation == 'support' && app.attributes.LC1 != 'Approved') || (app.attributes.Reccomendation != 'support' && app.attributes.LC1 == 'Approved')} -->
         <li>
           <h2>
-            In {app.attributes.MonthChoice}, NPU-{app.attributes.NPU} voted to
-            {app.attributes.Reccomendation}
+            In {app.attributes.MonthChoice}, NPU-{app.attributes.NPU} voted to <span data-outcome="{app.attributes.Reccomendation}">{app.attributes.Reccomendation}</span>
+
             <strong
               > <a href={app.attributes.ApplicationLink} target="_blank">{app.attributes.NameNumber}</a>
               | {app.attributes.Address}</strong
@@ -142,7 +142,7 @@
                 { day: 'numeric', month: 'long' },
               )} hearing, the
               {app.attributes.Apptype}
-              {app.attributes.LC1} this application.
+              <span data-outcome="{app.attributes.LC1}">{app.attributes.LC1}</span> this application.
             {/if}
 
             {#if app.attributes.LC2 != null}
@@ -170,7 +170,7 @@
             {/if}
           </h2>
         </li>
-      {/if}
+      <!-- {/if} -->
     {/each}
   </ul>
 </main>
@@ -187,5 +187,13 @@
 
   li {
     margin: 1.5em;
+  }
+
+  span[data-outcome='support'], span[data-outcome='Approved'] {
+    color: rgb(0, 169, 0);
+  }
+
+  span[data-outcome='nonsupport'], span[data-outcome='Denied'] {
+    color: rgb(169, 0, 0);
   }
 </style>
