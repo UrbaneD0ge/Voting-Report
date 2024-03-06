@@ -6,7 +6,7 @@
 
   data = data.props.data.features;
 
-  console.log(data);
+  // console.log(data);
 
   // replace the month number with the month name
   data.forEach((app) => {

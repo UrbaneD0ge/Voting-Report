@@ -1,38 +1,10 @@
-# create-svelte
+# Voting Report Svelte 
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## About
+The second iteration of the "Planner's Voting Report Builder" for the Atlanta Department of City Planning. This version is built with Svelte / SvelteKit in order to securely authenticate with the DocuSign API.
 
-## Creating a project
+## Usage
+Allows NPU planners to easily build Voting Reports and send them for signing. **Now with DocuSign integration!**
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Questions / Comments / Concerns
+Please send any questions to Kip@KipDunlap.me or KDunlap@atlantaga.gov for internal inquiries.
