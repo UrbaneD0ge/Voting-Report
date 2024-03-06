@@ -373,7 +373,12 @@ VICARS Community Center
         isHybrid = false;
         meet = `Meeting ID: 973 7964 7582
 Dial In: +1 646 558 8656
-Access Code: 973 7964 7582#`
+Access Code: 973 7964 7582#
+
+And in person:
+Lee + White
+929 Lee Street SW
+Suite A220`
         zURL = `https://us06web.zoom.us/meeting/register/tJMucOCuqjwvEtbo8Vddwe6J5Ykv5858FP9y`
         time = `7:00PM`
         chair = `Angela Clyde`
