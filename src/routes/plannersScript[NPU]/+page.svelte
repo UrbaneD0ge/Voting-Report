@@ -73,34 +73,31 @@
   <h2>
     We have a lot of really important information to share this month, so thank
     you for being patient!
-    <ol>
+    <ul>
       <li>
-        Last month, we kicked off the 50th Anniversary of the NPU system with a
-        proclamation from City Council! In phase one: we are commemorating the
-        legacy of Maynard Jackson and the historic trailblazers of the NPU
-        system. We will continue our celebration all year long and we hope that
-        you will celebrate with us!
+      <p>This year, the City of Atlanta is celebrating the 50th Anniversary of the Neighborhood Planning Units and the 50th Anniversary of the inauguration of Atlanta's first African-American mayor, Maynard Jackson. In honor of Mayor Jackson's birthday, the Department of City Planning is commemorating his legacy of love with <b>"Legacy Week"</b> - a week of empowering and educational events geared toward civic engagement. <a href="https://www.npuatlanta.org/50th-anniversary" target="_blank">Join us at one of our events</a> to celebrate with us and learn more about how your voice can be heard on matters concerning your neighborhood. </p>
       </li>
       <li>
-        The Department of City Planning is leading an 18-month planning process
-        to update Plan_A: Atlanta’s Comprehensive Development Plan. This effort
-        will include pop-ups, community workshops, and other events across the
-        city. You are invited to the in-person kick-off event on February 29th,
-        from 5 p.m. to 7 p.m. at Greenbriar Mall. At the event, the Department
-        will launch an online survey and mapping tool to gather public input.
-        More information about participating, including community workshops and
-        ways to meet with our planners will be posted at www.AtlantaForAll.com.
+      <p>Thanks to all who attended our <b>Plan_A kickoff</b>, the beginning of our 18-month process to update <a href="/home/showdocument?id=61663" target="_blank">Atlanta’s Comprehensive Development Plan</a>. Next up are the Community Open Houses in March and April. We invite you to attend the one closest to you and help us Plan Atlanta Together! </p>
+      </li>
+      <li style="margin-block: 0;">
+      <strong>NPU University</strong> courses coming up are:
+      </li>
+      <ul style="margin: 0;">
+          <li style="margin: 0;">“<i>Reducing Property Taxes with Homestead Exemptions and Appeals</i>” on Thursday March 14<sup>th</sup></li>
+          <li style="margin: 0;">“<i>Building Permits and Accela for Beginners</i>” on Thursday, March 28<sup>th</sup></li>
+          Register at <a href="https://www.npuatlanta.org/npuuniversity" target="_blank">NPUatlanta.org</a><br>
+      </ul>
+      <li>
+      <p>Nominations are open for the <b>Community Design Awards</b>! You can submit a nomination individually or as an NPU body. Submissions for the “<a href="https://www.atlantaga.gov/government/departments/city-planning/public-meetings-boards-commissions/urban-design-commission/design-awards" target="_blank">Award of Excellence</a>” are due by March 14<sup>th</sup>!</p>
       </li>
       <li>
-        Nominations are now open for the Community Design Awards! You can submit
-        a nomination individually or as an NPU body. The deadline for submission
-        is 4:00 pm on Thursday, February 29th.
+      <p>The&nbsp;<strong>Capital Improvements Element (CIE)</strong>&nbsp;of the Comprehensive Development Plan (CDP) is accepting project ideas for your neighborhood in the online&nbsp;<a href="https://www.atlantaga.gov/government/departments/city-planning/2021-2025-cie-update" target="_blank">submission portal</a>&nbsp;now through&nbsp;<strong>March 8<sup>th</sup></strong>.</p>
       </li>
       <li>
-        You can submit capital improvement project ideas for your neighborhood
-        in the submission portal now through March 8th.
+      <p>There’s a lot happening in DCP this year! Text <b>NPUATL</b> to <b>24251</b> to get updates on Plan_A and the 50<sup>th</sup> anniversary of the NPUs – or to make sure you don’t miss anything!</p>
       </li>
-    </ol>
+  </ul>
     Please click on the link I’ve dropped in the chat for more information on these
     updates.
   </h2>
@@ -111,8 +108,7 @@
   <h2>
     I have one last thing to report. In May of 2023, we began a pilot program to
     provide updates on your voting items as they progress through the approval
-    process. We’re excited to roll this out to all NPUs citywide and here is the
-    first application update for NPU-{npu}!
+    process. We’re excited to roll this out to all NPUs citywide and here are the application updates for NPU-{npu}!
   </h2>
   <ul>
     {#if data.length == 0}
@@ -130,12 +126,14 @@
               | {app.attributes.Address}</strong
             >.<br />
 
-            {#if app.attributes.Apptype == 'Mayors Office of Special Events'}
+            {#if app.attributes.Apptype == 'Mayors Office of Special Events' && app.attributes.LC1 == 'Approved'}
               On {new Date(app.attributes.LC1_date).toLocaleDateString(
                 'default',
                 { day: 'numeric', month: 'long' },
-              )}, the Mayors Office of Special Events issued a permit for this
+              )}, the Mayors Office of Special Events <span data-outcome="Approved">issued a permit</span> for this
               application.
+            {:else if app.attributes.Apptype == 'Mayors Office of Special Events' && app.attributes.LC1 != 'Approved'}
+            Application status is: <span data-outcome={app.attributes.LC1}>{app.attributes.LC1}</span>
             {:else}
               At their {new Date(app.attributes.LC1_date).toLocaleDateString(
                 'default',
@@ -178,8 +176,9 @@
 <style>
   main {
     text-align: left;
-    margin: 0 auto;
+    margin: 0 1rem;
     max-width: 1200px;
+    font-family: 'GT-Eesti-Regular';
   }
   h2 {
     font-size: 1em;
@@ -195,5 +194,13 @@
 
   span[data-outcome='nonsupport'], span[data-outcome='Denied'] {
     color: rgb(169, 0, 0);
+  }
+
+  span[data-outcome='defer'] {
+    color: rgb(169, 132, 0);
+  }
+
+  span[data-outcome='WITHDRAWN'] {
+    color: rgb(148, 0, 188);
   }
 </style>
