@@ -169,7 +169,7 @@
 <style>
   main {
     text-align: left;
-    margin: 0 1rem;
+    margin: 1rem 6rem;
     max-width: 1200px;
     font-family: 'GT-Eesti-Regular';
   }
