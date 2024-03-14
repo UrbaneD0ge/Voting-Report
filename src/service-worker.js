@@ -1,6 +1,7 @@
 const cacheName = 'sw-cache-v1';
 const filesToCache = [
   './',
+  './404.png',
   './NPU Logo Black.png',
   './manifest.webmanifest',
 ];
@@ -49,14 +50,15 @@ async function networkAndCache(req) {
   }
 }
 
-var GHPATH = '/';
+// var GHPATH = '/';
 
 var APP_PREFIX = 'voting_';
 
 var VERSION = 'v2';
 
-var URLS = [
-  `${GHPATH}/`,
-  `${GHPATH}/NPU Logo Black.png`,
-  `${GHPATH}/manifest.webmanifest`,
-];
+// var URLS = [
+//   `${GHPATH}/`,
+//   `${GHPATH}/404.png`,
+//   `${GHPATH}/NPU Logo Black.png`,
+//   `${GHPATH}/manifest.webmanifest`,
+// ];

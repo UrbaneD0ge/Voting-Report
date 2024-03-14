@@ -84,16 +84,9 @@
       <strong>NPU University</strong> courses coming up are:
       </li>
       <ul style="margin: 0;">
-          <li style="margin: 0;">“<i>Reducing Property Taxes with Homestead Exemptions and Appeals</i>” on Thursday March 14<sup>th</sup></li>
           <li style="margin: 0;">“<i>Building Permits and Accela for Beginners</i>” on Thursday, March 28<sup>th</sup></li>
           Register at <a href="https://www.npuatlanta.org/npuuniversity" target="_blank">NPUatlanta.org</a><br>
       </ul>
-      <li>
-      <p>Nominations are open for the <b>Community Design Awards</b>! You can submit a nomination individually or as an NPU body. Submissions for the “<a href="https://www.atlantaga.gov/government/departments/city-planning/public-meetings-boards-commissions/urban-design-commission/design-awards" target="_blank">Award of Excellence</a>” are due by March 14<sup>th</sup>!</p>
-      </li>
-      <li>
-      <p>The&nbsp;<strong>Capital Improvements Element (CIE)</strong>&nbsp;of the Comprehensive Development Plan (CDP) is accepting project ideas for your neighborhood in the online&nbsp;<a href="https://www.atlantaga.gov/government/departments/city-planning/2021-2025-cie-update" target="_blank">submission portal</a>&nbsp;now through&nbsp;<strong>March 8<sup>th</sup></strong>.</p>
-      </li>
       <li>
       <p>There’s a lot happening in DCP this year! Text <b>NPUATL</b> to <b>24251</b> to get updates on Plan_A and the 50<sup>th</sup> anniversary of the NPUs – or to make sure you don’t miss anything!</p>
       </li>
@@ -196,7 +189,7 @@
     color: rgb(169, 0, 0);
   }
 
-  span[data-outcome='defer'] {
+  span[data-outcome='defer'],span[data-outcome='HELD'] {
     color: rgb(169, 132, 0);
   }
 

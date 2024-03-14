@@ -6,7 +6,7 @@
   <div id="FoF">
     <h2>Not the</h2>
 
-    <img src="404.png" alt="404 gold pendant" width="200px" />
+    <img src="./404.png" alt="404 gold pendant" width="200px" />
     <h2>you were looking for.</h2>
   </div>
   <h4>Actually, {$page.status}: {$page.error.message}</h4>

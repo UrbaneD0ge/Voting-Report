@@ -1115,9 +1115,8 @@
     margin: 3px;
   }
 
-  :global(.pHead input) {
-    align-content: right;
-    width: fit-content;
+  input[type='text'].pHead, input[type='email'].pHead {
+    width: 60%;
   }
 
   :global(.pHead label) {
