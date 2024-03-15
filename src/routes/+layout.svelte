@@ -5,6 +5,13 @@
   import Loader from './../components/Loader.svelte';
   import { beforeNavigate, afterNavigate } from '$app/navigation';
 
+  // cancel loading when navigating to mailto links
+  beforeNavigate((event) => {
+    if (event.detail.href.startsWith('mailto:')) {
+      event.preventDefault();
+    }
+  });
+
   let isLoading = false;
 
   beforeNavigate(() => (isLoading = true));

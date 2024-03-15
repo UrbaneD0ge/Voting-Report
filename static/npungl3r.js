@@ -18,7 +18,7 @@ document.getElementById('legend').addEventListener('click', function () {
 function copy(that){
   // var inp = document.createElement('input');
   // document.body.appendChild(inp)
-  // inp.value = that.innerHTML; 
+  // inp.value = that.innerHTML;
   // // inp.select();
   // const blob = new Blob([inp], {type: 'text/html'});
   // const clipboardItem = new window.ClipboardItem({ 'text/html': blob });
@@ -60,6 +60,7 @@ $('#submit').on('click', function OnClickEvent(event) {
   year = dateControl.format("YYYY");
   casual = dateControl.format("dddd, MMMM Do");
   short = dateControl.format("MMMM Do");
+  formal = dateControl.format("dddd, MMMM D");
 
   // use getMeeting function to get meeting info
   function getMeeting(meetDetailProto) {
@@ -561,6 +562,10 @@ Access Code: 929 8209 4616#`
   if ($('#pReport')[0].checked) {
     $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="mailto:' + meeting.plannerE + '?subject=NPU-' + title + ' ' + month + ' Planner\'s Report&cc= kdunlap@atlantaga.gov;&body=Good day ' + meeting.planner.split(' ')[0] + ',%0D%0DPlease see the attached NPU-' + title + ' ' + month + ' Planner\'s report.%0D%0DThank you,">Planner\'s Report</a></h2>'
       + '<p onclick="copy(this)"><strong>NPU-' + title + ' ' + month + ' Planner\'s Report</strong><br>Good day ' + meeting.planner.split(' ')[0] + ',<br><br>Please see the attached NPU-' + title + ' ' + month + ' Planner\'s report.<br><br>Thank you,</p></div>')
+  }
+  if ($('#APAB')[0].checked) {
+    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="mailto:npumail@atlantaga.gov?subject=APAB | ' + formal + ' 10:00 AM&body=Greetings!%0D%0DThe Atlanta Planning Advisory Board (APAB) meets on the third (3rd) Saturday of every month.%0D%0DThe next meeting will be held on:%0D' + formal + ', 10:00 AM in the %22ATL Stat%22 room, Atlanta City Hall, 55 Trinity Avenue SW.%0D%0DAll APAB meetings, in compliance with the Georgia Open Meetings Act, are open to the public.%0D%0DFor more information please contact:%0DSagirah Jones, 2024 APAB President%0Dapabatlanta@gmail.com or (404) 791-1434%0D%0DLeah LaRue, Department of City Planning, Director of Neighborhood Planning Units%0Dllarue@atlantaga.gov or (404) 546-0159%0D%0DTo watch the meeting live on YouTube please click HERE%0DFor the agenda and other meeting materials please click HERE%0D%0DThank you, ">APAB ' + formal + '</a></h2>'
+      + '<p onclick="copy(this)"><strong>APAB ' + formal + ' </strong><br>Greetings!<br><br>The Atlanta Planning Advisory Board (APAB) meets on the third (3rd) Saturday of every month<br><br>The next meeting will be held on:<br>' + formal + ', 10:00 AM in the \"ATL Stat\" room, Atlanta City Hall, 55 Trinity Avenue SW.<br><br>All APAB meetings, in compliance with the Georgia Open Meetings Act, are open to the public.<br><br>For more information please contact:<br>Sagirah Jones, 2024 APAB President<br>apabatlanta@gmail.com or (404) 791-1434<br><br>Leah LaRue, Department of City Planning, Director of Neighborhood Planning Units<br>llarue@atlantaga.gov or (404) 546-0159<br><br>To watch the meeting live on YouTube please click HERE<br>For the agenda and other meeting materials please click HERE<br><br>Thank you,</p></div>')
   }
 });
 

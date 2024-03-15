@@ -51,7 +51,7 @@
         <div class="form-group"> -->
         <legend>Document type?</legend>
         <div id="legend" class="d-flex flex-wrap flex-row">
-          <span class="mx-2">
+          <span class="mx-3">
             <input
               type="checkbox"
               name="Draft_to_Chair"
@@ -60,7 +60,7 @@
             />
             <label for="draft">Draft to Chair</label>
           </span>
-          <span class="mx-2">
+          <span class="mx-3">
             <input
               type="checkbox"
               name="Final_to_Chair"
@@ -69,11 +69,11 @@
             />
             <label for="final">Final to Chair</label>
           </span>
-          <span class="mx-2">
+          <span class="mx-3">
             <input type="checkbox" name="distro" value="distro" id="distro" />
             <label for="distro">Distribution List</label>
           </span>
-          <span class="mx-2">
+          <span class="mx-3">
             <input
               type="checkbox"
               name="special"
@@ -82,11 +82,11 @@
             />
             <label for="special">Special</label>
           </span>
-          <span class="mx-2">
+          <span class="mx-3">
             <input type="checkbox" name="access" value="access" id="access" />
             <label for="access">Meeting Access</label>
           </span>
-          <span class="mx-2">
+          <span class="mx-3">
             <input
               type="checkbox"
               name="approved"
@@ -95,8 +95,8 @@
             />
             <label for="approved">Presentation Approved</label>
           </span>
-          <br /><br />
-          <span class="mx-2">
+          <br><br>
+          <span class="mx-3">
             <input
               type="checkbox"
               name="nextdoor"
@@ -105,7 +105,7 @@
             />
             <label for="nextdoor">Nextdoor Post</label>
           </span>
-          <span class="mx-2">
+          <span class="mx-3">
             <input
               type="checkbox"
               name="pReport"
@@ -114,7 +114,7 @@
             />
             <label for="pReport">Planner's Report</label>
           </span>
-          <span class="mx-2">
+          <span class="mx-3">
             <input
               type="checkbox"
               name="attendance"
@@ -122,6 +122,15 @@
               id="attendance"
             />
             <label for="attendance">Attendance</label>
+          </span>
+          <span class="mx-3">
+            <input
+              type="checkbox"
+              name="APAB"
+              value="APAB"
+              id="APAB"
+            />
+            <label for="APAB">APAB</label>
           </span>
         </div>
       </div>
