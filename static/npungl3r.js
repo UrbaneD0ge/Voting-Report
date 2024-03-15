@@ -15,6 +15,26 @@ document.getElementById('legend').addEventListener('click', function () {
   }
 });
 
+function copy(that){
+  // var inp = document.createElement('input');
+  // document.body.appendChild(inp)
+  // inp.value = that.innerHTML; 
+  // // inp.select();
+  // const blob = new Blob([inp], {type: 'text/html'});
+  // const clipboardItem = new window.ClipboardItem({ 'text/html': blob });
+  // navigator.clipboard.writeText([clipboardItem]).then(function() {
+  //     console.log('Copying to clipboard was successful!');
+  //     // flash text on copy
+  //     $(that).css('color', '#fff');
+  //     setTimeout(function(){
+  //         $(that).css('color', '#000');
+  //     }, 100);
+  // }, function(err) {
+  //   console.error('Could not copy text: ', err);
+  // });
+  // inp.remove();
+}
+
 function getPubl(selectedDate) {
   let publ = new moment(selectedDate);
   let days = 6;   // number of days to subtract
@@ -504,7 +524,7 @@ Access Code: 929 8209 4616#`
     let publ = getPubl(dateControl);
     // console.log(publ);
     // console.log('Draft');
-    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="mailto:NPU-' + title + '?subject=NPU-' + title + ' ' + month + ' draft meeting agenda&cc=dvasquez@atlantaga.gov; kdunlap@atlantaga.gov&body=Good day ' + meeting.chairHon + ' and NPU-' + title + ',%0D%0DPlease see the attached draft version of the NPU-' + title + ' ' + month + ' meeting agenda. If you notice any items missing, miscategorized, or would like to make other edits please let me know by EOB ' + publ + '.%0D%0DThank you,">DRAFT</a></h2>'
+    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="mailto:NPU-' + title + '?subject=NPU-' + title + ' ' + month + ' draft meeting agenda&cc=dvasquez@atlantaga.gov; kdunlap@atlantaga.gov&body=Good day ' + meeting.chairHon + ' and NPU-' + title + ',%0D%0DPlease see the attached draft version of the NPU-' + title + ' ' + month + ' meeting agenda. If you notice any items missing, mis-categorized, or would like to make other edits please let me know by EOB ' + publ + '.%0D%0DThank you,">DRAFT</a></h2>'
       + '<p id="draft" onclick="copy(this)"><strong>NPU-' + title + ' ' + month + ' draft meeting agenda</strong><br>Good day ' + meeting.chairHon + ' and NPU-' + title + ',<br><br>Please see the attached draft version of the NPU-' + title + ' ' + month + ' meeting agenda. If you notice any items missing, miscategorized, or would like to make other edits please let me know <u>by EOB ' + publ + '</u>.<br><br><strong>Effective January 1st, 2023, Daniel will be taking over the agenda-creation process.</strong><br><br>Thank you,</p ></div > ');
   };
   if ($('#final')[0].checked) {
@@ -531,7 +551,7 @@ Access Code: 929 8209 4616#`
     // console.log('Approved');
   }
   if ($('#nextdoor')[0].checked) {
-    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="https://nextdoor.com/city/feed/?" target="_blank" noopener>NEXTDOOR</a></h2><p id="nextdoor" onclick="copy(this)"><strong>NPU-' + title + ' | ' + casual + ' ' + meeting.time + '</strong><br>Hey Neighbors!<br><br>NPU-' + title + ' meets next ' + casual + ' at ' + meeting.time + '<br><br>To register in advance go to:<br>' + meeting.zURL + '<pre>' + meeting.meet + '<br><br></pre>Thank you,</p></div>')
+    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="https://nextdoor.com/city/feed/?" target="_blank" noopener>NEXTDOOR</a></h2><p id="nextdoor" onclick="copy(this)"><strong>NPU-' + title + ' | ' + casual + ' ' + meeting.time + '</strong><br>Hey Neighbors!<br><br>NPU-' + title + ' meets next ' + casual + ' at ' + meeting.time + '<br><br>To register in advance go to:<br>' + meeting.zURL + '<br>' + meeting.meet + '<br><br>Thank you,</p></div>')
     // console.log('Nextdoor');
   }
   if ($('#attendance')[0].checked) {
@@ -539,7 +559,7 @@ Access Code: 929 8209 4616#`
       + '<p onclick="copy(this)"><strong>NPU-' + title + ' ' + month + ' GB Attendance</strong><br>Good day ' + meeting.chairHon + ',<br><br>Please see the attached NPU-' + title + ' ' + month + ' GB attendance report for your records.<br><br>Thank you,</p></div>')
   }
   if ($('#pReport')[0].checked) {
-    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="mailto:' + meeting.plannerE + '?subject=NPU-' + title + ' ' + month + ' Planner\'s Report&cc= kdunlap@atlantaga.gov;&body=Good day ' + meeting.planner.split(' ')[0] + ',%0D%0DPlease see the attached NPU-' + title + ' ' + month + ' Planner\'s report .%0D%0DThank you,">Planner\'s Report</a></h2>'
+    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="mailto:' + meeting.plannerE + '?subject=NPU-' + title + ' ' + month + ' Planner\'s Report&cc= kdunlap@atlantaga.gov;&body=Good day ' + meeting.planner.split(' ')[0] + ',%0D%0DPlease see the attached NPU-' + title + ' ' + month + ' Planner\'s report.%0D%0DThank you,">Planner\'s Report</a></h2>'
       + '<p onclick="copy(this)"><strong>NPU-' + title + ' ' + month + ' Planner\'s Report</strong><br>Good day ' + meeting.planner.split(' ')[0] + ',<br><br>Please see the attached NPU-' + title + ' ' + month + ' Planner\'s report.<br><br>Thank you,</p></div>')
   }
 });
