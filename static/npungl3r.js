@@ -381,8 +381,8 @@ VICARS Community Center
 838 Cascade Ave SW`
         zURL = `https://us06web.zoom.us/meeting/register/tJ0udeCgqT8pEtycXQZ9s7Tk4_0J_73DZmQD`
         time = `7:00PM`
-        chair = `Kyle Lamont`
-        chairHon = `Mr. Lamont`
+        chair = `Quadrus Black`
+        chairHon = `Mr. Black`
         chairE = `chair@npu-s.org`
         planner = `Carlos Garcia`
         plannerE = `cmgarcia@atlantaga.gov`
