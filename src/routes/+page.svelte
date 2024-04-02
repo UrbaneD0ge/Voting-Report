@@ -7,8 +7,8 @@
   export let items, data, form;
   let NPUselect, disabled;
   let loading = false;
-  let dialog = document.getElementById('dialog');
-  let message = document.getElementById('message');
+  // let dialog = document.getElementById('dialog');
+  // let message = document.getElementById('message');
 
   // docuSign button is disabled until all required fields are filled, remove disabled attribute when all fields are filled
   $: disabled = !(
@@ -914,7 +914,7 @@
           ><i class="material-symbols-outlined">picture_as_pdf</i>Print to .PDF</button
         >
       </div>
-      <div>
+      <!-- <div>
         <form
         method="POST"
         use:enhance={() => {
@@ -926,9 +926,6 @@
             };
           }}
         >
-        <!-- {#if disabled}
-        <p style="text-align: center;margin-bottom: 0">Check fields at top!</p>
-        {/if} -->
 
           {#key disabled}
             <button
@@ -947,7 +944,7 @@
           <input type="hidden" name="data" value={JSON.stringify(data)} />
           <input type="hidden" name="items" value={JSON.stringify(items)} />
         </form>
-      </div>
+      </div> -->
     </div>
 
     <div id="links" style="text-align: center;">

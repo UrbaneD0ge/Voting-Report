@@ -74,22 +74,32 @@
     We have a lot of really important information to share this month, so thank
     you for being patient!
     <ul>
-      <li>
-      <p>This year, the City of Atlanta is celebrating the 50th Anniversary of the Neighborhood Planning Units and the 50th Anniversary of the inauguration of Atlanta's first African-American mayor, Maynard Jackson. In honor of Mayor Jackson's birthday, the Department of City Planning is commemorating his legacy of love with <b>"Legacy Week"</b> - a week of empowering and educational events geared toward civic engagement. <a href="https://www.npuatlanta.org/50th-anniversary" target="_blank">Join us at one of our events</a> to celebrate with us and learn more about how your voice can be heard on matters concerning your neighborhood. </p>
-      </li>
-      <li>
-      <p>Thanks to all who attended our <b>Plan_A kickoff</b>, the beginning of our 18-month process to update <a href="/home/showdocument?id=61663" target="_blank">Atlanta’s Comprehensive Development Plan</a>. Next up are the Community Open Houses in March and April. We invite you to attend the one closest to you and help us Plan Atlanta Together! </p>
-      </li>
-      <li style="margin-block: 0;">
-      <strong>NPU University</strong> courses coming up are:
-      </li>
-      <ul style="margin: 0;">
-          <li style="margin: 0;">“<i>Building Permits and Accela for Beginners</i>” on Thursday, March 28<sup>th</sup></li>
-          Register at <a href="https://www.npuatlanta.org/npuuniversity" target="_blank">NPUatlanta.org</a><br>
+      <li>A heartfelt thank you to everyone who joined us for a fantastic Legacy Week honoring the late Mayor Maynard H. Jackson, Jr.! To stay informed about this and upcoming “Love Thy Neighbor” events, text NPUATL to 24251 or visit NPUAtlanta.org.
+</li>
+<li>
+      Please join us on Monday, May 20th at Habitat for Humanity | 824 Memorial Drive - for the first of several meetings to review and discuss the Zoning 2.0 update.
+    </li>
+    <li>
+      As part of the update to Atlanta’s Comprehensive Development Plan, Plan_A Open Houses are continuing through mid-April. We invite you to attend one close to you or to visit a pop-up and help us Plan Atlanta together! Visit AtlantaforAll.com to see the dates and locations and to learn more about Plan A.
+
+      There’s a Community Open House happening on [date] at [location] in NPU-_, get details and RSVP at AtlantaForAll.com.
+    </li>
+    <li>
+      NPU University courses coming up are:
+      <ul>
+        <li style="margin-block: 0;">“City Built for the Future: Climate Action in Atlanta” on Wednesday, April 3rd;</li>
+        <li style="margin-block: 0;">“NPU 101: How does the NPU system Work” on Thursday, April 11th and</li>
+        <li style="margin-block: 0;">“Introduction to Invest Atlanta” on Tuesday, April 30th.</li>
       </ul>
-      <li>
-      <p>There’s a lot happening in DCP this year! Text <b>NPUATL</b> to <b>24251</b> to get updates on Plan_A and the 50<sup>th</sup> anniversary of the NPUs – or to make sure you don’t miss anything!</p>
-      </li>
+      <br>
+      Register at NPUAtlanta.org!
+    </li>
+    <li>
+      The April meeting of the Atlanta City Studio Book Club will be on Tuesday the 30th, details at the link in the chat.
+    </li>
+    <li>
+      Help us celebrate the best of Atlanta! Select a location, initiative, or individual actively working towards creating a more vibrant and livable city to be recognized with a Community Design Award.  Your NPU is being asked to nominate and vote today for a Community Design Awards recipient.
+    </li>
   </ul>
     Please click on the link I’ve dropped in the chat for more information on these
     updates.
@@ -99,7 +109,7 @@
   <h3>Application Updates - NPU-{npu}</h3>
   <br />
   <h2>
-    I have one last thing to report. In May of 2023, we began a pilot program to
+    I have one last thing to report. Last year, we began a pilot program to
     provide updates on your voting items as they progress through the approval
     process. We’re excited to roll this out to all NPUs citywide and here are the application updates for NPU-{npu}!
   </h2>
