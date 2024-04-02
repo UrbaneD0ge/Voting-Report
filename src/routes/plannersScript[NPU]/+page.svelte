@@ -67,8 +67,14 @@
   });
 </script>
 
+<!-- set page title -->
+<svelte:head>
+  <title>{npu} Planners Script</title>
+</svelte:head>
+
 <main>
-  <h1>Planners Script</h1>
+  <h1>NPU-{npu} Planners Script</h1>
+<h2><span style="color: red;">This version of the Planner's Report script is *EXPERIMENTAL*. Please refer to the emailed version if possible!</span></h2>
 
   <h2>
     We have a lot of really important information to share this month, so thank

@@ -954,7 +954,7 @@
             >Planner's Script</a
           >
         </h5>
-        <p>(NPU-specific, opens in new window)</p>
+        <p>(NPU-specific, opens in new window *EXPERIMENTAL*)</p>
       </div>
       <h5>
         <a
