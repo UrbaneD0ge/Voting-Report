@@ -467,8 +467,8 @@ Access Code: 940 6017 9815#`
         chair = `Zachary Adriaenssens`
         chairHon = `Mr. Adriaenssens`
         chairE = `chair@npu-x.com`
-        planner = `Inyo Cue`
-        plannerE = `icue@atlantaga.gov`
+        planner = `Anna Williams`
+        plannerE = `aewilliams@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom3@atlantaga.gov'
 
