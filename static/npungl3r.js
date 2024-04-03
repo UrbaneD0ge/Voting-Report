@@ -552,11 +552,11 @@ Access Code: 929 8209 4616#`
     // console.log('Approved');
   }
   if ($('#nextdoor')[0].checked) {
-    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="https://nextdoor.com/city/feed/?" target="_blank" noopener>NEXTDOOR</a></h2><p id="nextdoor" onclick="copy(this)"><strong>NPU-' + title + ' | ' + casual + ' ' + meeting.time + '</strong><br>Hey Neighbors!<br><br>NPU-' + title + ' meets next ' + casual + ' at ' + meeting.time + '<br><br>To register in advance go to:<br>' + meeting.zURL + '<br>' + meeting.meet + '<br><br>Thank you,</p></div>')
+    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="https://nextdoor.com/city/feed/?" target="_blank" noopener>NEXTDOOR</a></h2><pre id="nextdoor" onclick="copy(this)"><strong>NPU-' + title + ' | ' + casual + ' ' + meeting.time + '</strong><br>Hey Neighbors!<br><br>NPU-' + title + ' meets next ' + casual + ' at ' + meeting.time + '<br><br>To register in advance go to:<br>' + meeting.zURL + '<br>' + meeting.meet + '<br><br>Thank you,</pre></div>')
     // console.log('Nextdoor');
   }
   if ($('#attendance')[0].checked) {
-    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="mailto:' + title + ' chair;' + '?subject=NPU-' + title + ' ' + month + ' GB Attendance&cc= kdunlap@atlantaga.gov; dvasquez@atlantaga.gov;&body=Good day ' + meeting.chairHon + ',%0D%0DPlease see the attached NPU-' + title + ' ' + month + ' GB attendance report for your records.%0D%0DThank you,">Attendance</a> | <a href="https://survey123.arcgis.com/share/7cab6c833fc04777b357af274c0ba090" target="_blank">Survey</a></h2>'
+    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="mailto:' + title + ' chair;' + '?subject=NPU-' + title + ' ' + month + ' GB Attendance&cc= kdunlap@atlantaga.gov; dvasquez@atlantaga.gov;&body=Good day ' + meeting.chairHon + ',%0D%0DPlease see the attached NPU-' + title + ' ' + month + ' GB attendance report for your records.%0D%0DThank you,">Attendance</a> | <a href="https://survey123.arcgis.com/share/5cde6a1c6d834a7098b9998b8e1b2b58" target="_blank">Survey</a></h2>'
       + '<p onclick="copy(this)"><strong>NPU-' + title + ' ' + month + ' GB Attendance</strong><br>Good day ' + meeting.chairHon + ',<br><br>Please see the attached NPU-' + title + ' ' + month + ' GB attendance report for your records.<br><br>Thank you,</p></div>')
   }
   if ($('#pReport')[0].checked) {
