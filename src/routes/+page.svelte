@@ -914,7 +914,7 @@
           ><i class="material-symbols-outlined">picture_as_pdf</i>Print to .PDF</button
         >
       </div>
-      <!-- <div>
+      <div>
         <form
         method="POST"
         use:enhance={() => {
@@ -944,7 +944,7 @@
           <input type="hidden" name="data" value={JSON.stringify(data)} />
           <input type="hidden" name="items" value={JSON.stringify(items)} />
         </form>
-      </div> -->
+      </div>
     </div>
 
     <div id="links" style="text-align: center;">
