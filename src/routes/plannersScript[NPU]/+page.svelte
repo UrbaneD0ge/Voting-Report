@@ -83,7 +83,7 @@
       <li>A heartfelt thank you to everyone who joined us for a fantastic Legacy Week honoring the late Mayor Maynard H. Jackson, Jr.! To stay informed about this and upcoming “Love Thy Neighbor” events, text NPUATL to 24251 or visit NPUAtlanta.org.
 </li>
 <li>
-      Please join us on Monday, May 20th at Habitat for Humanity | 824 Memorial Drive - for the first of several meetings to review and discuss the Zoning 2.0 update.
+      Please join us on Monday, May 20<sup>th</sup>, 6:30pm at Habitat for Humanity | 824 Memorial Drive - for the first of several meetings to review and discuss the Zoning 2.0 update.
     </li>
     <li>
       As part of the update to Atlanta’s Comprehensive Development Plan, Plan_A Open Houses are continuing through mid-April. We invite you to attend one close to you or to visit a pop-up and help us Plan Atlanta together! Visit AtlantaforAll.com to see the dates and locations and to learn more about Plan A.
