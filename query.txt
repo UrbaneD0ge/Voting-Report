@@ -1,0 +1,5 @@
+AND%20Reccomendation%20%3D%20%27Support%27%20AND%20LC1%20%3C%3E%20%27Approved%27%20OR%20Reccomendation%20%3D%20%27nonsupport%27%20AND%20LC1%20%3C%3E%20%27Denied%27
+
+NPU='B' AND LC1 IS NOT NULL AND LC1_date > CURRENT_TIMESTAMP - 30 
+AND Reccomendation = 'Support' AND LC1 <> 'Approved' 
+AND Reccomendation = 'nonsupport' AND LC1 <> 'Denied'
