@@ -9,7 +9,7 @@
   // console.log(data);
 
   // replace the month number with the month name
-  data.forEach((app) => {
+  data?.forEach((app) => {
     switch (app.attributes.MonthChoice) {
       case '01_JAN':
         app.attributes.MonthChoice = 'January';
