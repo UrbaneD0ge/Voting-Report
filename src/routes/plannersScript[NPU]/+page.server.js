@@ -39,8 +39,4 @@ export async function load({ url, page, fetch }) {
       npu
     },
   };
-}
-
-let query = new URLSearchParams("NPU='B' AND LC1 IS NOT NULL AND LC1_date > CURRENT_TIMESTAMP - 30 AND Reccomendation = 'Support' AND LC1 <> 'Approved' OR Reccomendation = 'nonsupport' AND LC1 <> 'Denied'");
-
-console.log(query.toString());
+};
