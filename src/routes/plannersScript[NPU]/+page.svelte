@@ -139,7 +139,7 @@
               On {new Date(app.attributes.LC1_date).toLocaleDateString(
                 'default',
                 { day: 'numeric', month: 'long' },
-              )}, the Mayors Office of Special Events <span data-outcome="Approved">issued a permit</span> for this
+              )}, the Mayor’s Office of Special Events <span data-outcome="Approved">issued a permit</span> for this
               application.
             {:else if app.attributes.Apptype == 'Mayors Office of Special Events' && app.attributes.LC1 != 'Approved'}
             Application status is: <span data-outcome={app.attributes.LC1}>{app.attributes.LC1}</span>

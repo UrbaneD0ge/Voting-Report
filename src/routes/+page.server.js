@@ -1,6 +1,5 @@
 export const ssr = false;
 import { sendEnvelope } from '$lib/signingViaEmail.js';
-import { readFileSync } from 'fs';
 import { error } from '@sveltejs/kit';
 import { dsOauthServer, dsJWTClientId, impersonatedUserGuid } from '$lib/jwtConfig.json';
 import { PRIVATE_KEY } from '$env/static/private';
