@@ -91,8 +91,8 @@ Access Code: 832 4836 8602#`
         chair = `Rebecca King`
         chairHon = `Ms. King`
         chairE = `rlkintheatl@gmail.com`
-        planner = `Jessica Lavandier`
-        plannerE = `jlavandier@atlantaga.gov`
+        planner = `Punya Vats`
+        plannerE = `pvats@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom8@atlantaga.gov'
 

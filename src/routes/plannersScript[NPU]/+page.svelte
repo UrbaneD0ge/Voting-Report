@@ -58,7 +58,7 @@
         app.attributes.Apptype = 'License Review Board';
         break;
       case '3_BZA':
-        app.attributes.Apptype = 'Board of Zoning Adjustment';
+        app.attributes.Apptype = 'Board of Zoning Adjustments';
         break;
       case '4_ZRB':
         app.attributes.Apptype = 'Zoning Review Board';
