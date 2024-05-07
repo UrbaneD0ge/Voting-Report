@@ -4,6 +4,7 @@
   import { fade } from 'svelte/transition';
   import Tbody from './../components/Tbody.svelte';
   import Loader from '../components/Loader.svelte';
+  import VoteLine from '../components/VoteLine.svelte';
   export let items, data, form;
   let NPUselect, disabled;
   let loading = false;
@@ -47,10 +48,10 @@
     // header inputs
     let NPU = document.getElementById('NPU').selectedOptions[0].value || '';
     let chair = document.querySelector('#chair').value.trim() || '';
-    let chairE = document.querySelector('#chairE').value.trim() || '';
+    // let chairE = document.querySelector('#chairE').value.trim() || '';
     let loc = document.querySelector('#loc').value.trim() || '';
     let planner = document.querySelector('#planner').value.trim() || '';
-    let plannerE = document.querySelector('#plannerE').value.trim() || '';
+    // let plannerE = document.querySelector('#plannerE').value.trim() || '';
     let date = document.getElementById('date').value || '';
     let fillToggle = document.querySelector('#autofill').checked;
     let pNotes = document.querySelector('#pNotes').value.trim() || '';
@@ -77,10 +78,10 @@
     data = {
       NPU: NPU,
       chair: chair,
-      chairE: chairE,
+      // chairE: chairE,
       loc: loc,
       planner: planner,
-      plannerE: plannerE,
+      // plannerE: plannerE,
       date: date,
       fillToggle: fillToggle,
       pNotes: pNotes,
@@ -109,8 +110,8 @@
       document.querySelector('#planner').value = data.planner;
       document.querySelector('#autofill').checked = data.fillToggle;
       document.querySelector('#date').value = data.date;
-      document.querySelector('#chairE').value = data.chairE;
-      document.querySelector('#plannerE').value = data.plannerE;
+      // document.querySelector('#chairE').value = data.chairE;
+      // document.querySelector('#plannerE').value = data.plannerE;
       document.querySelector('#pNotes').value = data.pNotes || '';
     }
 
@@ -669,7 +670,7 @@
             required
           />
         </div>
-        <div
+        <!-- <div
           class="hidePrint"
           style="display: flex; justify-content:space-between;"
         >
@@ -682,7 +683,7 @@
             on:blur={storeForm}
             required
           />
-        </div>
+        </div> -->
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="date">Meeting Date:</label>
           <input
@@ -746,7 +747,7 @@
             required
           />
         </div>
-        <div
+        <!-- <div
           class="hidePrint"
           style="display: flex; justify-content:space-between;"
         >
@@ -759,7 +760,7 @@
             on:blur={storeForm}
             required
           />
-        </div>
+        </div> -->
         <div style="display: flex; justify-content:space-between;">
           <label class="pHead" for="loc">Location:</label>
           <input
@@ -914,7 +915,7 @@
           ><i class="material-symbols-outlined">picture_as_pdf</i>Print to .PDF</button
         >
       </div>
-      <div>
+      <!-- <div>
         <form
         method="POST"
         use:enhance={() => {
@@ -944,7 +945,7 @@
           <input type="hidden" name="data" value={JSON.stringify(data)} />
           <input type="hidden" name="items" value={JSON.stringify(items)} />
         </form>
-      </div>
+      </div> -->
     </div>
 
     <div id="links" style="text-align: center;">
@@ -1223,7 +1224,7 @@
     position: relative;
   }
 
-  button[data-tooltip]:before {
+  /* button[data-tooltip]:before {
     content: attr(data-tooltip);
     position: absolute;
     top: -30px;
@@ -1236,15 +1237,15 @@
     font-size: 1.2rem;
     white-space: nowrap;
     display: none;
-  }
+  } */
 
-  [data-tooltip]:hover:before {
+  /* [data-tooltip]:hover:before {
     display: block;
-  }
+  } */
 
-button[disabled] {
+/* button[disabled] {
   pointer-events: auto;
-}
+} */
 
   /* #clear {
     font-size: 1rem;
