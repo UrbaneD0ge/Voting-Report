@@ -212,4 +212,8 @@
   span[data-outcome='WITHDRAWN'] {
     color: rgb(148, 0, 188);
   }
+
+  /* .planA {
+    color: #f36810;
+  } */
 </style>
