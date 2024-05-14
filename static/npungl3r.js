@@ -560,7 +560,7 @@ Access Code: 929 8209 4616#`
       + '<p onclick="copy(this)"><strong>NPU-' + title + ' ' + month + ' GB Attendance</strong><br>Good day ' + meeting.chairHon + ',<br><br>Please see the attached NPU-' + title + ' ' + month + ' GB attendance report for your records.<br><br>Thank you,</p></div>')
   }
   if ($('#pReport')[0].checked) {
-    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="/plannersScript' + title + '" target="_blank">Planners Script</a> | <a href="mailto:' + meeting.plannerE + '?subject=NPU-' + title + ' ' + month + ' Planner\'s Report&cc= kdunlap@atlantaga.gov;&body=Good day ' + meeting.planner.split(' ')[0] + ',%0D%0DPlease see the attached NPU-' + title + ' ' + month + ' Planner\'s report.%0D%0DThank you,">Planner\'s Report</a></h2>'
+    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="/plannersScript' + title + '" target="_blank">Planners Script</a> | <a href="mailto:' + meeting.plannerE + '?subject=NPU-' + title + ' ' + month + ' Planner\'s Report&cc= kdunlap@atlantaga.gov;&body=Good day ' + meeting.planner.split(' ')[0] + ',%0D%0DPlease see the attached NPU-' + title + ' ' + month + ' Planner\'s report.%0D%0DThank you,">Email</a></h2>'
       + '<p onclick="copy(this)"><strong>NPU-' + title + ' ' + month + ' Planner\'s Report</strong><br>Good day ' + meeting.planner.split(' ')[0] + ',<br><br>Please see the attached NPU-' + title + ' ' + month + ' Planner\'s report.<br><br>Thank you,</p></div>')
   }
   if ($('#APAB')[0].checked) {
