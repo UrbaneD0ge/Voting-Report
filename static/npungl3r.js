@@ -246,8 +246,8 @@ Bistro Room
         chair = `Dr. Jasmine Hope`
         chairHon = `Dr. Hope`
         chairE = `npukatlanta@gmail.com`
-        planner = `Tshaka Warren`
-        plannerE = `twarren@atlantaga.gov`
+        planner = `Jack Staples`
+        plannerE = `jstaples@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom5@atlantaga.gov'
 
