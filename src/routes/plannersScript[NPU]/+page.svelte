@@ -79,7 +79,7 @@
 <h3>Please see links below for more information about the items your planner reported at the NPU meeting.</h3>
 <ul>
     <li>
-    <p>May marks the beginning of the “Love Thy Neighbor” phase of the NPU system’s 50<sup>th</sup> anniversary. This spring and summer, we will celebrate Atlanta’s neighborhoods and neighbors. To kick off Phase 2, the Department of City Planning is collaborating with the Atlanta Cycling Festival and ATLDOT to co-host a bike ride on Friday, May 17. For more info about this and other events, text <b>NPUATL </b>to <b>24251 </b>or visit <a href="http://npuatlanta.org/" target="_blank"><b>NPUAtlanta.org</b></a>.</p>
+    <p>May marks the beginning of the “Love Thy Neighbor” phase of the NPU system’s 50<sup>th</sup> anniversary. This spring and summer, we will celebrate Atlanta’s neighborhoods and neighbors.For more info about events, text <b>NPUATL </b>to <b>24251 </b>or visit <a href="http://npuatlanta.org/" target="_blank"><b>NPUAtlanta.org</b></a>.</p>
     </li>
     <li>
     <p>Please join us on Monday, May 20<sup>th</sup>, 6:30pm at Habitat for Humanity | 824 Memorial Drive - for the first of several meetings to review and discuss the <b><a href="https://atlzoning.com/" target="_blank">Zoning 2.0</a></b> update.</p>

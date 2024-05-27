@@ -11,16 +11,16 @@
   // let dialog = document.getElementById('dialog');
   // let message = document.getElementById('message');
 
-  // docuSign button is disabled until all required fields are filled, remove disabled attribute when all fields are filled
-  $: disabled = !(
-    data?.NPU &&
-    data?.chair &&
-    data?.chairE &&
-    data?.loc &&
-    data?.planner &&
-    data?.plannerE &&
-    data.date !== 'NaN-NaN-NaN'
-  );
+  // // docuSign button is disabled until all required fields are filled, remove disabled attribute when all fields are filled
+  // $: disabled = !(
+  //   data?.NPU &&
+  //   data?.chair &&
+  //   data?.chairE &&
+  //   data?.loc &&
+  //   data?.planner &&
+  //   data?.plannerE &&
+  //   data.date !== 'NaN-NaN-NaN'
+  // );
 
   // get items from local storage and turn them into an array
   items = JSON.parse(localStorage.getItem('items'));
@@ -48,10 +48,10 @@
     // header inputs
     let NPU = document.getElementById('NPU').selectedOptions[0].value || '';
     let chair = document.querySelector('#chair').value.trim() || '';
-    // let chairE = document.querySelector('#chairE').value.trim() || '';
-    let loc = document.querySelector('#loc').value.trim() || '';
     let planner = document.querySelector('#planner').value.trim() || '';
+    // let chairE = document.querySelector('#chairE').value.trim() || '';
     // let plannerE = document.querySelector('#plannerE').value.trim() || '';
+    let loc = document.querySelector('#loc').value.trim() || '';
     let date = document.getElementById('date').value || '';
     let fillToggle = document.querySelector('#autofill').checked;
     let pNotes = document.querySelector('#pNotes').value.trim() || '';
@@ -78,10 +78,10 @@
     data = {
       NPU: NPU,
       chair: chair,
-      // chairE: chairE,
-      loc: loc,
       planner: planner,
+      // chairE: chairE,
       // plannerE: plannerE,
+      loc: loc,
       date: date,
       fillToggle: fillToggle,
       pNotes: pNotes,
@@ -893,8 +893,8 @@
       cols="30"
       rows="3"
     ></textarea><br /><br />
-
-    {#if form && form?.status == 200}
+<!-- DocuSign Form Status Message -->
+    <!-- {#if form && form?.status == 200}
       <div style="text-align: center;">
         <h6>
           Sent Successfully! | Envelope ID: {form.body.confirmation?.envelopeId}
@@ -908,7 +908,7 @@
           >
         </h6>
       </div>
-    {/if}
+    {/if} -->
     <div class="d-flex justify-content-around align-flex-start">
       <div>
         <button name="print" id="print" class="finalButtons m-4"
@@ -975,19 +975,20 @@
   </div>
 </main>
 <footer class="bin">
-  <details id="instructions">
+  <details id="instructions" open>
     <li style="list-style-type:none;">
-      Send the saved .PDF to the NPU Chair, Daniel Vasquez and Kip Dunlap.
+      Print the finished document to .PDF.<br>
+      Email the .PDF to the NPU Chair, Daniel Vasquez, and Kip Dunlap.
     </li>
     <summary>Instructions:</summary>
     <ul style="list-style-type:'✨'">
-      <h5><b>NEW!</b></h5>
+      <!-- <h5><b>NEW!</b></h5>
       <li>DocuSign is here! When everything's ready, click the blue button to automatically email signing links to the chair and yourself (in that order). The completed document will be sent to the NPU team as well!
-      </li>
-      <li>
+      </li> -->
+      <!-- <li>
         Fill page header info - this information is saved to your device for
         future use when you click print. DocuSign depends on this info and is disabled until it's filled.
-      </li>
+      </li> -->
       </ul>
       <ul>
       <li>
@@ -998,10 +999,6 @@
         When 'Autofill application numbers' is selected, applications with a
         defined naming convention will be formatted automatically (no need to
         enter dashes). This preference is also saved to your device.
-      </li>
-      <li>
-        Instead of a pop-up telling you to enter a meeting date, the datepicker
-        will present itself.
       </li>
       <li>
         Items are draggable: Grab items by their type cell and drag them
@@ -1224,7 +1221,7 @@
     position: relative;
   }
 
-  /* button[data-tooltip]:before {
+  button[data-tooltip]:before {
     content: attr(data-tooltip);
     position: absolute;
     top: -30px;
@@ -1237,22 +1234,23 @@
     font-size: 1.2rem;
     white-space: nowrap;
     display: none;
-  } */
+  }
 
-  /* [data-tooltip]:hover:before {
+  [data-tooltip]:hover:before {
     display: block;
-  } */
+  }
 
-/* button[disabled] {
+button[disabled] {
   pointer-events: auto;
-} */
+}
 
-  /* #clear {
+  #clear {
     font-size: 1rem;
-  } */
+  }
 
   #conditions {
     grid-area: 2 / 1 / 3 / 4;
+    field-sizing: content;
   }
 
   #copyLink {

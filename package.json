@@ -1,6 +1,6 @@
 {
-	"name": "voting-report-svelte",
-	"version": "0.0.1",
+	"name": "voting-report",
+	"version": "0.0.2",
 	"private": true,
 	"node-version": "20",
 	"scripts": {
