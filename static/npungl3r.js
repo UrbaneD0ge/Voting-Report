@@ -353,11 +353,12 @@ Access Code: 985 5727 1692#`
         isHybrid = true;
         meet = `Meeting ID: 886 2169 6544
 Dial In: +1 646 558 8656
-Access Code: 886 2169 6544#
+Access Code: 886 2169 6544#`
 
-And in person:
-Adams Park Recreation Center
-1620 Delowe Dr SW`
+// And in person:
+// Adams Park Recreation Center
+// 1620 Delowe Dr SW
+
         zURL = `https://us06web.zoom.us/meeting/register/tZwrdeiupz0vHtCSIPdEIa-N6avVbaNnGXlb`
         time = `7:00PM`
         chair = `Rita Harden`
