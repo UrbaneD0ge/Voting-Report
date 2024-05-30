@@ -75,68 +75,45 @@
 <main>
   <h1>NPU-{npu} Planners Script</h1>
 <h2><span style="color: red;">This version of the Planner's Report script is *EXPERIMENTAL*. Please refer to the emailed version if possible!</span></h2>
-<h2>May 2024</h2>
+<h2>June 2024</h2>
 <h3>Please see links below for more information about the items your planner reported at the NPU meeting.</h3>
-<ul>
+<ol>
     <li>
-    <p>May marks the beginning of the “Love Thy Neighbor” phase of the NPU system’s 50<sup>th</sup> anniversary. This spring and summer, we will celebrate Atlanta’s neighborhoods and neighbors.For more info about events, text <b>NPUATL </b>to <b>24251 </b>or visit <a href="http://npuatlanta.org/" target="_blank"><b>NPUAtlanta.org</b></a>.</p>
+    <p>We are in the second month of our “Love Thy Neighbor” phase of the NPUs’ 50<sup>th</sup> anniversary. For the next few months, we are celebrating good neighbors and promoting neighborhood pride. The Department of City Planning is hosting three block parties around the city as part of our “Love Thy Neighbor” Block Party series. We’ll be kicking things off in Sylvan Hills on Saturday, June 22<sup>nd</sup>. For more info about this and other events, text <b>NPUATL</b> to <b>24251</b>.</p>
     </li>
     <li>
-    <p>Please join us on Monday, May 20<sup>th</sup>, 6:30pm at Habitat for Humanity | 824 Memorial Drive - for the first of several meetings to review and discuss the <b><a href="https://atlzoning.com/" target="_blank">Zoning 2.0</a></b> update.</p>
+    <p>The Department of City Planning is continuing to update <b>Plan_A, Atlanta’s Comprehensive Development Plan</b>. DCP is hosting workshops through mid-June. We encourage you to attend the workshop in your NPU or an adjacent NPU and visit <a href="https://www.atlantaforall.com/" target="_blank"><b>AtlantaForAll.com</b></a> to stay involved in the planning process.</p>
     </li>
     <li>
-    <p>The Department of City Planning is continuing to update <a href="https://www.atlantaforall.com/" target="_blank"><b>Plan_A</b></a>, Atlanta’s Comprehensive Development Plan. DCP is hosting workshops from mid-May through mid-June. We invite you to attend the workshop in your NPU or an adjacent NPU.</p>
+    <p>As you know, the City is working to rewrite our zoning code. On May 20<sup>th</sup>, the Department of City Planning released the new <b>ATL 2.0 Zoning</b> Ordinance Module I “Discussion Draft” for public review. This module includes draft standards for Form &amp; Frontage Districts and Use Districts. You can review and comment on the draft at <u><a href="https://atlzoning.com/" target="_blank"><b>ATLZoning.com</b></a></u>. Please join us on Tuesday, July 9<sup>th</sup> via Zoom to discuss Module I and answer any questions!</p>
     </li>
     <li>
-    <p><b>NPU University</b> courses coming up in June are:<br>
-      <ul>
-    <li><p><i>“ATLDOT Vision Zero – Building Community Champions for Safe Streets” </i>on Thursday, June 13<sup>th</sup>,</p></li>
-    <li><p><i>“Neighborhood Empowerment Workshop”</i> on Saturday, June 15<sup>th</sup>, and</p></li>
-    <li><p><i>“Urban Plan Academy”</i> on Saturday, June 22<sup>nd</sup>.</p></li>
-    <br>
-    <p>Register at <a href="https://www.npuatlanta.org/npuuniversity" target="_blank">NPUAtlanta.org</a>!</p>
-  </ul>
+    <p><b>NPU University</b> courses coming up are:</p>
     </li>
-    <li>
-    <p>The Office of Design in the Department of City Planning is reading books to explore what lies behind the creation of Atlanta’s physical design and the City’s official plans. Join us to discuss how ideas and examples related to historic preservation, planning, and public space influence the city’s physical design through the lens of Atlanta City Design: Aspiring to the Beloved Community. Our focus and the topics change monthly and in person on the last Tuesday of every month at City Hall unless otherwise noted.</p>
-
     <ul>
-        <li>
-        <p>What: May 2024 Atlanta City Studio Book Club Meeting</p>
-        </li>
-        <li>
-        <p>When: Wednesday, May 22<sup>nd</sup>, 2024, at 6:30 PM</p>
-        </li>
-        <li>
-        <p>Where: Committee Room 2 - City Hall, 55 Trinity Ave, Atlanta, GA 30303</p>
-        </li>
-        <li>
-        <p>Why: The history of segregation in state and city park design is still visible in the South today. In recognition of <a href="https://www.nps.gov/subjects/nationalregister/preservation-month.htm" target="_blank">Preservation Month</a>, when events occur to "promote historical places, instill national and community pride, promote heritage tourism, and show the social and economic benefits of historic preservation” across the country, the Atlanta City Studio Book Club will explore <a href="https://lalh.org/books/featured/landscapes-exclusion/" target="_blank">LANDSCAPES OF EXCLUSION: State Parks and Jim Crow in the American South</a> by William E. O’Brien. Members of the <a href="https://www.atlantaga.gov/government/departments/city-planning/historic-preservation" target="_blank">Historic Preservation Studio</a> will provide local context; they will show how Atlanta fits in the broader history, referencing the Future Places Project 2019 Survey of City of Atlanta Parks and their resources, called <a href="https://www.atlfutureplaces.com/every-park-tells-a-story" target="_blank">Every Park Tells a Story: City of Atlanta Parks Historic Resource Survey</a>.</p>
-      </li>
-    </ul> <br>
-      <p>
-        For details on the Atlanta City Studio Book Club, visit <a href="https://www.atlcitystudio.org/acs-book-club" target="_blank">our website</a>. If you need something else ACS Book Club related, please email Liza Mueller, the organizer, at <a href="mailto:emueller@atlantaga.gov?subject=ACS Book Club Question" target="_blank">emueller@atlantaga.gov</a>.
-      </p>
-  </li>
+        <li><i>“ATLDOT Vision Zero – Building Community Champions for Safe Streets” </i>on June 13<sup>th</sup>,</li>
+        <li><i>“Neighborhood Empowerment Workshop”</i> on June 15<sup>th</sup>,</li>
+        <li><i>“Urban Plan Academy”</i> on June 22<sup>nd</sup>,</li>
+        <li><i>“Atlanta Community Engagement Playbook”</i> on July 27<sup>th</sup>, and</li>
+        <li><i>“Understanding Public Financing”</i> on July 29<sup>th</sup>.</li>
+    </ul>
     <li>
-    <p>The Atlanta Urban Design Commission’s annual <b>Design Awards</b> will be held on May 31<sup>st</sup> at 6:00 pm in the City Hall Atrium. The event is free to the public.</p>
+    <p> The June meeting of the <b>Atlanta City Studio Book Club</b> will be on Wednesday the 25<sup>th</sup> at 6:30pm, details at the link in the chat.</p>
     </li>
-</ul>
+</ol>
 <br>
 
   <hr />
-  <h3>Application Updates - NPU-{npu}</h3>
-  <br />
-  <h2>
-    Lastly, I have the application updates for NPU-{npu}!
-  </h2>
+  <h3>
+    Lastly, I have the application updates for NPU-{npu}:
+  </h3>
   <ul>
     {#if data.length == 0}
       <br />
       <h2><i>No application updates to report.</i></h2>
     {/if}
     {#each data as app}
-      <!-- {#if (app.attributes.Reccomendation == 'support' && app.attributes.LC1 != 'Approved') || (app.attributes.Reccomendation != 'support' && app.attributes.LC1 == 'Approved')} -->
+      {#if app.attributes.LC1 != 'HELD'}
         <li>
           <h2>
             In {app.attributes.MonthChoice}, NPU-{app.attributes.NPU} voted to <span data-outcome="{app.attributes.Reccomendation}">{app.attributes.Reccomendation}</span>
@@ -188,7 +165,7 @@
             {/if}
           </h2>
         </li>
-      <!-- {/if} -->
+      {/if}
     {/each}
   </ul>
   <br>
@@ -226,7 +203,7 @@
   }
 
   /* Select ul elements inside another ul */
-  ul ul li, ul ul p {
+  ol ul li, ol ul p {
     margin-block: 0;
   }
 
