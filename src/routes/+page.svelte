@@ -5,7 +5,8 @@
   import Tbody from './../components/Tbody.svelte';
   import Loader from '../components/Loader.svelte';
   import VoteLine from '../components/VoteLine.svelte';
-  export let items, data, form;
+  export let items, data
+  // , form;
   let NPUselect, disabled;
   let loading = false;
   // let dialog = document.getElementById('dialog');
@@ -1110,7 +1111,8 @@
     margin: 3px;
   }
 
-  input[type='text'].pHead, input[type='email'].pHead {
+  /* input[type='email'].pHead, */
+  input[type='text'].pHead {
     width: 60%;
   }
 
@@ -1217,11 +1219,11 @@
   }
 
   /* #docusign disabled tooltip */
-  [data-tooltip] {
+  /* [data-tooltip] {
     position: relative;
-  }
+  } */
 
-  button[data-tooltip]:before {
+  /* button[data-tooltip]:before {
     content: attr(data-tooltip);
     position: absolute;
     top: -30px;
@@ -1234,15 +1236,15 @@
     font-size: 1.2rem;
     white-space: nowrap;
     display: none;
-  }
+  } */
 
-  [data-tooltip]:hover:before {
+  /* [data-tooltip]:hover:before {
     display: block;
-  }
+  } */
 
-button[disabled] {
+/* button[disabled] {
   pointer-events: auto;
-}
+} */
 
   #clear {
     font-size: 1rem;
@@ -1250,7 +1252,9 @@ button[disabled] {
 
   #conditions {
     grid-area: 2 / 1 / 3 / 4;
-    field-sizing: content;
+    /* field-sizing: content; */
+    text-wrap: wrap;
+    break-inside: auto;
   }
 
   #copyLink {
@@ -1351,15 +1355,15 @@ button[disabled] {
   }
 
   @media print {
-    #planner,
+    /* #planner,
     #loc {
       width: 45% !important;
-    }
+    }*/
     #signature {
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
-    main {
+    * {
       filter: grayscale(100%);
       -webkit-filter: grayscale(100%);
     }
@@ -1368,14 +1372,13 @@ button[disabled] {
       margin: 0.5in 0.1in !important;
     }
 
-    .hidePrint,
+    /* .hidePrint, #docuSign*/
     #clear,
     #fillToggle,
     #links,
     #instructions,
     #newItem,
-    #print,
-    #docuSign {
+    #print {
       display: none !important;
       visibility: hidden !important;
     }
@@ -1505,3 +1508,4 @@ button[disabled] {
     padding-right: 5px;
   }
 </style>
+
