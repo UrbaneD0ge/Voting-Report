@@ -113,7 +113,7 @@
       <h2><i>No application updates to report.</i></h2>
     {/if}
     {#each data as app}
-      {#if app.attributes.LC1 != 'HELD'}
+      <!-- {#if app.attributes.LC1 != 'HELD'} -->
         <li>
           <h2>
             In {app.attributes.MonthChoice}, NPU-{app.attributes.NPU} voted to <span data-outcome="{app.attributes.Reccomendation}">{app.attributes.Reccomendation}</span>
@@ -165,7 +165,7 @@
             {/if}
           </h2>
         </li>
-      {/if}
+      <!-- {/if} -->
     {/each}
   </ul>
   <br>

@@ -30,6 +30,8 @@ export async function load({ url, page, fetch }) {
 
   const data = await res.json();
 
+  console.log(data);
+
   // console.log(npu);
 
   return {
