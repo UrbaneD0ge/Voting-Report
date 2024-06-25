@@ -262,8 +262,8 @@ Access Code: 961 2883 9632#`
         chair = `Yvonne "Shadé" Jones`
         chairHon = `Ms. Jones`
         chairE = `chair@npulatlanta.org`
-        planner = `Daniel Vasquez`
-        plannerE = `dvasquez@atlantaga.gov`
+        planner = `Nathan Gallentine`
+        plannerE = `ngallentine@atlantaga.gov`
         note = ''
         zMail = 'npuzoomroom1@atlantaga.gov'
 
