@@ -473,22 +473,11 @@
       document.querySelector('#pNotes').outerHTML =
         `<h5 id="pNotes">${notes}</h5>`;
       // Hide instructions, print btn, and delete item buttons for printing
-      // document.getElementById('instructions').style.display = 'none';
-      document.getElementById('print').style.display = 'none';
-      // document.getElementById('links').style.display = 'none';
       document.getElementById('signature').style.display = 'block';
       document.querySelectorAll('.btn-close').forEach((btn) => {
         btn.style.display = 'none';
       });
 
-      // if comment cells are empty, remove them
-      // document
-      //   .querySelectorAll('td.comments[contenteditable="true"]')
-      //   .forEach((cell) => {
-      //     if (cell.textContent === '' && cell.classList.contains('comments')) {
-      //       cell.parentElement.remove();
-      //     }
-      //   });
     });
 
     // on print button click, print page
@@ -512,15 +501,7 @@
           cell.classList.remove('highlight');
         }
       });
-      // check if any disp cell contains "PENDING", if so, cancel printing
-      // if (document.querySelectorAll('.highlight').length > 0) {
-      //   message.innerText = 'Please select a disposition for all items';
-      //   dialog.showModal();
-      //   // return;
-      // }
-      // else {
-      //   window.print();
-      // }
+
 
       if (document.querySelectorAll('.highlight').length > 0) {
         if (
@@ -1195,7 +1176,7 @@
   }
 
   .bin {
-    margin: 0 auto;
+    margin: 15px auto;
     max-width: 80vw;
     padding: 0 10px;
   }
@@ -1252,7 +1233,6 @@
 
   #conditions {
     grid-area: 2 / 1 / 3 / 4;
-    /* field-sizing: content; */
     text-wrap: wrap;
     break-inside: auto;
   }
@@ -1320,11 +1300,6 @@
       grid-template-columns: 1fr 1fr 1fr;
     }
 
-    main {
-      margin: 0 0 !important;
-      max-width: 100% !important;
-    }
-
     #headerInputs {
       flex-direction: column;
       max-width: 100%;
@@ -1333,25 +1308,21 @@
     tbody > tr :nth-child(2) {
       width: 33%;
     }
-    .bin {
+    /* .bin {
       width: 100% !important;
-    }
+    } */
   }
 
   @media only screen and (max-width: 425px) {
-    .bin {
+    /* .bin {
       width: 100% !important;
-    }
+    } */
     #dcpLogo {
       width: 100%;
     }
     #submit {
       grid-area: 3 / 1 / 4 / 4;
     }
-  }
-
-  @page {
-    margin: 0.25in 0.5in !important;
   }
 
   @media print {
@@ -1369,7 +1340,7 @@
     }
 
     @page {
-      margin: 0.5in 0.1in !important;
+      margin: 2in 0.1in 0.5in !important;
     }
 
     /* .hidePrint, #docuSign*/
