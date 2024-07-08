@@ -75,30 +75,29 @@
 <main>
   <h1>NPU-{npu} Planners Script</h1>
 <h2><span style="color: red;">This version of the Planner's Report script is *EXPERIMENTAL*. Please refer to the emailed version if possible!</span></h2>
-<h2>June 2024</h2>
+<h2>July 2024</h2>
 <h3>Please see links below for more information about the items your planner reported at the NPU meeting.</h3>
 <ol>
     <li>
-    <p>We are in the second month of our “Love Thy Neighbor” phase of the NPUs’ 50<sup>th</sup> anniversary. For the next few months, we are celebrating good neighbors and promoting neighborhood pride. The Department of City Planning is hosting three block parties around the city as part of our “Love Thy Neighbor” Block Party series. We’ll be kicking things off in Sylvan Hills on Saturday, June 22<sup>nd</sup>. For more info about this and other events, text <b>NPUATL</b> to <b>24251</b>.</p>
+    <p>We are halfway through our “Love Thy Neighbor” phase of the NPUs’ 50<sup>th</sup> anniversary. For the next couple of months, we’re celebrating good neighbors and promoting neighborhood pride. Coming up in August, the Department of City Planning is hosting <b>Neighborhood Spirit Week</b>, a week-long celebration of the heart and soul of Atlanta - its amazing neighborhoods! Join us for a week of fun activities and events as we mark the 50th anniversary of the NPUs. For more info about this and other events, text <b>NPUATL</b> to <b>24251</b>.</p>
     </li>
     <li>
-    <p>The Department of City Planning is continuing to update <b>Plan_A, Atlanta’s Comprehensive Development Plan</b>. DCP is hosting workshops through mid-June. We encourage you to attend the workshop in your NPU or an adjacent NPU and visit <a href="https://www.atlantaforall.com/" target="_blank"><b>AtlantaForAll.com</b></a> to stay involved in the planning process.</p>
+    <p>The Department of City Planning is continuing to update <b>Plan_A, Atlanta’s Comprehensive Development Plan</b>. We encourage you to attend the workshop in your NPU or an adjacent NPU and visit <a href="https://www.atlantaforall.com/" target="_blank"><b>AtlantaForAll.com</b></a> to stay involved in the planning process.</p>
     </li>
     <li>
-    <p>As you know, the City is working to rewrite our zoning code. On May 20<sup>th</sup>, the Department of City Planning released the new <b>ATL 2.0 Zoning</b> Ordinance Module I “Discussion Draft” for public review. This module includes draft standards for Form &amp; Frontage Districts and Use Districts. You can review and comment on the draft at <u><a href="https://atlzoning.com/" target="_blank"><b>ATLZoning.com</b></a></u>. Please join us on Tuesday, July 9<sup>th</sup> via Zoom to discuss Module I and answer any questions!</p>
+    <p>As you know, the City is working to rewrite our zoning code. On May 20<sup>th</sup>, the Department of City Planning released the new <b>ATL 2.0 Zoning</b> Ordinance Module I “Discussion Draft” for public review. This module includes draft standards for Form &amp; Frontage Districts and Use Districts. You can review and comment on the draft at <u><a href="https://atlzoning.com/" target="_blank"><b>ATLZoning.com</b></a></u>.</p>
     </li>
     <li>
     <p><b>NPU University</b> courses coming up are:</p>
     </li>
     <ul>
-        <li><i>“ATLDOT Vision Zero – Building Community Champions for Safe Streets” </i>on June 13<sup>th</sup>,</li>
-        <li><i>“Neighborhood Empowerment Workshop”</i> on June 15<sup>th</sup>,</li>
-        <li><i>“Urban Plan Academy”</i> on June 22<sup>nd</sup>,</li>
-        <li><i>“Atlanta Community Engagement Playbook”</i> on July 27<sup>th</sup>, and</li>
-        <li><i>“Understanding Public Financing”</i> on July 29<sup>th</sup>.</li>
+        <li><i>“Atlanta Community Engagement Playbook”</i> on July 27<sup>th</sup>,</li>
+        <li><i>“Bylaws Clinic”</i> on July 31<sup>st</sup>,</li>
+        <li><i>“Election Integrity Clinic”</i> on August 8<sup>th</sup>, and</li>
+        <li><i>“Navigating Mortgage & Renter Challenges”</i> on August 29<sup>th</sup>.</li>
     </ul>
     <li>
-    <p> The June meeting of the <b>Atlanta City Studio Book Club</b> will be on Wednesday the 25<sup>th</sup> at 6:30pm, details at the link in the chat.</p>
+    <p> The next meeting of the <b>Atlanta City Studio Book Club</b> will be on Tuesday, July 30<sup>th</sup> at 6:30pm details at the link in the chat.</p>
     </li>
 </ol>
 <br>
