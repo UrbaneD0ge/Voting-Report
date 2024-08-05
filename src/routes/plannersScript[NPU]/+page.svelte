@@ -65,6 +65,22 @@
         break;
     }
   });
+
+  function copyLink() {
+    let thisButton = this.parentElement.querySelector('a');
+    navigator.clipboard.writeText(thisButton.href);
+    console.log(thisButton.href);
+    this.innerText = 'Copied!';
+    this.style.backgroundColor = 'black';
+    this.style.color = 'white';
+    this.style.borderColor = 'white';
+    setTimeout(() => {
+      this.innerText = 'Copy Link';
+      this.style.backgroundColor = 'buttonface';
+      this.style.color = 'black';
+      this.style.borderColor = 'black';
+    }, 1000);
+  }
 </script>
 
 <!-- set page title -->
@@ -75,11 +91,73 @@
 <main>
   <h1>NPU-{npu} Planners Script</h1>
 <h2><span style="color: red;">This version of the Planner's Report script is *EXPERIMENTAL*. Please refer to the emailed version if possible!</span></h2>
-<h2>July 2024</h2>
-<h3>Please see links below for more information about the items your planner reported at the NPU meeting.</h3>
+<h3>Planners: Please read the updates below and paste the links in the Zoom chat.</h3>
+<h2>August 2024</h2>
+<h2><b>First, the updates from NPU-{npu}'s previous voting items.</b></h2>
+<ul>
+  {#if data.length == 0}
+    <br />
+    <h2><i>No application updates to report.</i></h2>
+  {/if}
+  {#each data as app}
+    <!-- {#if app.attributes.LC1 != 'HELD'} -->
+      <li>
+        <h2>
+          In {app.attributes.MonthChoice}, NPU-{app.attributes.NPU} voted to <span data-outcome="{app.attributes.Reccomendation}">{app.attributes.Reccomendation}</span>
+
+          <b> <a href={app.attributes.ApplicationLink} target="_blank">{app.attributes.NameNumber}</a>
+            | {app.attributes.Address}</b>.
+
+          {#if app.attributes.Apptype == 'Mayors Office of Special Events' && app.attributes.LC1 == 'Approved'}
+            On {new Date(app.attributes.LC1_date).toLocaleDateString(
+              'default',
+              { day: 'numeric', month: 'long' },
+            )}, the Mayor’s Office of Special Events <span data-outcome="Approved">issued a permit</span> for this
+            application.
+          {:else if app.attributes.Apptype == 'Mayors Office of Special Events' && app.attributes.LC1 != 'Approved'}
+          Application status is: <span data-outcome={app.attributes.LC1}>{app.attributes.LC1}</span>
+          {:else}
+            At their {new Date(app.attributes.LC1_date).toLocaleDateString(
+              'default',
+              { day: 'numeric', month: 'long' },
+            )} hearing, the
+            {app.attributes.Apptype}
+            <span data-outcome="{app.attributes.LC1}">{app.attributes.LC1}</span> this application.
+          {/if}
+
+          {#if app.attributes.LC2 != null}
+            {#if app.attributes.Apptype == 'License Review Board'}
+              <br />
+              On {new Date(app.attributes.LC2_date).toLocaleDateString(
+                'default',
+                { day: 'numeric', month: 'long' },
+              )}, the License Review Board {app.attributes.LC2} this application.
+            {:else}
+              <br />
+              On {new Date(app.attributes.LC2_date).toLocaleDateString(
+                'default',
+                { day: 'numeric', month: 'long' },
+              )}, the City Council Zoning Committee {app.attributes.LC2} this application.
+            {/if}
+          {/if}
+
+          {#if app.attributes.LC3 != null}
+            <br />
+            On {new Date(app.attributes.LC3_date).toLocaleDateString(
+              'default',
+              { day: 'numeric', month: 'long' },
+            )}, City Council {app.attributes.LC3} this application.
+          {/if}
+        </h2>
+      </li>
+    <!-- {/if} -->
+  {/each}
+</ul>
+<hr>
+<h2><b>Next, the updates from the Planning Department:</b></h2>
 <ol>
     <li>
-    <p>We are halfway through our “Love Thy Neighbor” phase of the NPUs’ 50<sup>th</sup> anniversary. For the next couple of months, we’re celebrating good neighbors and promoting neighborhood pride. Coming up in August, the Department of City Planning is hosting <b>Neighborhood Spirit Week</b>, a week-long celebration of the heart and soul of Atlanta - its amazing neighborhoods! Join us for a week of fun activities and events as we mark the 50th anniversary of the NPUs. For more info about this and other events, text <b>NPUATL</b> to <b>24251</b>.</p>
+    <p>We are in the final month of our “Love Thy Neighbor” phase of the NPUs’ 50th anniversary. This phase celebrated good neighbors and promoted neighborhood pride. To conclude this phase, the Department of City Planning is hosting <b>Neighborhood Spirit Week (August 12-17)</b>, a week-long celebration of the heart and soul of Atlanta - its amazing neighborhoods! Join us for a week of fun activities and events as we mark the 50th anniversary of the NPUs. For more info about this and other events, text <b>NPUATL</b> to <b>24251</b>.</p>
     </li>
     <li>
     <p>The Department of City Planning is continuing to update <b>Plan_A, Atlanta’s Comprehensive Development Plan</b>. We encourage you to attend the workshop in your NPU or an adjacent NPU and visit <a href="https://www.atlantaforall.com/" target="_blank"><b>AtlantaForAll.com</b></a> to stay involved in the planning process.</p>
@@ -89,88 +167,43 @@
     </li>
     <li>
     <p><b>NPU University</b> courses coming up are:</p>
-    </li>
+
     <ul>
-        <li><i>“Atlanta Community Engagement Playbook”</i> on July 27<sup>th</sup>,</li>
-        <li><i>“Bylaws Clinic”</i> on July 31<sup>st</sup>,</li>
-        <li><i>“Election Integrity Clinic”</i> on August 8<sup>th</sup>, and</li>
-        <li><i>“Navigating Mortgage & Renter Challenges”</i> on August 29<sup>th</sup>.</li>
-    </ul>
+        <li><i>Elections Integrity Clinic</i></li>
+        <li><i>Navigating Mortgage & Renter Challenges</i></li>
+        <li><i>Code Enforcement Academy</i></li>
+        <li><i>Procedures III</i></li>
+        <li><i>Community Engagement Playbook</i></li>
+        <li><i>Density Matters and Neighborhood Revitalization</i></li>
+        <li><i>Intro to Geographic Information Systems (GIS)</i></li>
+    </ul>   </li>
     <li>
-    <p> The next meeting of the <b>Atlanta City Studio Book Club</b> will be on Tuesday, July 30<sup>th</sup> at 6:30pm details at the link in the chat.</p>
+    <p> The next meeting of the <b>Atlanta City Studio Book Club</b> will be on Tuesday, August 27<sup>th</sup> at 6:30pm details at the link in the chat.</p>
     </li>
 </ol>
-<br>
-
-  <hr />
-  <h3>
-    Lastly, I have the application updates for NPU-{npu}:
-  </h3>
-  <ul>
-    {#if data.length == 0}
-      <br />
-      <h2><i>No application updates to report.</i></h2>
-    {/if}
-    {#each data as app}
-      <!-- {#if app.attributes.LC1 != 'HELD'} -->
-        <li>
-          <h2>
-            In {app.attributes.MonthChoice}, NPU-{app.attributes.NPU} voted to <span data-outcome="{app.attributes.Reccomendation}">{app.attributes.Reccomendation}</span>
-
-            <b
-              > <a href={app.attributes.ApplicationLink} target="_blank">{app.attributes.NameNumber}</a>
-              | {app.attributes.Address}</b
-            >.<br />
-
-            {#if app.attributes.Apptype == 'Mayors Office of Special Events' && app.attributes.LC1 == 'Approved'}
-              On {new Date(app.attributes.LC1_date).toLocaleDateString(
-                'default',
-                { day: 'numeric', month: 'long' },
-              )}, the Mayor’s Office of Special Events <span data-outcome="Approved">issued a permit</span> for this
-              application.
-            {:else if app.attributes.Apptype == 'Mayors Office of Special Events' && app.attributes.LC1 != 'Approved'}
-            Application status is: <span data-outcome={app.attributes.LC1}>{app.attributes.LC1}</span>
-            {:else}
-              At their {new Date(app.attributes.LC1_date).toLocaleDateString(
-                'default',
-                { day: 'numeric', month: 'long' },
-              )} hearing, the
-              {app.attributes.Apptype}
-              <span data-outcome="{app.attributes.LC1}">{app.attributes.LC1}</span> this application.
-            {/if}
-
-            {#if app.attributes.LC2 != null}
-              {#if app.attributes.Apptype == 'License Review Board'}
-                <br />
-                On {new Date(app.attributes.LC2_date).toLocaleDateString(
-                  'default',
-                  { day: 'numeric', month: 'long' },
-                )}, the License Review Board {app.attributes.LC2} this application.
-              {:else}
-                <br />
-                On {new Date(app.attributes.LC2_date).toLocaleDateString(
-                  'default',
-                  { day: 'numeric', month: 'long' },
-                )}, the City Council Zoning Committee {app.attributes.LC2} this application.
-              {/if}
-            {/if}
-
-            {#if app.attributes.LC3 != null}
-              <br />
-              On {new Date(app.attributes.LC3_date).toLocaleDateString(
-                'default',
-                { day: 'numeric', month: 'long' },
-              )}, City Council {app.attributes.LC3} this application.
-            {/if}
-          </h2>
-        </li>
-      <!-- {/if} -->
-    {/each}
-  </ul>
+<h3>Links to post:</h3>
   <br>
+  <div style="display: flex;justify-content:space-around">
+  <h5>
+    <a
+      href="https://www.atlantaga.gov/government/departments/city-planning/neighborhood-planning-units/updates"
+      target="_blank">Updates Page</a
+    ><br>
+    <button id="copyLink" on:click={copyLink}>Copy Link</button>
+  </h5>
+  <h5>
+    <a
+      href="https://coaplangis.maps.arcgis.com/apps/dashboards/a7ab4e0bb5034b219c63a160a7538708#&NPU={npu}"
+      target="_blank">Applications Table</a
+    ><br>
+    <button id="copyApp" on:click={copyLink}>Copy Link</button>
+  </h5></div>
 </main>
 
 <style>
+  button {
+    border-radius: 5px;
+  }
   main {
     text-align: left;
     margin: 1rem 6rem;
@@ -179,6 +212,10 @@
   }
   h2 {
     font-size: 1em;
+  }
+
+  h5 {
+    text-align: center;
   }
 
   li {
