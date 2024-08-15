@@ -2,10 +2,10 @@
     "theme_color": "#000000",
     "background_color": "#ffffff",
     "display": "standalone",
-    "scope": "https://voting-report-svelte.vercel.app/",
+    "scope": "https://voting-report.vercel.app/",
     "start_url": "/",
     "name": "Voting Report",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "engines": {
         "node": "20.0.0"
     },

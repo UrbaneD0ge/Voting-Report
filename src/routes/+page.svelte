@@ -957,7 +957,7 @@
   </div>
 </main>
 <footer class="bin">
-  <details id="instructions" open>
+  <details id="instructions">
     <li style="list-style-type:none;">
       Print the finished document to .PDF.<br>
       Email the .PDF to the NPU Chair, Daniel Vasquez, and Kip Dunlap.
@@ -1033,7 +1033,7 @@
       href="https://www.atlantaga.gov/government/departments/city-planning"
       target="_blank">Department of City Planning</a
     >, City of Atlanta | Send questions and bug reports to
-    <a href="mailto:kdunlap@atlantaga.gov">KDunlap@AtlantaGA.gov</a> | Version 2.0.0
+    <a href="mailto:kdunlap@atlantaga.gov">KDunlap@AtlantaGA.gov</a> | Version 2.0.1
   </p>
 </footer>
 
@@ -1340,7 +1340,7 @@
     }
 
     @page {
-      margin: 2in 0.1in 0.5in !important;
+      margin: 0.5in 0.1in 0.5in !important;
     }
 
     /* .hidePrint, #docuSign*/
