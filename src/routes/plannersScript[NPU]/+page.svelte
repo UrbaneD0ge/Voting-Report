@@ -157,7 +157,7 @@
 <h2><b>Next, the updates from the Planning Department:</b></h2>
 <ol>
     <li>
-    <p>We are in the final month of our “Love Thy Neighbor” phase of the NPUs’ 50th anniversary. This phase celebrated good neighbors and promoted neighborhood pride. To conclude this phase, the Department of City Planning is hosting <b>Neighborhood Spirit Week (August 12-17)</b>, a week-long celebration of the heart and soul of Atlanta - its amazing neighborhoods! Join us for a week of fun activities and events as we mark the 50th anniversary of the NPUs. For more info about this and other events, text <b>NPUATL</b> to <b>24251</b>.</p>
+    <p>We are in the final month of our “Love Thy Neighbor” phase of the NPUs’ 50th anniversary. This phase celebrated good neighbors and promoted neighborhood pride. For more info about this and other events, text <b>NPUATL</b> to <b>24251</b>.</p>
     </li>
     <li>
     <p>The Department of City Planning is continuing to update <b>Plan_A, Atlanta’s Comprehensive Development Plan</b>. We encourage you to attend the workshop in your NPU or an adjacent NPU and visit <a href="https://www.atlantaforall.com/" target="_blank"><b>AtlantaForAll.com</b></a> to stay involved in the planning process.</p>
@@ -177,9 +177,6 @@
         <li><i>Density Matters and Neighborhood Revitalization</i></li>
         <li><i>Intro to Geographic Information Systems (GIS)</i></li>
     </ul>   </li>
-    <li>
-    <p> The next meeting of the <b>Atlanta City Studio Book Club</b> will be on Tuesday, August 27<sup>th</sup> at 6:30pm details at the link in the chat.</p>
-    </li>
 </ol>
 <h3>Links to post:</h3>
   <br>
