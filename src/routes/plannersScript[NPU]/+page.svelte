@@ -177,10 +177,18 @@
       <li>Urban Plan Academy</li>
     </ul>
   </li>
+  <li>Please <a href="https://arcg.is/1y050T0" target="_blank">follow this link</a> to a brief survey in the chat so you can <strong>tell us about your experience with your NPU</strong>. Please take a few minutes to complete the survey, which will help us identify opportunities to strengthen the NPU system.</li>
 </ol>
 <h3>Links to post:</h3>
   <br>
   <div style="display: flex;justify-content:space-around">
+    <h5>
+      <a
+        href="https://arcg.is/1y050T0"
+        target="_blank">NPU Survey</a
+      ><br>
+      <button id="copySurvey" on:click={copyLink}>Copy Link</button>
+    </h5>
   <h5>
     <a
       href="https://www.atlantaga.gov/government/departments/city-planning/neighborhood-planning-units/updates"
@@ -194,7 +202,8 @@
       target="_blank">Applications Table</a
     ><br>
     <button id="copyApp" on:click={copyLink}>Copy Link</button>
-  </h5></div>
+  </h5>
+</div>
 </main>
 
 <style>
