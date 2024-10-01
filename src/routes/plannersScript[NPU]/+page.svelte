@@ -155,37 +155,29 @@
 </ul>
 <hr>
 <h2><b>Next, the updates from the Planning Department:</b></h2>
-<ul>
+<ol>
   <li>
-    <p>As the <b>NPU’s 50th anniversary celebration</b> continues, September marks the beginning of our final phase: Planning Atlanta Together. In this phase, we will begin discussing the future of our NPU system and how we can empower neighborhoods to strengthen the NPUs. Last month, nearly 100 Sylvan Hills residents joined us for our first Love Thy Neighbor Block Party, and we are looking forward to hosting the next one in Adamsville in NPU-H on September 14<sup>th</sup>. For more info about this and other events, text <b>NPUATL</b> to <b>24251</b>.</p>
+    <p>As the <b>NPU’s 50<sup>th</sup> anniversary celebration</b> continues, September marks the beginning of our final phase: Planning Atlanta Together. Join us on a bike ride to commemorate the 50<sup>th</sup> anniversary of the NPU system! We’ll pedal around Hartsfield-Jackson Atlanta International Airport, ending at Morehouse College, Maynard Jackson’s alma mater. Meet us on Saturday, October 5<sup>th</sup> at 9:30 AM at the College Park MARTA Station to join the ride.
+      <br><br>
+      Join us on Saturday, November 9<sup>th</sup> from 11:00 AM to 4:00 PM for the <b>Love Thy Neighbor(hood) Festival</b> at Historic Fourth Ward Park. This vibrant celebration of Atlanta’s neighborhoods is our final event of the year -- honoring the 50<sup>th</sup> anniversary of the NPU system!</p>
   </li>
   <li>
-    <p>These next two are especially important, and in fact, it’s the reason NPUs meet every month. The Department of City Planning is continuing to update <b>Plan A: Atlanta’s Comprehensive Development Plan</b>. The plan sets forth the vision, goals, policies, and actions for growth and development in Atlanta. We will be hosting public meetings and pop-ups across the city between October and February starting with a kickoff event on October 10<sup>th</sup> on the top floor of the Bank of America Plaza. We’ll post schedule updates and information on how to participate at <a href='https://www.atlantaforall.com/'>AtlantaForAll.com</a>.</p>
+    <p>These next two are especially important, and in fact, they’re the reason NPUs meet every month. The Department of City Planning is continuing to update <b>Plan A: Atlanta’s Comprehensive Development Plan</b>. The plan sets forth the vision, goals, policies, and actions for growth and development in Atlanta. We'll be hosting public meetings and pop-ups across the city between October and February. We’ll post schedule updates and information at <a href='https://www.atlantaforall.com/'>AtlantaForAll.com</a></p>
   </li>
   <li>
-    <p>Of equal importance is the work we are doing to rewrite our zoning code. We released the new <b>ATL Zoning 2.0</b> Ordinance Module I “Discussion Draft” for public review on May 20<sup>th</sup>. This module includes draft standards for Form & Frontage Districts and Use Districts. Revisions based on comments received will be posted on our website in October. Module II - Development Standards will be released on December 4<sup>th</sup>. Comments on ATL Zoning 2.0 will be received on all modules through March 31<sup>st</sup> at <a href='https://atlzoning.com/'>ATLzoning.com</a>.</p>
+    <p>Of equal importance is the work we are doing to rewrite our zoning code. We released the new <b>ATL Zoning 2.0</b> Ordinance Module I “Discussion Draft” for public review in May. This module includes draft standards for Form & Frontage Districts and Use Districts. Revisions based on comments received will be posted on our website in October. Module II - Development Standards will be released on December 4<sup>th</sup>. Comments on ATL Zoning 2.0 will be received on all modules through March 31<sup>st</sup> at <a href='https://atlzoning.com/'>ATLzoning.com</a></p>
   </li>
   <li>
-    <p>The <b>Atlanta City Studio</b> is celebrating its official reopening on Monday, September 30<sup>th</sup>. This time, in South Downtown on Historic Hotel Row! Please drop by anytime between 12 noon and 6:30 PM at 235 Mitchell Street SW, Suite 103.</p>
-  </li>
-  <li>
-    <p>Do you know how city design and cemetery history are related? Have you heard of the Atlanta Cemetery Network? Join the Atlanta City Studio Book Club on September 24<sup>th</sup> to discuss <a href='https://fulcolibrary.bibliocommons.com/v2/record/S171C1486426'>Over My Dead Body: Unearthing the Hidden History of America’s Cemeteries</a> and learn how city design is related to and developed around cemetery history and the Atlanta Cemetery Network’s efforts to preserve cemetery sites in the city.</p>
-  </li>
-  <li>
-    <p>DCP is partnering with the Keep Atlanta Beautiful Commission to invite you to <b>Trash Bash ATL</b>, a citywide initiative in support of World Cleanup Day. To participate, just <a href="https://adopt-a-road-atlhubgis.hub.arcgis.com/pages/trash-bash-2024">visit the website</a> and schedule a clean-up event for your community on September 20<sup>th</sup> or 21<sup>st</sup>. This friendly competition among NPUs is a fantastic opportunity to show your community spirit and contribute to a cleaner, more beautiful Atlanta.</p>
+    <p>Join the <b>Atlanta City Studio Book Club</b> on Tuesday, October 29<sup>th</sup> from 6:30 to 8:30 PM to discuss <span style='text-decoration: underline;'>Keeping the Chattahoochee: Reviving and Defending a Great Southern River</span>.</p>
   </li>
   <li>
     <p>As a reminder, <b><a href='https://www.npuatlanta.org/npuuniversity'>NPU University</a></b> courses are free to all Atlanta residents. Upcoming courses are:</p>
     <ul>
-      <li class="npuu">Code Enforcement Academy</li>
-      <li class="npuu">Parliamentary Procedures II</li>
-      <li class="npuu">Atlanta Community Engagement Playbook</li>
-      <li class="npuu">Density Matters and Neighborhood Revitalization</li>
-      <li class="npuu">Intro to Geographic Information Systems (GIS), and</li>
-      <li class="npuu">Understanding Workforce Housing and Affordability</li>
+      <li>Understanding Workforce Housing and Affordability, and</li>
+      <li>Urban Plan Academy</li>
     </ul>
   </li>
-</ul>
+</ol>
 <h3>Links to post:</h3>
   <br>
   <div style="display: flex;justify-content:space-around">
@@ -227,11 +219,6 @@
     margin: 1.5em;
   }
 
-  .npuu{
-    margin: 0;
-    margin-bottom: 0;
-  }
-
   span[data-outcome='support'], span[data-outcome='Approved'] {
     color: rgb(0, 169, 0);
   }
@@ -249,7 +236,11 @@
   }
 
   /* Select ul elements inside another ul */
-  ol ul li, ol ul p {
+  ol ul li, ol ul p, ul ol p {
+    margin-block: 0;
+  }
+
+  li p {
     margin-block: 0;
   }
 
