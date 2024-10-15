@@ -157,9 +157,7 @@
 <h2><b>Next, the updates from the Planning Department:</b></h2>
 <ol>
   <li>
-    <p>As the <b>NPU’s 50<sup>th</sup> anniversary celebration</b> continues, September marks the beginning of our final phase: Planning Atlanta Together. Join us on a bike ride to commemorate the 50<sup>th</sup> anniversary of the NPU system! We’ll pedal around Hartsfield-Jackson Atlanta International Airport, ending at Morehouse College, Maynard Jackson’s alma mater. Meet us on Saturday, October 5<sup>th</sup> at 9:30 AM at the College Park MARTA Station to join the ride.
-      <br><br>
-      Join us on Saturday, November 9<sup>th</sup> from 11:00 AM to 4:00 PM for the <b>Love Thy Neighbor(hood) Festival</b> at Historic Fourth Ward Park. This vibrant celebration of Atlanta’s neighborhoods is our final event of the year -- honoring the 50<sup>th</sup> anniversary of the NPU system!</p>
+    <p>As the <b>NPU’s 50<sup>th</sup> anniversary celebration</b> continues, September marks the beginning of our final phase: Planning Atlanta Together. Join us on a bike ride to commemorate the 50<sup>th</sup> anniversary of the NPU system! We’ll pedal around Hartsfield-Jackson Atlanta International Airport, ending at Morehouse College, Maynard Jackson’s alma mater. Meet us on Saturday, October 5<sup>th</sup> at 9:30 AM at the College Park MARTA Station to join the ride.</p>
   </li>
   <li>
     <p>These next two are especially important, and in fact, they’re the reason NPUs meet every month. The Department of City Planning is continuing to update <b>Plan A: Atlanta’s Comprehensive Development Plan</b>. The plan sets forth the vision, goals, policies, and actions for growth and development in Atlanta. We'll be hosting public meetings and pop-ups across the city between October and February. We’ll post schedule updates and information at <a href='https://www.atlantaforall.com/'>AtlantaForAll.com</a></p>
@@ -169,13 +167,6 @@
   </li>
   <li>
     <p>Join the <b>Atlanta City Studio Book Club</b> on Tuesday, October 29<sup>th</sup> from 6:30 to 8:30 PM to discuss <span style='text-decoration: underline;'>Keeping the Chattahoochee: Reviving and Defending a Great Southern River</span>.</p>
-  </li>
-  <li>
-    <p>As a reminder, <b><a href='https://www.npuatlanta.org/npuuniversity'>NPU University</a></b> courses are free to all Atlanta residents. Upcoming courses are:</p>
-    <ul>
-      <li>Understanding Workforce Housing and Affordability, and</li>
-      <li>Urban Plan Academy</li>
-    </ul>
   </li>
   <li>Please <a href="https://arcg.is/1y050T0" target="_blank">follow this link</a> to a brief survey in the chat so you can <strong>tell us about your experience with your NPU</strong>. Please take a few minutes to complete the survey, which will help us identify opportunities to strengthen the NPU system.</li>
 </ol>
