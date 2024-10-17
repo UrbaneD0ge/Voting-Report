@@ -553,7 +553,7 @@ Access Code: 929 8209 4616#`
     // console.log('Approved');
   }
   if ($('#nextdoor')[0].checked) {
-    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="https://nextdoor.com/city/feed/?" target="_blank" noopener>NEXTDOOR</a></h2><pre id="nextdoor" onclick="copy(this)"><strong>NPU-' + title + ' | ' + casual + ' ' + meeting.time + '</strong><br>Hey Neighbors!<br><br>NPU-' + title + ' meets next ' + casual + ' at ' + meeting.time + '<br><br>To register in advance go to:<br>' + meeting.zURL + '<br>' + meeting.meet + '<br><br>Thank you,</pre></div>')
+    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="https://nextdoor.com/city/feed/?" target="_blank" noopener>NEXTDOOR</a></h2><pre id="nextdoor" onclick="copy(this)"><strong>NPU-' + title + ' | ' + casual + ' ' + meeting.time + '</strong><br>Hey Neighbors!<br><br>NPU-' + title + ' meets next ' + casual + ' at ' + meeting.time + '<br><br>To register in advance go to:<br>' + meeting.zURL + '<br>' + meeting.meet + '<br><br>Is your NPU working for you❓<br>Take the survey at www.bit.ly/NPU50<br><br>Thank you,</pre></div>')
     // console.log('Nextdoor');
   }
   if ($('#attendance')[0].checked) {
