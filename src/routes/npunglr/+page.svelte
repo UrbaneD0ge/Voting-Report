@@ -50,7 +50,8 @@
         <!-- </div>
         <div class="form-group"> -->
         <legend>Document type?</legend>
-        <div id="legend" class="d-flex flex-wrap flex-row">
+        <div id="legend">
+        <div class="d-flex flex-wrap flex-row justify-content-around">
           <span class="mx-3">
             <input
               type="checkbox"
@@ -74,47 +75,49 @@
             <label for="distro">Distribution List</label>
           </span>
           <span class="mx-3">
-            <input
-              type="checkbox"
-              name="special"
-              value="special"
-              id="special"
-            />
-            <label for="special">Special</label>
-          </span>
-          <span class="mx-3">
             <input type="checkbox" name="access" value="access" id="access" />
             <label for="access">Meeting Access</label>
           </span>
           <span class="mx-3">
             <input
-              type="checkbox"
+            type="checkbox"
               name="approved"
               value="approved"
               id="approved"
-            />
-            <label for="approved">Presentation Approved</label>
-          </span>
-          <br><br>
-          <span class="mx-3">
-            <input
+              />
+              <label for="approved">Presentation Approved</label>
+            </span>
+          </div>
+
+          <div class="d-flex flex-wrap flex-row justify-content-between">
+            <span class="mx-3">
+              <input
+                type="checkbox"
+                name="special"
+                value="special"
+                id="special"
+              />
+              <label for="special">Special</label>
+            </span>
+            <span class="mx-3">
+              <input
               type="checkbox"
               name="nextdoor"
               value="nextdoor"
               id="nextdoor"
-            />
-            <label for="nextdoor">Nextdoor Post</label>
-          </span>
-          <span class="mx-3">
-            <input
+              />
+              <label for="nextdoor">Nextdoor Post</label>
+            </span>
+            <span class="mx-3">
+              <input
               type="checkbox"
               name="pReport"
               value="pReport"
               id="pReport"
-            />
-            <label for="pReport">Planner's Report</label>
-          </span>
-          <span class="mx-3">
+              />
+              <label for="pReport">Planner's Report</label>
+            </span>
+            <span class="mx-3">
             <input
               type="checkbox"
               name="attendance"
@@ -134,6 +137,7 @@
           </span>
         </div>
       </div>
+      </div>
       <button id="submit" class="btn btn-primary">Submit</button>
       <button onclick="clearForm()" id="clear" class="btn btn-danger ml-2"
         >Clear</button
@@ -145,7 +149,7 @@
   <div class="container" id="textZone"></div>
   <br />
   <div class="container">
-    <div class="calendar d-flex">
+    <div class="calendar d-flex ">
       <table class="col-12 table-bordered">
         <tr>
           <th>A</th>
@@ -263,6 +267,16 @@
     width: min-content;
     display: inline;
   }
+
+#legend {
+  margin-block: 1em;
+  font-size: 1.1rem;
+}
+
+#legend span label:hover {
+  /* margin: 0 1em; */
+  text-decoration: underline;
+}
 
   #NPU {
     font-size: 1.5rem;
