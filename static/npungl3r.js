@@ -293,7 +293,7 @@ Password: euclid`
         zURL = `https://us06web.zoom.us/meeting/register/tJMtf-2spj0sH9z2bFgZI2LX-Bna7OWVyoFq`
         time = `7:00PM`
         chair = `Amy Stout`
-        chairHon = `Ms. Stout`
+        chairHon = `Dr. Stout`
         chairE = `npunchair@gmail.com`
         planner = `Tamaria Letang`
         plannerE = `tletang@atlantaga.gov`
@@ -557,7 +557,7 @@ Access Code: 929 8209 4616#`
     // console.log('Nextdoor');
   }
   if ($('#attendance')[0].checked) {
-    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="mailto:' + title + ' chair;' + '?subject=NPU-' + title + ' ' + month + ' GB Attendance&cc= kdunlap@atlantaga.gov; dvasquez@atlantaga.gov;&body=Good day ' + meeting.chairHon + ',%0D%0DPlease see the attached NPU-' + title + ' ' + month + ' GB attendance report for your records.%0D%0DThank you,">Attendance</a> | <a href="https://survey123.arcgis.com/share/5cde6a1c6d834a7098b9998b8e1b2b58" target="_blank">Survey</a></h2>'
+    $('#textZone').append('<div class="y-2 calendar col-12"><h2><a href="mailto:' + title + ' chair;' + '?subject=NPU-' + title + ' ' + month + ' GB Attendance&cc= kdunlap@atlantaga.gov; dvasquez@atlantaga.gov; ltempleton@atlantaga.gov;&body=Good day ' + meeting.chairHon + ',%0D%0DPlease see the attached NPU-' + title + ' ' + month + ' GB attendance report for your records.%0D%0DThank you,">Attendance</a> | <a href="https://survey123.arcgis.com/share/5cde6a1c6d834a7098b9998b8e1b2b58" target="_blank">Survey</a></h2>'
       + '<p onclick="copy(this)"><strong>NPU-' + title + ' ' + month + ' GB Attendance</strong><br>Good day ' + meeting.chairHon + ',<br><br>Please see the attached NPU-' + title + ' ' + month + ' GB attendance report for your records.<br><br>Thank you,</p></div>')
   }
   if ($('#pReport')[0].checked) {
