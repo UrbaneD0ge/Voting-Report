@@ -960,7 +960,7 @@
   <details id="instructions">
     <li style="list-style-type:none;">
       Print the finished document to .PDF.<br>
-      Email the .PDF to the NPU Chair, Daniel Vasquez, and Kip Dunlap.
+      Email the .PDF to the NPU Chair, Daniel Vasquez, and Lance Templeton.
     </li>
     <summary>Instructions:</summary>
     <ul style="list-style-type:'✨'">
@@ -1033,7 +1033,7 @@
       href="https://www.atlantaga.gov/government/departments/city-planning"
       target="_blank">Department of City Planning</a
     >, City of Atlanta | Send questions and bug reports to
-    <a href="mailto:kdunlap@atlantaga.gov">KDunlap@AtlantaGA.gov</a> | Version 2.0.1
+    <a href="mailto:kip@kipdunlap.me">Kip@KipDunlap.me</a> | Version 2.0.1
   </p>
 </footer>
 
