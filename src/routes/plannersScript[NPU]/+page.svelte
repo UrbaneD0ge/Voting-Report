@@ -155,20 +155,25 @@
 </ul>
 <hr>
 <h2><b>Next, the updates from the Planning Department:</b></h2>
+<h2>November 2024</h2>
+<h3>Please see links below for more information about the items your planner reported at the NPU meeting.</h3>
 <ol>
-  <li>
-    <p>As the <b>NPU’s 50<sup>th</sup> anniversary celebration</b> continues, September marks the beginning of our final phase: Planning Atlanta Together. Join us on a bike ride to commemorate the 50<sup>th</sup> anniversary of the NPU system! We’ll pedal around Hartsfield-Jackson Atlanta International Airport, ending at Morehouse College, Maynard Jackson’s alma mater. Meet us on Saturday, October 5<sup>th</sup> at 9:30 AM at the College Park MARTA Station to join the ride.</p>
-  </li>
-  <li>
-    <p>These next two are especially important, and in fact, they’re the reason NPUs meet every month. The Department of City Planning is continuing to update <b>Plan A: Atlanta’s Comprehensive Development Plan</b>. The plan sets forth the vision, goals, policies, and actions for growth and development in Atlanta. We'll be hosting public meetings and pop-ups across the city between October and February. We’ll post schedule updates and information at <a href='https://www.atlantaforall.com/'>AtlantaForAll.com</a></p>
-  </li>
-  <li>
-    <p>Of equal importance is the work we are doing to rewrite our zoning code. We released the new <b>ATL Zoning 2.0</b> Ordinance Module I “Discussion Draft” for public review in May. This module includes draft standards for Form & Frontage Districts and Use Districts. Revisions based on comments received will be posted on our website in October. Module II - Development Standards will be released on December 4<sup>th</sup>. Comments on ATL Zoning 2.0 will be received on all modules through March 31<sup>st</sup> at <a href='https://atlzoning.com/'>ATLzoning.com</a></p>
-  </li>
-  <li>
-    <p>Join the <b>Atlanta City Studio Book Club</b> on Tuesday, October 29<sup>th</sup> from 6:30 to 8:30 PM to discuss <span style='text-decoration: underline;'>Keeping the Chattahoochee: Reviving and Defending a Great Southern River</span>.</p>
-  </li>
-  <li>Please <a href="https://arcg.is/1y050T0" target="_blank">follow this link</a> to a brief survey in the chat so you can <strong>tell us about your experience with your NPU</strong>. Please take a few minutes to complete the survey, which will help us identify opportunities to strengthen the NPU system.</li>
+    <li>
+    <p>As we wrap up the <b>50th anniversary of the Neighborhood Planning Unit system</b> with all of you, the Department of City Planning wants to express our sincere gratitude for everyone’s partnership and participation. Your engagement has been invaluable in making this a truly memorable year! We’ll be sharing some of the special moments we captured on our social media in the upcoming weeks, so be sure to stay connected and follow us on social media @NPUAtlanta.</p>
+    </li>
+    <li>
+    <p>The <b>2025 Community Impact Grant</b> Information Session will be held on Wednesday, December 11<sup>th</sup> from 6:00 p.m. to 7:00 p.m. via Zoom. Attendance to this session is required for NPU chairs or project managers applying for funding to complete impactful community projects in 2025. More information on the <a href="https://www.atlantaga.gov/government/departments/city-planning/neighborhood-planning-units/community-impact-grant-program" target="_blank">Community Impact Grant</a> page.</p>
+    </li>
+    <li>
+    <p>The Department of City Planning is continuing to update <b>Plan A: Atlanta’s Comprehensive Development Plan</b>. The plan sets forth the vision, goals, policies, and actions for growth and development in Atlanta. We’ll continue hosting public meetings and pop-ups across the city through February. We’ll post schedule updates and information at&nbsp;<a href="https://www.atlantaforall.com/">AtlantaForAll.com</a></p>
+    </li>
+    <li>
+    <p>The work we’re doing to rewrite our zoning code is equally important. We released the new <b>ATL Zoning 2.0</b>&nbsp;Ordinance Module I “Discussion Draft” for public review in May. This module includes draft standards for Form &amp; Frontage Districts and Use Districts. Revisions based on comments received are posted on our website. Module II - Development Standards will be released on December 4<sup>th</sup>. You may continue to submit comments on <b>all modules</b>&nbsp;through March 31<sup>s</sup><sup>t</sup>&nbsp;at&nbsp;<a href="https://atlzoning.com/">ATLzoning.com</a></p>
+    </li>
+    <li>
+    <p>The <b>Atlanta City Studio Book Club</b> will meet on Thursday, November 21<sup>st</sup> to discuss <a href="https://islandpress.org/books/inclusive-transportation#desc" target="_blank"><i>Inclusive Transportation: A Manifesto for Repairing Divided Communities</i></a>. The book is described as <i>“A Vision for Change and a New Era of Transportation Planning.”</i> We will also discuss the Vision Zero Action Plan, the Plan A Transportation Chapter, and the upcoming Comprehensive Transportation Plan with ATLDOT representatives.</p>
+    </li>
+    <li>Please&nbsp;<a href="https://arcg.is/1y050T0" target="_blank">follow this link</a>&nbsp;to a brief survey in the chat so you can&nbsp;<strong>tell us about your experience with your NPU</strong>.&nbsp;Please take a few minutes to complete the survey, which will help us identify opportunities to strengthen the NPU system.&nbsp;</li>
 </ol>
 <h3>Links to post:</h3>
   <br>
